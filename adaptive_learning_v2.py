@@ -496,9 +496,13 @@ create_groups(total_levels)
     
 l_checked=[0]*(total_levels+1)
 
-# total questions taken corresponding to each level
+# total questions corresponding to each level
     
-total_que=[0]*(total_levels)
+total_questions= [q_level.count(i) for i in range(total_levels)]
+
+# attempted questions corresponding to each level
+    
+attempted=[0]*(total_levels)
     
 # total incorrect questions answered corresponding to each level
     
@@ -590,18 +594,24 @@ def next_que(level):
         if(q_level[x]==level and answered_q[n[x]]==0):
             for y in q_graph[n[x]]:
                 if(l[y]==100):
-                    v[x]=v[x]+1
+                    v[x]=v[x]+5
                 elif(l[y]<100 and l[y]>0):
                     v[x]=v[x]                    
                 elif(l[y]<=0 and l[y]>-3):
-                    v[x]=v[x]+3
+                    v[x]=v[x]+10
                 elif(l[y]<=-3):
-                    v[x]=v[x]-10
+                    v[x]=v[x]-100
         
             mval=max(v[x],mval)
             if(mval==v[x]):
                 nq=n[x]
-                
+    
+    # In case concept priority above can't decide nq, put any remaining question in level as nq
+    
+    for x in xrange(len(q_graph.keys())):
+        if nq == -1 and answered_q[n[x]]==0:
+            nq = n[x]
+            
     answered_q[nq]=1
     return nq
 
@@ -614,11 +624,9 @@ def start_analysis():
     
     curr_level=total_levels/2 
     
-    l_checked[curr_level]=1
-    
     for x in xrange(1000):
         
-        total_que[curr_level]=total_que[curr_level]+1
+        attempted[curr_level]=attempted[curr_level]+1
         
         try:
             
@@ -632,6 +640,7 @@ def start_analysis():
           
             if(nq==-1):
                 curr_level=curr_level+1
+                print "nq_test2", nq
                 if(curr_level > total_levels):
                     print("Test complete.")
                     weak_concepts_fn()
@@ -643,11 +652,13 @@ def start_analysis():
             cq=1
             t1=time.time()
             print 
-            print "nq", nq
+
             print "curr_level", curr_level
             print "total_levels", total_levels
             print "wrong", wrong[curr_level]
-            print "total_que", total_que[curr_level]
+            print "attempted", attempted[curr_level]
+            print "total_questions", total_questions[curr_level]
+            print "nq", nq            
             print 
             print question[nq]
             print("Answer is : %s" %ans[nq])
@@ -665,11 +676,12 @@ def start_analysis():
             
             if(cq==1):
                 correct_ans(nq,int(t2-t1))
-            #total_que=total_que+1
+            #attempted=attempted+1
 
-            # if multiple answers are incorrect in the same level
+            # if accuracy is less than 50% at any point, go down a level
             
-            if(wrong[curr_level] >= 2 and (wrong[curr_level]/float(total_que[curr_level])) >= 0.5):
+            if (attempted[curr_level]/float(total_questions[curr_level])) >= 0.75 and \
+            (wrong[curr_level]/float(attempted[curr_level])) >= 0.5:
                 curr_level=curr_level-1
                 print("Level down : %s" %curr_level)
                 
@@ -680,18 +692,25 @@ def start_analysis():
                     weak_concepts_fn()
                     break
             
-            if(total_que[curr_level]!=0 and total_que[curr_level]%5==0):
+                # else if attempts are greater than 80% of total questions in level, go up a level
+            
+            if (attempted[curr_level]/float(total_questions[curr_level])) >= 0.75 and \
+            (wrong[curr_level]/float(attempted[curr_level])) < 0.5:
                 curr_level=curr_level+1
                 print("Level up : %s" %curr_level)
                 if(l_checked[curr_level]==0):
                     l_checked[curr_level]=1
                 else:
                     break
-                
+            
+            # if all levels cleared, show analysis    
+            
             if(curr_level >= total_levels):
                 print("All levels cleared successfully!!!")
                 weak_concepts_fn()
                 break
+            
+            # if no level cleared, show analysis
             
             if(curr_level<0):
                 print ("Level 0 concepts : Failed !!! ")
