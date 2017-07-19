@@ -1,35 +1,5 @@
 """
-
-Important notes for Django:
-
-1. source activate <VirtualEnvName> - starts virtual environment
-
-2. source deactivate - stops virtual environment
-
-3. python manage.py runserver - starts localhost server
-
-4. python manage.py makemigrations - shows what changes are made in the database code
-
-5. python manage.py migrate - makes those changes to the database
-
-ALWAYS RUN THE ABOVE TWO WHEN CHANGING MODELS.PY
-CHANGES IN DATABASE WILL BE RECORDED IN MIGRATIONS FOLDER
-
-6. python manage.py syncdb - syncs database to latest changes made
-
-7. postgresql and mysql are more secure than sqlite database
-
-8. python manage.py createsuperuser - create a superuser and password to access admin console
-
-9. python manage.py startapp - builds a folder that has a set of codes like adaptive learning or chatbot
-
-10. python manage.py shell - allows us to edit the database through python scripts in terminal -
-treating the models as a class. We can also use django specific commands to edit database.
-
-"""
-
-"""
-Say, the questions are divided into 4 categories on the based on their respective difficulties. 
+Say, the questions are divided into 4 categories based on their respective difficulties.
 The test will start with a random question from 2nd level(mid-level). 
 Then based on the whether the student has correctly answered the question, next question will be selected.
 If the student answers a set number of correctly from the pool of questions at that particular level, 
@@ -342,67 +312,6 @@ for e in temp:
     con_diff[c] = sum(e)
     c += 1
 
-# Sample questions
-
-question= [
-
-'A box contains 4 red and 2 yellow tickets.What is the probablity that the first selected is red.',
-
-'A box contains 4 red and 2 yellow tickets. If the first selected ticket is red, find the probablity that second selected ticket is also red',
-
-'A box contains 4 red and 2 yellow tickets. Two tickets are randomly selected from the box one by one without replacement. Find the probability that both are red.',
-
-'Two boxes each contain 6 petunia plants that are not yet flowering. Box A contains 2 plants that will have purple flowers and 4 plants that will have white flowers.Box B contains 5 plants that will have purple flowers and 1 plant that will have white flowers. A box is selected by tossing a coin, and one plant is removed at random from it. Determine the probablity of selecting box 1.',
-
-'Two boxes each contain 6 petunia plants that are not yet flowering. Box A contains 2 plants that will have purple flowers and 4 plants that will have white flowers. Box B contains 5 plants that will have purple flowers and 1 plant that will have white flowers. A box is selected by tossing a coin, and one plant is removed at random from it.Determine the probablity of selecting box 2.',
-
-'Two boxes each contain 6 petunia plants that are not yet flowering. Box A contains 2 plants that will have purple flowers and 4 plants that will have white flowers. Box B contains 5 plants that will have purple flowers and 1 plant that will have white flowers. A box is selected by tossing a coin, and one plant is removed at random from it.Detemine the probablity of selecting a purple flower if box 1 is selected.',
-
-'Two boxes each contain 6 petunia plants that are not yet flowering. Box A contains 2 plants that will have purple flowers and 4 plants that will have white flowers. Box B contains 5 plants that will have purple flowers and 1 plant that will have white flowers. A box is selected by tossing a coin, and one plant is removed at random from it.Detemine the probablity of selecting a purple flower if box 2 is selected.',
-
-'Two boxes each contain 6 petunia plants that are not yet flowering. Box A contains 2 plants that will have purple flowers and 4 plants that will have white flowers. Box B contains 5 plants that will have purple flowers and 1 plant that will have white flowers. A box is selected by tossing a coin, and one plant is removed at random from it. Determine the probability that it will have purple flowers.',
-
-'A bag contains 5 red and 3 blue marbles. Two marbles are drawn simultaneously from the bag. Detemine the probablity that no red balls are selected.',
-
-'A bag contains 5 red and 3 blue marbles. Two marbles are drawn simultaneously from the bag.Determine the probability that at least one is red.',
-
-'In a class of 30 students, 19 study Physics, 17 study Chemistry, and 15 study both of these subjects.Find probablity of slecting a student who studies both subjects.',
-
-'In a class of 30 students, 19 study Physics, 17 study Chemistry, and 15 study both of these subjects.Find probablity of slecting a student who studies neither subject.',
-
-'In a class of 30 students, 19 study Physics, 17 study Chemistry, and 15 study both of these subjects.Find probablity of slecting a student who studies at least one subject.',
-
-'Suppose P(A) = 1/2, P(B) = 1/3 , and P(A U B) = p. Find P(A intersection B) if A and B are mutually exclusive events.',
-
-'Suppose P(A) = 1/2, P(B) = 1/3 , and P(A U B) = p. Find p if A and B are mutually exclusive events.',
-
-'Suppose P(A) = 1/2, P(B) = 1/3 , and P(A U B) = p. Find P(A intersection B) if A and B are independent events.',
-
-'Suppose P(A) = 1/2, P(B) = 1/3 , and P(A U B) = p. Find p if A and B are independent events.'
-
-]
-
-# List of answers
-ans=[
-    '0.67',
-    '0.6',
-    '0.4',
-    '0.5',
-    '0.5',
-    '0.33',
-    '0.83',
-    '0.58',
-    '0.11',
-    '0.89',
-    '0.5',
-    '0.3',
-    '0.7',
-    '0',
-    '0.83',
-    '0.17',
-    '0.67'
-    ]
-
 # Concepts related to each question
 
 q_graph = {
@@ -523,20 +432,16 @@ con_score = defaultdict(dict)
 
 # time taken per question
 
-que_time = [0] * len(question)
+que_time = [0] * len(q_level)
 
 # initialize time and user based metrics for each question
 
-m_que_tavg = [[0, 0] for _ in xrange(len(question))]
-m_que_cavg = [[0, 0] for _ in xrange(len(question))]
+m_que_tavg = [[0, 0] for _ in xrange(len(q_level))]
+m_que_cavg = [[0, 0] for _ in xrange(len(q_level))]
 
 
 # if the answer is correct, increase the score of the prerequisite concepts by 1
 def correct_ans(que, t):
-    print ("Correct Answer")
-    print("%s percent of %s users got this right" % (m_que_cavg[que][0] * 100, m_que_cavg[que][1]))
-    print("Time taken by you: %s seconds" % t)
-    print("Average time taken by users who got this right: %s seconds" % m_que_tavg[que][0])
     for x in q_graph[que]:
         # 100 is just an initial value to test whether the student has answered any
         # question which has this pre-requisite concept
@@ -553,13 +458,9 @@ def correct_ans(que, t):
     c_average(m_que_tavg[que], t)
     c_average(m_que_cavg[que], 1)
 
-
-# if the answer is wrong, decrease the score of the prerequisite concepts by 5
+# if the answer is wrong, decrease the score of the prerequisite concepts by 1
 def wrong_ans(que, t):
-    print("Wrong Answer")
-    print("%s percent of %s users got this right" % (m_que_cavg[que][0] * 100, m_que_cavg[que][1]))
-    print("Time taken by you: %s seconds" % t)
-    print("Average time taken by users who got this right: %s seconds" % m_que_tavg[que][0])
+
     for x in q_graph[que]:
         if (l[x] == 100):
             l[x] = -1
@@ -659,8 +560,6 @@ def next_que(level):
 
     # In case concept priority above can't decide nq, put any remaining question in level as nq
 
-    print"nq_pre", nq
-
     for x in xrange(len(q_graph.keys())):
         if nq == -1 and answered_q[n[x]] == 0:
             nq = n[x]
@@ -670,7 +569,7 @@ def next_que(level):
 
 # function that takes in question id and returns nq and result (analysis)
 
-def function1(question_id):
+def learn(question_id):
 
     if question_id == -1:
 
@@ -680,93 +579,52 @@ def function1(question_id):
 
         result = []
 
-    elif question_id == -2:
-
-        nq = -2
-
-        result = week_concepts_fn()
-
     else:
 
         curr_level = q_level[question_id]
 
+        attempted[curr_level] = attempted[curr_level] + 1
+
+        answered_q[question_id] = 1
+
+        # if answer is incorrect
+
+        if is_correct == 0:
+            #wrong_ans(nq, int(t2 - t1))
+            wrong[curr_level] = wrong[curr_level] + 1
+
+        # if attempts > 75% of total questions and accuracy < 50% in level, go up a level
+
+        if (attempted[curr_level] / float(total_questions[curr_level])) >= 0.75 and \
+                            (wrong[curr_level] / float(attempted[curr_level])) >= 0.5:
+            curr_level = curr_level - 1
+            if (l_checked[curr_level] == 0):
+                l_checked[curr_level] = 1
+            else:
+                return -2, weak_concepts_fn()
+
+        # if attempts > 75% of total questions and accuracy > 50% in level, go up a level
+
+        if (attempted[curr_level] / float(total_questions[curr_level])) >= 0.75 and \
+                        (wrong[curr_level] / float(attempted[curr_level])) < 0.5:
+            curr_level = curr_level + 1
+            if (l_checked[curr_level] == 0):
+                l_checked[curr_level] = 1
+            else:
+                return -2, weak_concepts_fn()
+
+        # if all levels cleared, show analysis
+
+        if (curr_level >= total_levels):
+            return -2, weak_concepts_fn()
+
+        # if no level cleared, show analysis
+
+        if (curr_level < 0):
+            return -2, weak_concepts_fn()
+
         nq = next_que(curr_level)
 
-        result = []
+        result = weak_concepts_fn()
 
     return nq, result
-
-# function that checks answer and identifies next question
-
-"""
-
-def function2():
-
-    # get input answer
-
-    cq = 1
-    t1 = time.time()
-    print
-    print question[nq]
-    print("Answer is : %s" % ans[nq])
-    response = raw_input()
-    t2 = time.time()
-    attempted[curr_level] = attempted[curr_level] + 1
-    answered_q[nq] = 1
-
-    # if answer is incorrect
-
-    if (is_correct(ans[nq], response) == 0):
-        wrong_ans(nq, int(t2 - t1))
-        wrong[curr_level] = wrong[curr_level] + 1
-        cq = 0
-
-    # if answer is correct
-
-    if (cq == 1):
-        correct_ans(nq, int(t2 - t1))
-    # attempted=attempted+1
-
-    # if attempts > 75% of total questions and accuracy < 50% in level, go up a level
-
-    if (attempted[curr_level] / float(total_questions[curr_level])) >= 0.75 and \
-                    (wrong[curr_level] / float(attempted[curr_level])) >= 0.5:
-        curr_level = curr_level - 1
-        print("Level down : %s" % curr_level)
-
-        if (l_checked[curr_level] == 0):
-            l_checked[curr_level] = 1
-        else:
-            print "Test complete."
-            weak_concepts_fn()
-            break
-
-    # if attempts > 75% of total questions and accuracy > 50% in level, go up a level
-
-    if (attempted[curr_level] / float(total_questions[curr_level])) >= 0.75 and \
-                    (wrong[curr_level] / float(attempted[curr_level])) < 0.5:
-        curr_level = curr_level + 1
-        print("Level up : %s" % curr_level)
-        if (l_checked[curr_level] == 0):
-            l_checked[curr_level] = 1
-        else:
-            weak_concepts_fn()
-            break
-
-    # if all levels cleared, show analysis
-
-    if (curr_level >= total_levels):
-        print("All levels cleared successfully!!!")
-        weak_concepts_fn()
-
-    # if no level cleared, show analysis
-
-    if (curr_level < 0):
-        print ("Level 0 concepts : Failed !!! ")
-        weak_concepts_fn()
-
-    return nq, result
-
-
-"""
-

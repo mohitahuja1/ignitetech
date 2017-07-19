@@ -6,6 +6,8 @@ urlpatterns = [
 
     url(r'^$', views.index, name='index'),
 
-    url(r'^(?P<questionid>[0-9]+)/$', views.details, name='details')
+    url(r'^(?P<questionid>[0-9]+)/$', views.details, name='details'),
+
+    url(r'^(?P<questionid>[0-9]+)/check/$', views.check, name='check')
 
 ]

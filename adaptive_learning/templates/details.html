@@ -1,10 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-x
-</body>
+<html>
+    <head>
+        <Title>
+            Ignite Tech
+        </Title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style type="text/css">
+                body{
+				font-family: arial,sans-serif;
+				margin:0;
+				background-color: #f2f2f2;
+			}
+
+			.left_block{
+				width:50%;
+			}
+			#header{
+				width:100%;
+				height:60px;
+				background-color: #333
+				/*box-shadow:0px 4px 2px #333;*/
+			}
+			#header>h1{
+				width:350px;
+				margin: 0px auto;
+				color: white;
+				padding: 12px;
+			}
+            .right_block{
+            width:50%;
+
+            }
+			#container{
+				width:498px;
+				height: 250px;
+				margin: 0px auto;
+				margin-top: 10px;
+				background-color: white;
+				border: 1px solid #333;
+				overflow: scroll;
+			}
+
+			#controls{
+				width:500px;
+				margin: 0px auto;
+
+			}
+			#controls>textarea{
+				resize: none;
+				width: 250px;
+				height: 24px;
+
+			}
+			#controls>button{
+				font-size: 15px;
+				position: absolute;
+			}
+			.username{
+				color: red;
+				font-weight: bold;
+			}
+			.bot{
+				color: blue;
+				font-weight: bold;
+			}
+		 </style>
+    </head>
+    <body>
+    <script type="text/javascript">
+    			var username = "";
+    			var path = ""+window.location.pathname;
+    			var question_id = path.slice(6, 7);
+    			<!--var question_id = almost_questionid.slice(1,2)-->
+			function send_message(message){
+
+				var prevState = $("#container").html();
+				if (prevState.length > 4){
+					prevState = prevState + "<br>"
+				}
+				$("#container").html(prevState+ "<span class='bot'>Bot :</span>" + message);
+
+			}
+
+			$(function(){
+
+				$("#textbox").keypress(function(event){
+					if (event.which == 13){
+						if ($("#check").prop("checked")){
+							$("#send").click();
+							event.preventDefault();
+
+						}
+					}
+				});
+
+				$("#send").click(function(){
+
+					var userName = "<span class='username'>You: </span>";
+					var newMessage = ""+$("#textbox").val();
+					$("#textbox").val("");
+					var prevState = $("#container").html();
+					if (prevState.length > 4){
+					 	prevState = prevState + "<br>"
+					}
+					$("#container").html(prevState+ userName + newMessage);
+					$("#container").scrollTop($("#container").prop("scrollHeight"));
+                    ajaxCall(newMessage,question_id);
+				});
+
+			});
+
+			function ajaxCall(user_question,question_id) {
+                $.ajax({
+                        type: "GET",
+                        url: "http://127.0.0.1:8000/chat/response/",
+                        data: {"question": user_question, "question_id": question_id},
+                        success: callbackFunc
+                });
+}
+
+            function callbackFunc(response) {
+                send_message(response);
+                console.log(response);
+            }
+
+    </script>
+
+    <br>
+    <br>
+
+    <div id="qnaform" class ="left_block">
+
+        <form action="{% url 'index'%}">
+        <input type="submit" value="Home page" />
+        </form>
+
+        <h2>Please attempt the question below:</h2>
+
+        {{this_question.question}}
+
+        <form action="{% url 'check' this_question.id %}" >
+
+            {% csrf_token %}
+            <br>Answer:<br><br>
+            <input type="text" name="Answer" placeholder="Enter your answer here">
+            <br><br>
+
+            <input type="submit" value="Submit">
+            <br><br>
+
+            {% if is_correct == 1%}
+                <b>Correct Answer!</b>
+            {%endif%}
+
+            {% if is_correct == 0%}
+                <b>Wrong Answer!</b>
+            {%endif%}
+
+            <br><br>
+            {%if  next_id is not None %}
+            <a href="{% url 'details' next_id %}" class="next">Next &raquo;</a>
+            {%endif%}
+
+        </form>
+
+    </div>
+    <div id="container" class="right_block"></div>
+        <div id="controls">
+        <textarea id="textbox" placeholder="Enter your question here"></textarea><button id="send">Send</button>
+		<br>
+        <input checked type="checkbox" id="check"/>
+        <label>Send on enter</label>
+    </div>
+    </body>
 </html>
