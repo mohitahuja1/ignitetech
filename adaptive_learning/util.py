@@ -434,14 +434,13 @@ con_score = defaultdict(dict)
 
 que_time = [0] * len(q_level)
 
-# initialize time and user based metrics for each question
+que_other_time = [0] * len(q_level)
 
-m_que_tavg = [[0, 0] for _ in xrange(len(q_level))]
-m_que_cavg = [[0, 0] for _ in xrange(len(q_level))]
-
+tm = [[0,0] for _ in xrange(len(q_level))]
 
 # if the answer is correct, increase the score of the prerequisite concepts by 1
-def correct_ans(que, t):
+def correct_ans(que, t, user_metric, time_metric):
+
     for x in q_graph[que]:
         # 100 is just an initial value to test whether the student has answered any
         # question which has this pre-requisite concept
@@ -455,11 +454,14 @@ def correct_ans(que, t):
         else:
             con_score[q_level[que]][x] = con_diff[x]
     que_time[que] = t
-    c_average(m_que_tavg[que], t)
-    c_average(m_que_cavg[que], 1)
+    c_average(time_metric, t)
+    c_average(user_metric, 1)
+    que_other_time[que] = time_metric[0]
+
+    return user_metric, time_metric
 
 # if the answer is wrong, decrease the score of the prerequisite concepts by 1
-def wrong_ans(que, t):
+def wrong_ans(que, t, user_metric, time_metric):
 
     for x in q_graph[que]:
         if (l[x] == 100):
@@ -472,18 +474,21 @@ def wrong_ans(que, t):
         else:
             con_score[q_level[que]][x] = con_diff[x]
     que_time[que] = t
-    # c_average(m_que_tavg[que],t)
-    c_average(m_que_cavg[que], 0)
+    # c_average(time_metric,t)
+    c_average(user_metric, 0)
+    que_other_time[que] = time_metric[0]
+
+    return user_metric, time_metric
 
 
 def weak_concepts_fn():
     import pandas as pd
 
-    d1 = {'level': q_level, 'total_time': que_time}
+    d1 = {'level': q_level, 'total_time': que_time, 'other_time': que_other_time}
     index = [i for i in range(len(q_level))]
     df1 = pd.DataFrame(data=d1, index=index)
 
-    d2 = df1.groupby('level')['total_time'].sum()
+    d2 = df1.groupby('level').sum()
 
     index2 = [i for i in range(len(d2))]
 
@@ -495,14 +500,19 @@ def weak_concepts_fn():
 
     df2['time_per_attempt'] = 0
 
+    df2['other_time_per_attempt'] = 0
+
     df2['accuracy'] = 0
 
     df2['time_per_attempt'][df2['attempted'] != 0] = df2['total_time'] / df2['attempted']
+
+    df2['other_time_per_attempt'][df2['attempted'] != 0] = df2['other_time'] / df2['attempted']
 
     df2['accuracy'][df2['attempted'] != 0] = (df2['attempted'] - df2['wrong']) / df2['attempted']
 
     del df2['wrong']
     del df2['total_time']
+    del df2['other_time']
 
     out1 = []
     for e in index2:
@@ -566,10 +576,9 @@ def next_que(level):
 
     return nq
 
-
 # function that takes in question id and returns nq and result (analysis)
 
-def learn(question_id):
+def learn(question_id, t, user_metric, time_metric, is_correct):
 
     if question_id == -1:
 
@@ -590,8 +599,14 @@ def learn(question_id):
         # if answer is incorrect
 
         if is_correct == 0:
-            #wrong_ans(nq, int(t2 - t1))
+
+            user_metric, time_metric = wrong_ans(question_id, t, user_metric, time_metric)
             wrong[curr_level] = wrong[curr_level] + 1
+
+        # if answer is correct
+
+        if is_correct == 1:
+            user_metric, time_metric = correct_ans(question_id, t, user_metric, time_metric)
 
         # if attempts > 75% of total questions and accuracy < 50% in level, go up a level
 
@@ -601,7 +616,7 @@ def learn(question_id):
             if (l_checked[curr_level] == 0):
                 l_checked[curr_level] = 1
             else:
-                return -2, weak_concepts_fn()
+                return -2, weak_concepts_fn(), user_metric, time_metric
 
         # if attempts > 75% of total questions and accuracy > 50% in level, go up a level
 
@@ -611,20 +626,20 @@ def learn(question_id):
             if (l_checked[curr_level] == 0):
                 l_checked[curr_level] = 1
             else:
-                return -2, weak_concepts_fn()
+                return -2, weak_concepts_fn(), user_metric, time_metric
 
         # if all levels cleared, show analysis
 
         if (curr_level >= total_levels):
-            return -2, weak_concepts_fn()
+            return -2, weak_concepts_fn(), user_metric, time_metric
 
         # if no level cleared, show analysis
 
         if (curr_level < 0):
-            return -2, weak_concepts_fn()
+            return -2, weak_concepts_fn(), user_metric, time_metric
 
         nq = next_que(curr_level)
 
         result = weak_concepts_fn()
 
-    return nq, result
+    return nq, result, user_metric, time_metric

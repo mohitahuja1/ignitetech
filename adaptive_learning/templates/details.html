@@ -138,7 +138,7 @@
 
         {{this_question.question}}
 
-        <form action="{% url 'check' this_question.id %}" >
+        <form action="{% url 'check' this_question.id%}" >
 
             {% csrf_token %}
             <br>Answer:<br><br>
@@ -150,10 +150,18 @@
 
             {% if is_correct == 1%}
                 <b>Correct Answer!</b>
+                <br> Difficulty level: {{q_level}}
+                <br>{{this_question.pct_users}} percent of {{this_question.total_users}} users got this right
+                <br>Time taken by you: {{t}} seconds
+                <br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
             {%endif%}
 
             {% if is_correct == 0%}
                 <b>Wrong Answer!</b>
+                <br> Difficulty level: {{q_level}}
+                <br>{{this_question.pct_users}} percent of {{this_question.total_users}} users got this right
+                <br>Time taken by you: {{t}} seconds
+                <br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
             {%endif%}
 
             <br><br>
