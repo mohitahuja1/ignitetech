@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #999999;
+    background: #fafafa;
+}
+
+
+/*Remove the navbar's default margin-bottom and rounded borders */
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.navbar-default .navbar-brand {
+    color: #5298E5;
+}
+
+
+/* Set gray background color and 100% height */
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #dadada;
+    margin-bottom: 15px;
+}
+
+.sidebar-section a {
+    padding: 10px 0px;
+    color: #999999;
+}
+
+.username {
+    color: #555;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #999999;
+    border-radius: 0px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    padding: 6px 0px;
+}
+
+.qa-parent {
+    margin: 20px 0px;
+}
+
+.qa-parent .question {
+    color: #555;
+}
+
+.qa-parent .actions {
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 20px;
+}
+
+.qa-parent .actions button {
+    border: none;
+    background: transparent;
+    font-weight: 600;
+}
+
+.qa-parent .actions button:hover {
+    color: #0bd40b;
+}
+
+
+/* Set black background color, white text and some padding */
+
+footer {
+    background-color: #e7e7e7;
+    color: #999999;
+    padding: 15px;
+}
+
+.chat-box {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    width: 80%;
+    height: 488px;
+    bottom: 68px;
+    right: 38px;
+    border-radius: 3px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    z-index: 9999;
+    margin: 0 auto;
+}
+
+.chat-box .head {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    background-color: #FAFAFA;
+    font-size: 12px;
+    -ms-flex: 1 1 5%;
+    flex: 1 1 5%;
+    min-height: 4em;
+    max-height: 4em;
+}
+
+.chat-box .head .mid-head {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.chat-box .head .mid-head a {
+    margin: 0 5px;
+}
+
+.chat-box .head .end-chat-thread {
+    width: 90px;
+    height: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.24);
+    position: absolute;
+    right: 16px;
+    top: 21px;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 4px;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.chat-box .body {
+    list-style: none;
+    padding: 0px;
+}
+
+.chat-box .body li {
+    padding: 12px 0px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #FAFAFA;
+    cursor: pointer;
+}
+
+.chat-box .body li .content-bar p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.chat-box .body li:hover {
+    background: #FAFAFA;
+}
+
+.chat-box .chat-thread {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 85%;
+    flex: 1 1 85%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    overflow: auto;
+}
+
+.chat-box .chat-thread .message-box {
+    width: 100%;
+    margin: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.chat-box .chat-thread .message-box .text {
+    background: #FAFAFA;
+    min-width: 51%;
+    max-width: 62%;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding: 10px;
+    margin: 0;
+    border-radius: 3px;
+}
+
+.chat-box .chat-thread .message-box .timestamp {
+    margin: 0;
+    font-size: 10px;
+}
+
+.chat-box .chat-thread .self {
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+.chat-box .footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 10%;
+    flex: 1 1 10%;
+    min-height: 3em;
+    max-height: 3em;
+    background: #FAFAFA;
+    padding: 0px 11px;
+    border-top: 3px solid #fff;
+}
+
+.chat-box .footer input {
+    background: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}

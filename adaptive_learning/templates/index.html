@@ -1,50 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>IgniteTech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
 
-<h1> Welcome to Ignite Tech </h1>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">IgniteTech</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-You will be able to practice taking tests here.
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <div class="sidebar-section">
+                    <img alt="140x140" data-src="holder.js/140x140" class="img-circle" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ2MDVlNTNkMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDYwNWU1M2QzIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ0LjA1NDY4NzUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4="
+                        data-holder-rendered="true" style="width: 110px; height: 110px;">
+                    <p class="username">Mohit Ahuja</p>
+                </div>
+                <div class="sidebar-section">
+                    <a href="#">HOME</a>
+                    <a href="#">TESTS</a>
+                    <a href="#">QUESTIONS</a>
+                    <a href="#">FORUM</a>
+                </div>
+                <div class="sidebar-section">
+                    <a href="#">My Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+            <div class="col-sm-4 qa-parent text-left">
+                <p class="question">
+                    <br>Welcome to IgniteTech<br><br>
+                    You will be able to practice taking tests here.<br><br>
+                    We cover the subject of probability for the International Baccalaureate (IB) board.<br><br>
+                    As you take the tests, you can ask questions by typing into the chat window provided on the right.<br><br>
+                    Our chat bot will resolve any doubts that you have.<br><br>
+                    In case you are stuck on a question, feel free to ask the bot for "HINTS".<br><br>
+                    At the end of the test, you will be provided with a detailed analysis of your performance.<br><br>
+                    Good luck!<br><br>
+                    <h4><a href ="{% url 'details' first_question_id %}">Take Adaptive Test</a></h4>
+                </p>
 
-<br>
-<br>
+            </div>
+            <div class="col-sm-6 chat-bot">
+                <div class="chat-box">
+                    <div class="head thread-on">
+                        <div class="mid-head">
+                            <span class="text-primary">Your conversations</span>
+                        </div>
+                    </div>
+                    <div class="chat-thread">
+                        <div class="message-box">
+                            <p class="timestamp text-left text-muted">@prof</p>
+                            <p class="text text-muted">Hi I am @prof, your chat bot professor.</p>
+                        </div>
+                        <div class="message-box self">
+                            <p class="timestamp text-muted">@user</p>
+                            <p class="text text-muted">Hey!</p>
+                        </div>
+                        <div class="message-box">
+                            <p class="timestamp text-left text-muted">@prof</p>
+                            <p class="text text-muted">How can I help?</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <input type="text" placeholder="Type something...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-We cover the subject of probability for the International Baccalaureate (IB) board.
-
-<br>
-<br>
-
-As you take the tests, you can ask questions by typing into the chat window provided.
-
-<br>
-<br>
-
-Our chat bot will resolve any doubts that you have.
-
-<br>
-<br>
-
-In case you are stuck, feel free to click on HINTS.
-
-<br>
-<br>
-
-At the end of the test, you will be provided with a detailed analysis of your performance.
-
-<br>
-<br>
-
-Good luck!
-
-<br>
-<br>
-<br>
-
-<b> <a href ="{% url 'details' first_question_id %}">Take Adaptive Test</a> </b>
+    <footer class="container-fluid text-center">
+        <p>Copyright @2017 IgniteTech. All rights reserved.</p>
+    </footer>
 
 </body>
+
 </html>

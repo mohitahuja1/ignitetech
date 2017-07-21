@@ -1,183 +1,124 @@
-<html>
-    <head>
-        <Title>
-            Ignite Tech
-        </Title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <style type="text/css">
-                body{
-				font-family: arial,sans-serif;
-				margin:0;
-				background-color: #f2f2f2;
-			}
+<!DOCTYPE html>
+<html lang="en">
 
-			.left_block{
-				width:50%;
-			}
-			#header{
-				width:100%;
-				height:60px;
-				background-color: #333
-				/*box-shadow:0px 4px 2px #333;*/
-			}
-			#header>h1{
-				width:350px;
-				margin: 0px auto;
-				color: white;
-				padding: 12px;
-			}
-            .right_block{
-            width:50%;
+<head>
+    <title>IgniteTech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 
-            }
-			#container{
-				width:498px;
-				height: 250px;
-				margin: 0px auto;
-				margin-top: 10px;
-				background-color: white;
-				border: 1px solid #333;
-				overflow: scroll;
-			}
+<body>
 
-			#controls{
-				width:500px;
-				margin: 0px auto;
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{%url 'index'%}">IgniteTech</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-			}
-			#controls>textarea{
-				resize: none;
-				width: 250px;
-				height: 24px;
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <div class="sidebar-section">
+                    <img alt="140x140" data-src="holder.js/140x140" class="img-circle" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ2MDVlNTNkMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDYwNWU1M2QzIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ0LjA1NDY4NzUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4="
+                        data-holder-rendered="true" style="width: 110px; height: 110px;">
+                    <p class="username">Mohit Ahuja</p>
+                </div>
+                <div class="sidebar-section">
+                    <a href="{% url 'index'%}">HOME</a>
+                    <a href="#">TESTS</a>
+                    <a href="#">QUESTIONS</a>
+                    <a href="#">FORUM</a>
+                </div>
+                <div class="sidebar-section">
+                    <a href="#">My Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+            <div class="col-sm-4 qa-parent text-left">
+                <h4>Question</h4><br>
+                <h5 class="question">{{this_question.question}}<br><br><br>
+                <form action="{% url 'check' this_question.id%}" >
+                    {% csrf_token %}
+                    <input type="text" name = "Answer" class="form-control" placeholder="Type your answer here">
+                    <div class="actions">
+                        <button class="btn btn-default">DONE</button>
+                    </div>
+                    <br>
+                    <h5>
 
-			}
-			#controls>button{
-				font-size: 15px;
-				position: absolute;
-			}
-			.username{
-				color: red;
-				font-weight: bold;
-			}
-			.bot{
-				color: blue;
-				font-weight: bold;
-			}
-		 </style>
-    </head>
-    <body>
-    <script type="text/javascript">
-    			var username = "";
-    			var path = ""+window.location.pathname;
-    			var question_id = path.slice(6, 7);
-    			<!--var question_id = almost_questionid.slice(1,2)-->
-			function send_message(message){
+                    {% if is_correct == 1%}
+                        <font color="green"><b>Wrong Answer!</b></font>
+                        <br><br> Difficulty level: {{q_level}}
+                        <br><br>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right
+                        <br><br>Time taken by you: {{t}} seconds
+                        <br><br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
+                    {%endif%}
 
-				var prevState = $("#container").html();
-				if (prevState.length > 4){
-					prevState = prevState + "<br>"
-				}
-				$("#container").html(prevState+ "<span class='bot'>Bot :</span>" + message);
+                    {% if is_correct == 0%}
+                        <font color="red"><b>Wrong Answer!</b></font>
+                        <br><br> Difficulty level: {{q_level}}
+                        <br><br>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right
+                        <br><br>Time taken by you: {{t}} seconds
+                        <br><br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
+                    {%endif%}
 
-			}
+                    <br><br>
+                    {%if  next_id is not None %}
+                    <a href="{% url 'details' next_id %}" class="next">Next &raquo;</a>
+                    {%endif%}
 
-			$(function(){
-
-				$("#textbox").keypress(function(event){
-					if (event.which == 13){
-						if ($("#check").prop("checked")){
-							$("#send").click();
-							event.preventDefault();
-
-						}
-					}
-				});
-
-				$("#send").click(function(){
-
-					var userName = "<span class='username'>You: </span>";
-					var newMessage = ""+$("#textbox").val();
-					$("#textbox").val("");
-					var prevState = $("#container").html();
-					if (prevState.length > 4){
-					 	prevState = prevState + "<br>"
-					}
-					$("#container").html(prevState+ userName + newMessage);
-					$("#container").scrollTop($("#container").prop("scrollHeight"));
-                    ajaxCall(newMessage,question_id);
-				});
-
-			});
-
-			function ajaxCall(user_question,question_id) {
-                $.ajax({
-                        type: "GET",
-                        url: "http://127.0.0.1:8000/chat/response/",
-                        data: {"question": user_question, "question_id": question_id},
-                        success: callbackFunc
-                });
-}
-
-            function callbackFunc(response) {
-                send_message(response);
-                console.log(response);
-            }
-
-    </script>
-
-    <br>
-    <br>
-
-    <div id="qnaform" class ="left_block">
-
-        <form action="{% url 'index'%}">
-        <input type="submit" value="Home page" />
-        </form>
-
-        <h2>Please attempt the question below:</h2>
-
-        {{this_question.question}}
-
-        <form action="{% url 'check' this_question.id%}" >
-
-            {% csrf_token %}
-            <br>Answer:<br><br>
-            <input type="text" name="Answer" placeholder="Enter your answer here">
-            <br><br>
-
-            <input type="submit" value="Submit">
-            <br><br>
-
-            {% if is_correct == 1%}
-                <b>Correct Answer!</b>
-                <br> Difficulty level: {{q_level}}
-                <br>{{this_question.pct_users}} percent of {{this_question.total_users}} users got this right
-                <br>Time taken by you: {{t}} seconds
-                <br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
-            {%endif%}
-
-            {% if is_correct == 0%}
-                <b>Wrong Answer!</b>
-                <br> Difficulty level: {{q_level}}
-                <br>{{this_question.pct_users}} percent of {{this_question.total_users}} users got this right
-                <br>Time taken by you: {{t}} seconds
-                <br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
-            {%endif%}
-
-            <br><br>
-            {%if  next_id is not None %}
-            <a href="{% url 'details' next_id %}" class="next">Next &raquo;</a>
-            {%endif%}
-
-        </form>
-
+                    </h5>
+                </form>
+                <hr>
+            </div>
+            <div class="col-sm-6 chat-bot">
+                <div class="chat-box">
+                    <div class="head thread-on">
+                        <div class="mid-head">
+                            <span class="text-primary">Your conversations.</span>
+                        </div>
+                    </div>
+                    <div class="chat-thread">
+                        <div class="message-box">
+                            <p class="timestamp text-left text-muted">@prof</p>
+                            <p class="text text-muted">Hi I am @prof, your chat bot professor.</p>
+                        </div>
+                        <div class="message-box self">
+                            <p class="timestamp text-muted">@user</p>
+                            <p class="text text-muted">Hey!</p>
+                        </div>
+                        <div class="message-box">
+                            <p class="timestamp text-left text-muted">@prof</p>
+                            <p class="text text-muted">How can I help?</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <input type="text" placeholder="Type something...">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="container" class="right_block"></div>
-        <div id="controls">
-        <textarea id="textbox" placeholder="Enter your question here"></textarea><button id="send">Send</button>
-		<br>
-        <input checked type="checkbox" id="check"/>
-        <label>Send on enter</label>
-    </div>
-    </body>
+
+    <footer class="container-fluid text-center">
+        <p>Copyright @2017 IgniteTech. All rights reserved.</p>
+    </footer>
+
+</body>
+
 </html>

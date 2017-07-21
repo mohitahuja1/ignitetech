@@ -84,9 +84,9 @@ def check(request, questionid):
     this_question.correct_time = time_metric[1]
     this_question.correct_users = time_metric[1]
 
-    print type(result)
-
     this_question.save()
+
+    print "debug", next_id
 
     q_level = util.q_level[this_question.id]
 

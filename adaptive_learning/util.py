@@ -527,7 +527,7 @@ def weak_concepts_fn():
 
     df2['weak_concept'] = out2
 
-    return df2
+    return df2.to_html()
 
 
 mval = -1
