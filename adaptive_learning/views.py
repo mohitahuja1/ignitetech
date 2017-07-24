@@ -42,6 +42,14 @@ import random
 
 def index(request):
 
+    #import sys
+    #print len(sys.modules)
+    #del sys.modules["../util.pyc"]
+
+    #from . import util
+
+    #print util.attempted
+
     first_question_id,_,_,_ = util.learn(-1,0,[],[],0)
 
     return render(request ,'index.html',{'first_question_id':first_question_id})
@@ -86,12 +94,13 @@ def check(request, questionid):
 
     this_question.save()
 
-    print "debug", next_id
+    print util.attempted
 
     q_level = util.q_level[this_question.id]
 
     if next_id == -2:
         return render(request, "analysis.html", {'result': result})
+
     else:
         return render(request, "details.html", {'this_question':this_question, 'is_correct':is_correct, 'next_id':next_id,'t':t, 'q_level': q_level})
 
