@@ -32,7 +32,7 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import question_bank
 
-from . import util
+from .al import learning
 
 import time
 
@@ -42,35 +42,49 @@ import random
 
 def index(request):
 
-    #import sys
-    #print len(sys.modules)
-    #del sys.modules["../util.pyc"]
+    global learning1
 
-    #from . import util
+    learning1 = learning(levels = 4)
 
-    #print util.attempted
+    questionid,_,_,_ = learning1.learn(-1,0,[],[],0)
 
-    first_question_id,_,_,_ = util.learn(-1,0,[],[],0)
-
-    return render(request ,'index.html',{'first_question_id':first_question_id})
+    return render(request ,'index.html',{'questionid':questionid})
 
 def details(request , questionid):
 
+    global learning1
+
+    questionid = int(questionid)
+    questionid += 1
+    questionid = str(questionid)
+
     this_question = get_object_or_404(question_bank, pk=questionid)
+
+    questionid = int(questionid)
+    questionid -= 1
 
     is_correct = 2
 
     next_id = None
 
-    util.tm[this_question.id][0] = time.time()
+    learning1.tm[questionid][0] = time.time()
 
-    return render(request, "details.html", {'this_question':this_question, 'is_correct':is_correct, 'next_id':next_id})
+    return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id})
 
 def check(request, questionid):
 
+    global learning1
+
+    questionid = int(questionid)
+    questionid += 1
+    questionid = str(questionid)
+
     this_question = get_object_or_404(question_bank, pk=questionid)
 
-    util.tm[this_question.id][1] = time.time()
+    questionid = int(questionid)
+    questionid -= 1
+
+    learning1.tm[questionid][1] = time.time()
 
     users_answer = str(request.GET['Answer'])
 
@@ -82,10 +96,10 @@ def check(request, questionid):
     else:
         is_correct = 0
 
-    t = util.tm[this_question.id][1] - util.tm[this_question.id][0]
+    t = learning1.tm[questionid][1] - learning1.tm[questionid][0]
     t = round(t,2)
 
-    next_id, result, user_metric, time_metric = util.learn(this_question.id, t, user_metric, time_metric, is_correct)
+    next_id, result, user_metric, time_metric = learning1.learn(questionid, t, user_metric, time_metric, is_correct)
 
     this_question.pct_users = user_metric[0]
     this_question.total_users = user_metric[1]
@@ -94,13 +108,14 @@ def check(request, questionid):
 
     this_question.save()
 
-    print util.attempted
+    print next_id
+    print learning1.curr_level
 
-    q_level = util.q_level[this_question.id]
+    q_level = learning1.q_level[questionid]
 
     if next_id == -2:
         return render(request, "analysis.html", {'result': result})
 
     else:
-        return render(request, "details.html", {'this_question':this_question, 'is_correct':is_correct, 'next_id':next_id,'t':t, 'q_level': q_level})
+        return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id,'t':t, 'q_level': q_level})
 

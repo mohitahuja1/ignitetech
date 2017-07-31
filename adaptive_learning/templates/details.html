@@ -52,7 +52,7 @@
             <div class="col-sm-4 qa-parent text-left">
                 <h4>Question</h4><br>
                 <h5 class="question">{{this_question.question}}<br><br><br>
-                <form action="{% url 'check' this_question.id%}" >
+                <form action="{% url 'check' questionid%}" >
                     {% csrf_token %}
                     <input type="text" name = "Answer" class="form-control" placeholder="Type your answer here">
                     <div class="actions">
