@@ -7,9 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
+
+<script type="text/javascript">
+    var path = ""+window.location.pathname;
+    var question_id = path.slice(6, 7);
+
+    function send_message(message){
+
+        var prevState = $("#container").html();
+        $("#container").html(prevState + '<div class="message-box">' +
+        '<p class="timestamp text-left text-muted">@prof</p>' +
+        '<p class="text text-muted">' + message + '</p>' + '</div>');
+    }
+
+    $(function(){
+
+        $("#textbox").keypress(function(event){
+            if (event.which == 13){
+                var newMessage = $("#textbox").val();
+                $("#textbox").val("");
+                var prevState = $("#container").html();
+                $("#container").html(prevState + '<div class="message-box self">' +
+                '<p class="timestamp text-muted">@user</p>' +
+                '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+                $("#container").scrollTop($("#container").prop("scrollHeight"));
+                ajaxCall(newMessage,question_id);
+            }
+
+        });
+
+    });
+
+    function ajaxCall(user_question,question_id) {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/chat/response/",
+            data: {"question": user_question, "question_id": question_id},
+            success: callbackFunc
+        });
+    }
+
+    function callbackFunc(response) {
+        send_message(response);
+        console.log(response);
+    }
+
+</script>
+
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -90,25 +138,21 @@
                 <div class="chat-box">
                     <div class="head thread-on">
                         <div class="mid-head">
-                            <span class="text-primary">Your conversations.</span>
+                            <span class="text-primary">Chat with @prof - your chat bot professor!</span>
                         </div>
                     </div>
-                    <div class="chat-thread">
+                    <div id = "container" class="chat-thread">
                         <div class="message-box">
                             <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-muted">Hi I am @prof, your chat bot professor.</p>
+                            <p class="text text-left text-muted">Hey! How can I help?</b></p>
                         </div>
                         <div class="message-box self">
                             <p class="timestamp text-muted">@user</p>
                             <p class="text text-muted">Hey!</p>
                         </div>
-                        <div class="message-box">
-                            <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-muted">How can I help?</p>
-                        </div>
                     </div>
                     <div class="footer">
-                        <input type="text" placeholder="Type something...">
+                        <input type="text" id = "textbox" placeholder="Type something...">
                     </div>
                 </div>
             </div>
