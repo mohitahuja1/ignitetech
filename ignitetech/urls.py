@@ -20,7 +20,9 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/', include('adaptive_learning.urls'))
+    url(r'^test/', include('adaptive_learning.urls')),
+    url(r'^chat/', include('chatbot.urls'))
+
 ]
 
 if settings.DEBUG:

@@ -21,7 +21,7 @@
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="message-box">' +
         '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-muted">' + message + '</p>' + '</div>');
+        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
     }
 
     $(function(){
@@ -33,7 +33,7 @@
                 var prevState = $("#container").html();
                 $("#container").html(prevState + '<div class="message-box self">' +
                 '<p class="timestamp text-muted">@user</p>' +
-                '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+                '<p class="text text-muted">' + newMessage + '</p>' + '</div>');
                 $("#container").scrollTop($("#container").prop("scrollHeight"));
                 ajaxCall(newMessage,question_id);
             }
@@ -53,7 +53,7 @@
 
     function callbackFunc(response) {
         send_message(response);
-        console.log(response);
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
     }
 
 </script>
@@ -144,11 +144,15 @@
                     <div id = "container" class="chat-thread">
                         <div class="message-box">
                             <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-left text-muted">Hey! How can I help?</b></p>
-                        </div>
-                        <div class="message-box self">
-                            <p class="timestamp text-muted">@user</p>
-                            <p class="text text-muted">Hey!</p>
+                            <p class="text text-left text-muted">Hi, my name is @prof. Ask me anything. Here are a few options:</b></p>
+                            <br>
+                            <p class="text text-left text-muted">How should I start a test?</b></p>
+                            <br>
+                            <p class="text text-left text-muted">I am confused with a test question.</b></p>
+                            <br>
+                            <p class="text text-left text-muted">My test analysis is not clear.</b></p>
+                            <br>
+                            <p class="text text-left text-muted">I'm struggling with a concept.</b></p>
                         </div>
                     </div>
                     <div class="footer">
