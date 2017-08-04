@@ -16,7 +16,7 @@
     var path = ""+window.location.pathname;
     var question_id = path.slice(6, 7);
 
-    function send_message(message){
+    function write_bot_msg(message){
 
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="message-box">' +
@@ -24,18 +24,29 @@
         '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
     }
 
+    function write_user_msg(newMessage){
+
+        var prevState = $("#container").html();
+        $("#container").html(prevState + '<div class="message-box self">' +
+        '<p class="timestamp text-muted">@user</p>' +
+        '<p class="text text-muted">' + newMessage + '</p>' + '</div>');
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
+        ajaxCall(newMessage,question_id);
+    }
+
+    function clickfunc(obj) {
+
+        var t = $(obj).text();
+        write_user_msg(t);
+
+    }
+
     $(function(){
 
         $("#textbox").keypress(function(event){
             if (event.which == 13){
-                var newMessage = $("#textbox").val();
+                write_user_msg($("#textbox").val())
                 $("#textbox").val("");
-                var prevState = $("#container").html();
-                $("#container").html(prevState + '<div class="message-box self">' +
-                '<p class="timestamp text-muted">@user</p>' +
-                '<p class="text text-muted">' + newMessage + '</p>' + '</div>');
-                $("#container").scrollTop($("#container").prop("scrollHeight"));
-                ajaxCall(newMessage,question_id);
             }
 
         });
@@ -52,7 +63,7 @@
     }
 
     function callbackFunc(response) {
-        send_message(response);
+        write_bot_msg(response);
         $("#container").scrollTop($("#container").prop("scrollHeight"));
     }
 
@@ -144,15 +155,15 @@
                     <div id = "container" class="chat-thread">
                         <div class="message-box">
                             <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-left text-muted">Hi, my name is @prof. Ask me anything. Here are a few options:</b></p>
+                            <p class="text text-left text-muted">Hi, my name is @prof. Ask me anything. Here are a few options:</p>
                             <br>
-                            <p class="text text-left text-muted">How should I start a test?</b></p>
+                            <p class="text text-left text-muted"><a href='#' onclick='clickfunc(this)'>How should I start a test?</a></p>
                             <br>
-                            <p class="text text-left text-muted">I am confused with a test question.</b></p>
+                            <p class="text text-left text-muted">I am confused with a test question.</p>
                             <br>
-                            <p class="text text-left text-muted">My test analysis is not clear.</b></p>
+                            <p class="text text-left text-muted">My test analysis is not clear.</p>
                             <br>
-                            <p class="text text-left text-muted">I'm struggling with a concept.</b></p>
+                            <p class="text text-left text-muted">I'm struggling with a concept.</p>
                         </div>
                     </div>
                     <div class="footer">

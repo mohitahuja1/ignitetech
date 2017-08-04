@@ -20,5 +20,5 @@ def chat_index(request):
     chat_log.text_sent = users_question
     chat_log.text_recieved = bot_response
     chat_log.time_stamp = datetime.now()
-    #chat_log.save()
+    chat_log.save()
     return HttpResponse(bot_response)
