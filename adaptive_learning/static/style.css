@@ -205,10 +205,10 @@ footer {
 
 .chat-box .chat-thread .message-box .text {
     background: #FAFAFA;
-    min-width: 51%;
-    max-width: 62%;
+    min-width: 30%;
+    max-width: 80%;
     display: -ms-inline-flexbox;
-    display: inline-flex;
+    display: inline;
     padding: 10px;
     margin: 0;
     border-radius: 3px;

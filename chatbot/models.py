@@ -13,3 +13,13 @@ class user_chat_log(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+class qna_repository(models.Model):
+    question_id=models.IntegerField()
+    q = models.CharField(max_length=2000)
+    a = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return str(self.q)
+
