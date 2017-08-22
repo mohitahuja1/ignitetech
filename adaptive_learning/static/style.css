@@ -243,6 +243,15 @@ footer {
     outline: none;
 }
 
+/* scroll results */
+.ui-autocomplete {
+    max-height: 80px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding for vertical scrollbar */
+    padding-right: 5px;
+}
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 

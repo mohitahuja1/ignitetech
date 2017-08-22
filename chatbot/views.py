@@ -1,8 +1,6 @@
 from datetime import datetime
-from django.shortcuts import render
-from . import chat_bot
+from .chat_bot import ChatBot
 import logging
-from django.views import generic
 from django.http import HttpResponse
 from .models import user_chat_log
 logger = logging.basicConfig(level=logging.DEBUG,
@@ -14,7 +12,8 @@ def chat_index(request):
     user_id = 1
     users_question = request.GET.get("question", None)
     questionid = request.GET.get('question_id', None)
-    bot_response = chat_bot.main_bot(questionid, users_question)
+    chatbot1 = ChatBot()
+    bot_response = chatbot1.main_bot(questionid, users_question)
     chat_log = user_chat_log()
     chat_log.user_id = user_id
     chat_log.text_sent = users_question

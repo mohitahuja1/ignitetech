@@ -304,7 +304,7 @@ class learning:
 
         self.con_diff = [0] * len(self.concepts_graph)
 
-        # Add number of pre requisites for each concept, which is the dificulty score
+        # Add number of pre requisites for each concept, which is the difficulty score
 
         c = 0
         for e in temp:

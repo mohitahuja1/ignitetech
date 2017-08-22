@@ -34,11 +34,10 @@ from .models import question_bank
 
 from .al import learning
 
+from chatbot import chat_bot
+
 import time
 
-from django.http import HttpResponse
-
-import random
 
 def index(request):
 
@@ -48,7 +47,16 @@ def index(request):
 
     questionid,_,_,_ = learning1.learn(-1,0,[],[],0)
 
-    return render(request ,'index.html',{'questionid':questionid})
+    chatbot1 = chat_bot.ChatBot()
+
+    qlist = chatbot1.get_dic(-1).keys()
+
+    qlist9 = [str(i) for i in qlist]
+
+    qlist9.sort()
+
+    return render(request, 'index.html', {'questionid': questionid, 'qlist': qlist9})
+
 
 def details(request , questionid):
 
@@ -69,7 +77,16 @@ def details(request , questionid):
 
     learning1.tm[questionid][0] = time.time()
 
-    return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id})
+    chatbot1 = chat_bot.ChatBot()
+
+    qlist = chatbot1.get_dic(questionid).keys()
+
+    qlist9 = [str(i) for i in qlist]
+
+    qlist9.sort()
+
+    return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id, 'qlist':qlist9})
+
 
 def check(request, questionid):
 
@@ -108,14 +125,19 @@ def check(request, questionid):
 
     this_question.save()
 
-    print next_id
-    print learning1.curr_level
-
     q_level = learning1.q_level[questionid]
+
+    chatbot1 = chat_bot.ChatBot()
+
+    qlist = chatbot1.get_dic(questionid).keys()
+
+    qlist9 = [str(i) for i in qlist]
+
+    qlist9.sort()
 
     if next_id == -2:
         return render(request, "analysis.html", {'result': result})
 
     else:
-        return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id,'t':t, 'q_level': q_level})
+        return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id,'t':t, 'q_level': q_level, 'qlist':qlist})
 

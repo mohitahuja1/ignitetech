@@ -5,9 +5,12 @@
     <title>IgniteTech</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/style.css">
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
 
 <body>
 
@@ -19,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">IgniteTech</a>
+                <a class="navbar-brand" href="{%url 'index'%}">IgniteTech</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -38,7 +41,7 @@
                     <p class="username">Mohit Ahuja</p>
                 </div>
                 <div class="sidebar-section">
-                    <a href="#">HOME</a>
+                    <a href="{% url 'index'%}">HOME</a>
                     <a href="#">TESTS</a>
                     <a href="#">QUESTIONS</a>
                     <a href="#">FORUM</a>
@@ -50,42 +53,40 @@
                 </div>
             </div>
             <div class="col-sm-4 qa-parent text-left">
-                <p class="question">
-                    <br>Welcome to IgniteTech<br><br>
+                    <br><h4>Welcome to IgniteTech!</h4><br>
                     You will be able to practice taking tests here.<br><br>
                     We cover the subject of probability for the International Baccalaureate (IB) board.<br><br>
-                    As you take the tests, you can ask questions by typing into the chat window provided on the right.<br><br>
-                    Our chat bot will resolve any doubts that you have.<br><br>
+                    As you take the tests, our chat bot on the right will resolve any doubts that you have.<br><br>
                     In case you are stuck on a question, feel free to ask the bot for "HINTS".<br><br>
                     At the end of the test, you will be provided with a detailed analysis of your performance.<br><br>
                     Good luck!<br><br>
                     <h4><a href ="{% url 'details' questionid %}">Take Adaptive Test</a></h4>
-                </p>
 
             </div>
             <div class="col-sm-6 chat-bot">
                 <div class="chat-box">
                     <div class="head thread-on">
                         <div class="mid-head">
-                            <span class="text-primary">Your conversations</span>
+                            <span class="text-primary">Chat with @prof - your chat bot professor!</span>
                         </div>
                     </div>
-                    <div class="chat-thread">
+                    <div id = "container" class="chat-thread">
                         <div class="message-box">
                             <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-muted">Hi I am @prof, your chat bot professor.</p>
-                        </div>
-                        <div class="message-box self">
-                            <p class="timestamp text-muted">@user</p>
-                            <p class="text text-muted">Hey!</p>
-                        </div>
-                        <div class="message-box">
-                            <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-muted">How can I help?</p>
+                            <p class="text text-left text-muted">Hey, how can I help:
+                            <br><br>
+                            <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
+                            <br><br>
+                            <a href='#' onclick='clickfunc(this)'>How long is the test?</a>
+                            <br><br>
+                            <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
+                            <br><br>
+                            <a href='#' onclick='clickfunc(this)'>Can I take this test while in class 11?</a>
+                            </p>
                         </div>
                     </div>
                     <div class="footer">
-                        <input type="text" placeholder="Type something...">
+                        <input type="text" id = "textbox" placeholder="Type something...">
                     </div>
                 </div>
             </div>
@@ -95,6 +96,77 @@
     <footer class="container-fluid text-center">
         <p>Copyright @2017 IgniteTech. All rights reserved.</p>
     </footer>
+
+<script type="text/javascript">
+    var path = ""+window.location.pathname;
+    var question_id = path.slice(6, 7);
+
+    function write_bot_msg(message){
+
+        var prevState = $("#container").html();
+        $("#container").html(prevState + '<div class="message-box">' +
+        '<p class="timestamp text-left text-muted">@prof</p>' +
+        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+    }
+
+    function write_user_msg(newMessage){
+
+        var prevState = $("#container").html();
+        $("#container").html(prevState + '<div class="message-box self">' +
+        '<p class="timestamp text-muted">@user</p>' +
+        '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
+        if (question_id == "") {
+            question_id = -1;
+        }
+        ajaxCall(newMessage,question_id);
+    }
+
+    function clickfunc(obj) {
+
+        var t = $(obj).text();
+        write_user_msg(t);
+
+    }
+
+    $(function(){
+
+        $("#textbox").keypress(function(event){
+            if (event.which == 13){
+                write_user_msg($("#textbox").val())
+                $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
+            }
+
+        });
+
+    });
+
+    $( function() {
+        var localList = {{ qlist|safe }};
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
+    });
+
+    function ajaxCall(user_question,question_id) {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/chat/response/",
+            data: {"question": user_question, "question_id": question_id},
+            success: callbackFunc
+        });
+    }
+
+    function callbackFunc(response) {
+        write_bot_msg(response);
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
+    }
+
+</script>
 
 </body>
 
