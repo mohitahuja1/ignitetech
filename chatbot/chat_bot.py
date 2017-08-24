@@ -5,18 +5,18 @@ from sklearn.feature_extraction.text import CountVectorizer # countvectoriser cr
 
 import numpy.linalg as LA #importing the linear algebra module
 
-from .models import qna_repository
+from .models import QnaRepository
 
 
 class ChatBot:
 
     def __init__(self):
 
-        self.qid_list = qna_repository.objects.values_list('question_id', flat=True)
+        self.qid_list = QnaRepository.objects.values_list('question_id', flat=True)
 
-        self.q_list = qna_repository.objects.values_list('q', flat=True)
+        self.q_list = QnaRepository.objects.values_list('q', flat=True)
 
-        self.a_list = qna_repository.objects.values_list('a', flat=True)
+        self.a_list = QnaRepository.objects.values_list('a', flat=True)
 
     def get_dic(self, q_id):
 

@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 
-class user_chat_log(models.Model):
+class UserChatLog(models.Model):
     user_id=models.IntegerField()
     text_sent = models.CharField(max_length=2000)
     text_recieved = models.CharField(max_length=2000)
@@ -15,7 +15,7 @@ class user_chat_log(models.Model):
         return str(self.id)
 
 
-class qna_repository(models.Model):
+class QnaRepository(models.Model):
     question_id=models.IntegerField()
     q = models.CharField(max_length=2000)
     a = models.CharField(max_length=2000)
