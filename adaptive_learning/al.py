@@ -29,7 +29,431 @@ import pandas as pd
 
 # Create class learn
 
-class learning:
+
+class LearningNew:
+
+    # Initialize functions and variables
+
+    def __init__(self):
+
+        # Create list of concepts
+
+        self.concepts = [
+            'Probability - Flip a coin',
+            'Probability - Roll a dice',
+            'Probability - Sample space',
+            'Probability - Outcomes',
+            'Probability - Table of outcomes',
+            'Probability - Grids',
+            'Probability - Tree diagrams',
+            'Probability - Sets',
+            'Probability - Venn diagrams',
+            'Probability - Simple events',
+            'Probability - Compound events',
+            'Probability - Permutation and combination',
+            'Probability - Theoretical probability',
+            'Probability - Complementary events',
+            'Probability - Sampling with replacement',
+            'Probability - Sampling without replacement',
+            'Probability - Laws of probability',
+            'Probability - Mutually exclusive events',
+            'Probability - Conditional probability',
+            'Probability - Independent events',
+            'Probability - Dependent events',
+            'None'
+        ]
+
+        # Create graph that tells us the prerequisite concepts for each concept
+
+        self.concepts_graph = {
+            0: [],
+            1: [0],
+            2: [1],
+            3: [0],
+            4: [1, 3],
+            5: [0],
+            6: [0],
+            7: [],
+            8: [0],
+            9: [8],
+            10: [0],
+            11: [0],
+            12: [1, 3],
+            13: [0],
+            14: [0],
+            15: [0],
+            16: [5, 31],
+            17: [13, 15, 16],
+            18: [5],
+            19: [15],
+            20: [15, 18],
+            21: [13, 15],
+            22: [14],
+            23: [13, 15],
+            24: [13, 15],
+            25: [5],
+            26: [0],
+            27: [1, 3],
+            28: [0, 1, 2, 3, 4],
+            29: [0, 1, 2, 3, 4],
+            30: [13, 14, 15, 16, 17],
+            31: [13, 14, 15],
+            32: [2, 15, 19],
+            33: [5, 15, 14, 13],
+            34: [1, 2, 13, 22, 23],
+            35: [1, 2, 13, 22, 23, 24],
+            36: [1, 2, 13, 22, 23, 24],
+            37: [17],
+            38: [0, 13, 14, 15, 18, 19, 20],
+            39: [4, 18, 19],
+            40: [4, 15, 18],
+            41: [4, 15, 18],
+            42: [13, 15, 16],
+            43: [0, 1, 2, 3, 4, 5],
+            44: [0, 1, 2, 3, 4, 5],
+            45: [0, 1, 2, 3, 4, 5],
+            46: [0, 1, 2, 3, 4, 5],
+            47: [1, 2],
+            48: [0, 1, 2, 3, 4, 5],
+            49: [0, 5],
+            50: [0, 5],
+            51: [0, 2, 3, 5],
+            52: [49, 50, 51],
+            53: [0, 2, 4, 5, 51, 49],
+            54: [0, 2, 4, 5, 51, 49],
+            55: [0, 49, 50, 54],
+            56: [0, 1, 49, 50],
+            57: [4],
+            58: [0, 1],
+            59: [0, 1, 2, 3, 4, 5],
+            60: [0, 1, 4],
+            61: [0, 1, 4, 58],
+            62: [0, 1, 4, 58],
+            63: [0, 1, 4, 58, 60],
+            64: [0, 1, 4, 58, 20],
+            65: [0, 1, 4, 58],
+            66: [0, 1, 2, 3, 4],
+            67: [0, 1, 2, 3, 4, 66],
+            68: [0, 1, 2, 3, 4, 67],
+            69: [0, 1, 2, 3, 4, 67, 68],
+            70: [0, 1, 2, 3, 4, 67],
+            71: [0, 1, 2, 3, 4, 70],
+            72: [32, 33],
+            73: [15, 72],
+            74: [1, 2, 3, 4, 5],
+            75: [74],
+            76: [0, 1, 58],
+            77: [74],
+            78: [1, 2, 3, 4],
+            79: [1, 2, 3, 4, 78],
+            80: [79],
+            81: [80],
+            82: [80],
+            83: [1, 2, 3, 4, 25, 84],
+            84: [1, 2, 3, 4],
+            85: [1, 2, 3, 4],
+            86: [1, 2, 3, 4],
+            87: [1, 2, 3, 4],
+            88: [1, 2, 3, 4, 85],
+            89: [1, 15],
+            90: [1, 15],
+            91: [13, 15, 16],
+            92: [13, 15, 16],
+            93: [1, 15],
+            94: [91, 84],
+            95: [67],
+            96: [1, 2],
+            97: [1, 2, 5],
+            98: [5],
+            99: [1, 3],
+            100: [76],
+            101: [0, 1],
+            102: [0, 1],
+            103: [0, 1, 2],
+            104: [0, 1],
+            105: [0, 3, 54],
+            106: [0, 101, 102],
+            107: [0, 101, 102],
+            108: [0, 5],
+            109: [54, 0, 51, 53],
+            110: [0, 51, 54, 53],
+            111: [54, 0],
+            112: [64, 1, 3, 101, 102, 103],
+            113: [112, 64, 4],
+            114: [0, 5, 54],
+            115: [0, 5, 54],
+            116: []
+        }
+
+        # Concepts related to each question
+
+        self.q_graph = {
+            0: [54],
+            1: [54],
+            2: [54, 69, 109, 111]
+        }
+
+        # Define three levels of questions
+
+        self.q_level = [1, 2, 3]
+
+        # keep track of the questions displayed/answered
+
+        self.answered_q = [0] * len(self.q_level)
+
+        # levels checked
+
+        self.l_checked = [0] * (self.total_levels + 1)
+
+        # total questions corresponding to each level
+
+        self.total_questions = [self.q_level.count(i) for i in range(self.total_levels)]
+
+        # attempted questions corresponding to each level
+
+        self.attempted = [0] * (self.total_levels)
+
+        # total incorrect questions answered corresponding to each level
+
+        self.wrong = [0] * (self.total_levels)
+
+        # create score for each concept based on accuracy within each level
+
+        self.con_score = defaultdict(dict)
+
+        # time taken per question
+
+        self.que_time = [0] * len(self.q_level)
+
+        self.que_other_time = [0] * len(self.q_level)
+
+        self.tm = [[0,0] for _ in xrange(len(self.q_level))]
+
+        # Each row in the matrix corresponds to a concept.
+        # The function below will change those columns to 1 that correspond to a
+        # prerequisite concept. It will recursively do this for all pre requisites.
+
+
+    # Return random question based on specified difficulty level
+    # Current level is input and takes integer values
+
+    def random_q(self):
+        indices = [i for i, j in enumerate(self.q_level) if j == self.curr_level]
+        r = random.randint(0, len(indices) - 1)
+        return indices[r]
+
+    # Return total number of questions corresponding to a level
+
+    def total_q(self):
+        return sum([1 for x in self.q_level if x == self.curr_level])
+
+    # Only decimal (not fractional) submissions will be allowed
+    # Create function to round off to two decimal places
+
+    def is_correct(self, x, y):
+        return int(abs(float(x) - float(y)) <= 0.01)
+
+    # Create function that performs below operation on an (average, n) pair
+
+    def c_average(self, ele, n):
+        ele[0] = float(float(float(ele[0] * ele[1]) + n) / float(ele[1] + 1))
+        ele[1] = ele[1] + 1
+
+    # if the answer is correct, increase the score of the prerequisite concepts by 1
+
+    def correct_ans(self, que, t, user_metric, time_metric):
+
+        for x in self.q_graph[que]:
+            # 100 is just an initial value to test whether the student has answered any
+            # question which has this pre-requisite concept
+            if (self.l[x] == 100):
+                self.l[x] = 1
+            else:
+                self.l[x] = self.l[x] + 1
+                # update concept score
+            if x in self.con_score[self.q_level[que]]:
+                self.con_score[self.q_level[que]][x] += self.con_diff[x]
+            else:
+                self.con_score[self.q_level[que]][x] = self.con_diff[x]
+        self.que_time[que] = t
+        self.c_average(time_metric, t)
+        self.c_average(user_metric, 1)
+        self.que_other_time[que] = time_metric[0]
+
+        return user_metric, time_metric
+
+    # if the answer is wrong, decrease the score of the prerequisite concepts by 1
+
+    def wrong_ans(self, que, t, user_metric, time_metric):
+
+        for x in self.q_graph[que]:
+            if (self.l[x] == 100):
+                self.l[x] = -1
+            else:
+                self.l[x] = self.l[x] - 1
+                # update concept_score
+            if x in self.con_score[self.q_level[que]]:
+                self.con_score[self.q_level[que]][x] -= self.con_diff[x]
+            else:
+                self.con_score[self.q_level[que]][x] = self.con_diff[x]
+        self.que_time[que] = t
+        self.c_average(user_metric, 0)
+        self.que_other_time[que] = time_metric[0]
+
+        return user_metric, time_metric
+
+
+    def weak_concepts_fn(self):
+
+
+        d1 = {'level': self.q_level, 'total_time': self.que_time, 'other_time': self.que_other_time}
+        index = [i for i in range(len(self.q_level))]
+        df1 = pd.DataFrame(data=d1, index=index)
+
+        d2 = df1.groupby('level').sum()
+
+        index2 = [i for i in range(len(d2))]
+
+        df2 = pd.DataFrame(data=d2, index=index2)
+
+        df2['attempted'] = self.attempted
+
+        df2['wrong'] = self.wrong
+
+        df2['time_per_attempt'] = 0
+
+        df2['other_time_per_attempt'] = 0
+
+        df2['accuracy'] = 0
+
+        df2['time_per_attempt'][df2['attempted'] != 0] = df2['total_time'] / df2['attempted']
+
+        df2['other_time_per_attempt'][df2['attempted'] != 0] = df2['other_time'] / df2['attempted']
+
+        df2['accuracy'][df2['attempted'] != 0] = (df2['attempted'] - df2['wrong']) / df2['attempted']
+
+        del df2['wrong']
+        del df2['total_time']
+        del df2['other_time']
+
+        out1 = []
+        for e in index2:
+            if self.con_score[e]:
+                out1.append(min(self.con_score[e], key=self.con_score[e].get))
+            else:
+                out1.append(-1)
+
+        out2 = []
+        for e in out1:
+            out2.append(self.concepts[e])
+
+        df2['weak_concept'] = out2
+
+        return df2.to_html()
+
+    # function to get the next question
+
+    def next_que(self, level):
+        mval = -1
+        nq = -1
+        n = [-1] * len(self.q_graph.keys())
+        v = [0] * len(self.q_graph.keys())
+
+        # graph.keys() = question numbers
+        for x in xrange(len(self.q_graph.keys())):
+            n[x] = self.q_graph.keys()[x]
+
+            # Check if the question is of required level
+            if (self.q_level[x] == level and self.answered_q[n[x]] == 0):
+                for y in self.q_graph[n[x]]:
+                    if (self.l[y] == 100):
+                        v[x] = v[x] + 5
+                    elif (self.l[y] < 100 and self.l[y] > 0):
+                        v[x] = v[x]
+                    elif (self.l[y] <= 0 and self.l[y] > -3):
+                        v[x] = v[x] + 10
+                    elif (self.l[y] <= -3):
+                        v[x] = v[x] - 100
+
+                mval = max(v[x], mval)
+                if (mval == v[x]):
+                    nq = n[x]
+
+        # In case concept priority above can't decide nq, put any remaining question in level as nq
+
+        for x in xrange(len(self.q_graph.keys())):
+            if nq == -1 and self.answered_q[n[x]] == 0:
+                nq = n[x]
+
+        return nq
+
+    def learn(self, question_id, t, user_metric, time_metric, is_correct):
+
+        if question_id == -1:
+
+            self.curr_level = self.total_levels / 2
+
+            nq = self.random_q()
+
+            result = []
+
+        else:
+
+            self.curr_level = self.q_level[question_id]
+
+            self.attempted[self.curr_level] = self.attempted[self.curr_level] + 1
+
+            self.answered_q[question_id] = 1
+
+            # if answer is incorrect
+
+            if is_correct == 0:
+
+                user_metric, time_metric = self.wrong_ans(question_id, t, user_metric, time_metric)
+                self.wrong[self.curr_level] = self.wrong[self.curr_level] + 1
+
+            # if answer is correct
+
+            if is_correct == 1:
+                user_metric, time_metric = self.correct_ans(question_id, t, user_metric, time_metric)
+
+            # if attempts > 75% of total questions and accuracy < 50% in level, go up a level
+
+            if (self.attempted[self.curr_level] / float(self.total_questions[self.curr_level])) >= 0.75 and \
+                                (self.wrong[self.curr_level] / float(self.attempted[self.curr_level])) >= 0.5:
+                self.curr_level = self.curr_level - 1
+                if (self.l_checked[self.curr_level] == 0):
+                    self.l_checked[self.curr_level] = 1
+                else:
+                    return -2, self.weak_concepts_fn(), user_metric, time_metric
+
+            # if attempts > 75% of total questions and accuracy > 50% in level, go up a level
+
+            if (self.attempted[self.curr_level] / float(self.total_questions[self.curr_level])) >= 0.75 and \
+                            (self.wrong[self.curr_level] / float(self.attempted[self.curr_level])) < 0.5:
+                self.curr_level = self.curr_level + 1
+                if (self.l_checked[self.curr_level] == 0):
+                    self.l_checked[self.curr_level] = 1
+                else:
+                    return -2, self.weak_concepts_fn(), user_metric, time_metric
+
+            # if all levels cleared, show analysis
+
+            if (self.curr_level >= self.total_levels):
+                return -2, self.weak_concepts_fn(), user_metric, time_metric
+
+            # if no level cleared, show analysis
+
+            if (self.curr_level < 0):
+                return -2, self.weak_concepts_fn(), user_metric, time_metric
+
+            nq = self.next_que(self.curr_level)
+
+            result = self.weak_concepts_fn()
+
+        return nq, result, user_metric, time_metric
+
+class Learning:
 
     # Initialize functions and variables
 

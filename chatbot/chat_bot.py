@@ -14,9 +14,9 @@ class ChatBot:
 
         self.qid_list = QnaRepository.objects.values_list('question_id', flat=True)
 
-        self.q_list = QnaRepository.objects.values_list('q', flat=True)
+        self.q_list = QnaRepository.objects.values_list('doubt', flat=True)
 
-        self.a_list = QnaRepository.objects.values_list('a', flat=True)
+        self.a_list = QnaRepository.objects.values_list('answer', flat=True)
 
     def get_dic(self, q_id):
 

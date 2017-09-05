@@ -9,14 +9,13 @@ logger = logging.basicConfig(level=logging.DEBUG,
                     handlers=[logging.FileHandler(__name__),
                               logging.StreamHandler()])
 
+
 def chat_index(request):
-    user_id = 1
     users_question = request.GET.get("question", None)
     questionid = request.GET.get('question_id', None)
     chatbot1 = ChatBot()
     bot_response = chatbot1.main_bot(questionid, users_question)
     chat_log = UserChatLog()
-    chat_log.user_id = user_id
     chat_log.text_sent = users_question
     chat_log.text_recieved = bot_response
     chat_log.time_stamp = datetime.now()

@@ -30,11 +30,15 @@ treating the models as a class. We can also use django specific commands to edit
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import QuestionBank
-from .al import learning
+from .models import UserConceptScore
+from django.contrib.auth.models import User
+from .models import Concept
+from .al import Learning
 from chatbot import chat_bot
 import time
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm
+
 
 def signup(request):
     if request.method == 'POST':
@@ -50,10 +54,20 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
+
 def index(request):
+    user_name = request.user
+    user = User.objects.get(username=user_name)
+    if UserConceptScore.objects.filter(user=user).count() == 0:
+        con = Concept.objects.all()
+        for c in con:
+            ucs = UserConceptScore()
+            ucs.user = user
+            ucs.concept = c
+            ucs.save()
 
     global learning1
-    learning1 = learning(levels = 4)
+    learning1 = Learning(levels = 4)
     questionid,_,_,_ = learning1.learn(-1,0,[],[],0)
     chatbot1 = chat_bot.ChatBot()
     qlist = chatbot1.get_dic(-1).keys()

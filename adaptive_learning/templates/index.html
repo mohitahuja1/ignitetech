@@ -53,14 +53,18 @@
                 </div>
             </div>
             <div class="col-sm-4 qa-parent text-left">
-                    <br><h4>Welcome to IgniteTech!</h4><br>
-                    You will be able to practice taking tests here.<br><br>
-                    We cover the subject of probability for the International Baccalaureate (IB) board.<br><br>
-                    As you take the tests, our chat bot on the right will resolve any doubts that you have.<br><br>
-                    In case you are stuck on a question, feel free to ask the bot for "HINTS".<br><br>
-                    At the end of the test, you will be provided with a detailed analysis of your performance.<br><br>
-                    Good luck!<br><br>
-                    <h4><a href ="{% url 'details' questionid %}">Take Adaptive Test</a></h4>
+                    <br><h3>IGNITE'S ADAPTIVE TEST</h3><br>
+                    <h4>
+                    Topic: Probability<br><br>
+                    Subject: Mathematics - Standard Level<br><br>
+                    Board: International Baccalaureate <br><br>
+                    Time: 30 minutes<br><br>
+                    Additional features:<br><br>
+                        <ul>- Hints and solutions through chat bot<br><br>
+                            - Complete analysis of test results<br><br>
+                        </ul>
+                    </h4>
+                    <h3><a href ="{% url 'details' questionid %}">Take Test</a></h3>
 
             </div>
             <div class="col-sm-6 chat-bot">
@@ -73,15 +77,13 @@
                     <div id = "container" class="chat-thread">
                         <div class="message-box">
                             <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-left text-muted">Hey, how can I help:
+                            <p class="text text-left text-muted">Hey! Type something or click on a question below:
                             <br><br>
-                            <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
-                            <br><br>
-                            <a href='#' onclick='clickfunc(this)'>How long is the test?</a>
+                             <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
                             <br><br>
                             <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
                             <br><br>
-                            <a href='#' onclick='clickfunc(this)'>Can I take this test while in class 11?</a>
+                            <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
                             </p>
                         </div>
                     </div>
