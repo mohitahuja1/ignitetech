@@ -4,100 +4,121 @@
 <head>
     <title>IgniteTech</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
 
 <body>
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{%url 'index'%}">IgniteTech</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-2 sidenav">
-                <div class="sidebar-section">
-                    <img alt="140x140" data-src="holder.js/140x140" class="img-circle" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ2MDVlNTNkMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDYwNWU1M2QzIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ0LjA1NDY4NzUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4="
-                        data-holder-rendered="true" style="width: 110px; height: 110px;">
-                    <p class="username">Mohit Ahuja</p>
-                </div>
-                <div class="sidebar-section">
-                    <a href="{% url 'index'%}">HOME</a>
-                    <a href="#">TESTS</a>
-                    <a href="#">QUESTIONS</a>
-                    <a href="#">FORUM</a>
-                </div>
-                <div class="sidebar-section">
-                    <a href="#">My Profile</a>
-                    <a href="#">Settings</a>
-                    <a href="#">Logout</a>
-                </div>
-            </div>
-            <div class="col-sm-4 qa-parent text-left">
-                    <br><h3>IGNITE'S ADAPTIVE TEST</h3><br>
-                    <h4>
-                    Topic: Probability<br><br>
-                    Subject: Mathematics - Standard Level<br><br>
-                    Board: International Baccalaureate <br><br>
-                    Time: 30 minutes<br><br>
-                    Additional features:<br><br>
-                        <ul>- Hints and solutions through chat bot<br><br>
-                            - Complete analysis of test results<br><br>
-                        </ul>
-                    </h4>
-                    <h3><a href ="{% url 'details' questionid %}">Take Test</a></h3>
+    <!-- Navigation Starts -->
+    <header class="bmd-layout-header">
 
-            </div>
-            <div class="col-sm-6 chat-bot">
-                <div class="chat-box">
-                    <div class="head thread-on">
-                        <div class="mid-head">
-                            <span class="text-primary">Chat with @prof - your chat bot professor!</span>
-                        </div>
-                    </div>
-                    <div id = "container" class="chat-thread">
-                        <div class="message-box">
-                            <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-left text-muted">Hey! Type something or click on a question below:
-                            <br><br>
-                             <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
-                            <br><br>
-                            <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
-                            <br><br>
-                            <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <input type="text" id = "textbox" placeholder="Type something...">
-                    </div>
-                </div>
-            </div>
+        <div class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-s2">
+            <span class="sr-only">Toggle drawer</span>
+            <i class="material-icons">menu</i>
+        </button>
         </div>
+
+    </header>
+
+    <div id="dw-s2" class="bmd-layout-drawer bg-faded">
+
+        <a href="#" class="brand-logo">
+            <img src="/static/images/logo.png" class="img-responsive" alt="logo">
+        </a>
+
+        <ul class="list-group">
+            <a href="{% url 'index'%}" class="list-group-item">HOME</a>
+            <a class="list-group-item">TESTS</a>
+            <a class="list-group-item">QUESTIONS</a>
+            <a class="list-group-item">FORUM</a>
+        </ul>
+        <ul class="list-group">
+            <a class="list-group-item">My Profile</a>
+            <a class="list-group-item">Settings</a>
+            <a class="list-group-item">Logout</a>
+        </ul>
+
     </div>
+    <!-- Navigation Ends -->
 
-    <footer class="container-fluid text-center">
-        <p>Copyright @2017 IgniteTech. All rights reserved.</p>
-    </footer>
+    <!-- Main Content -->
+    <main class="bmd-layout-content">
+        <div class="container">
+            <div class="row">
+
+                <!-- Content Text On Left Side -->
+                <div class="col-sm-6">
+                    <div class="card card-block">
+                        <h3 class="card-title">IGNITE'S ADAPTIVE TEST</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Topic: Probability</li>
+                            <li class="list-group-item">Subject: Mathematics - Standard Level</li>
+                            <li class="list-group-item">Board: International Baccalaureate</li>
+                            <li class="list-group-item">Time: 30 minutes</li>
+                            <li class="list-group-item">Additional features:
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">- Hints and solutions through chat bot</li>
+                                            <li class="list-group-item">- Complete analysis of test results</li>
+                                    </ul>
+                            </li>
+                        </ul>
+                        <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Test</a>
+                    </div>
+                </div>
+                <!-- Content Text Ends-->
+
+                <!-- Chat Box-->
+                <div class="col-sm-6 chat-bot">
+                    <div class="card text-xs-center">
+                        <div class="card-header">
+                                <div class="card-block">
+                                        <h4 class="card-title">Chat with @prof - your chat bot professor!</h4>
+                                        <h6 class="card-subtitle text-muted">@prof</h6>
+                                        </div>
+                        </div>
+                        <div id = "container" class="card-block chat-thread">
+                            <p class="card-text">Hey! Type something or click on a question below:</p>
+                            <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a></li>
+                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>Which topics are covered?</a></li>
+                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                                <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat Box Ends-->
+
+            </div>
+        </div>
+    </main>
+    <!-- Main Content Ends -->
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
+<script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+<script>
+    $('body').bootstrapMaterialDesign();
+</script>
 
 <script type="text/javascript">
     var path = ""+window.location.pathname;
