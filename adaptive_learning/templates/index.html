@@ -72,53 +72,47 @@
     <!-- Main Content -->
     <main class="bmd-layout-content">
         <div class="container">
-            <div class="row">
-                <!-- Content Text On Left Side -->
-                <div class="col-sm-6">
-                    <div class="card card-block">
-                        <h3 class="card-title">IGNITE'S ADAPTIVE TEST</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Topic: Probability</li>
-                            <li class="list-group-item">Subject: Mathematics - Standard Level</li>
-                            <li class="list-group-item">Board: International Baccalaureate</li>
-                            <li class="list-group-item">Time: 30 minutes</li>
-                            <li class="list-group-item">Additional features:
-                                    <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">- Hints and solutions through chat bot</li>
-                                            <li class="list-group-item">- Complete analysis of test results</li>
+                <div class="card-group">
+                        <div class="card">
+                          <div class="card-block">
+                                <h3 class="card-title">IGNITE'S ADAPTIVE TEST</h3>
+                                <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Topic: Probability</li>
+                                        <li class="list-group-item">Subject: Mathematics - Standard Level</li>
+                                        <li class="list-group-item">Board: International Baccalaureate</li>
+                                        <li class="list-group-item">Time: 30 minutes</li>
+                                        <li class="list-group-item">Additional features:
+                                                <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">- Hints and solutions through chat bot</li>
+                                                        <li class="list-group-item">- Complete analysis of test results</li>
+                                                </ul>
+                                        </li>
                                     </ul>
-                            </li>
-                        </ul>
-                        <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Test</a>
-                    </div>
-                </div>
-                <!-- Content Text Ends-->
-
-                <!-- Chat Box-->
-                <div class="col-sm-6 chat-bot">
-                    <div class="card text-xs-center">
-                        <div class="card-header">
-                                <div class="card-block">
-                                        <h4 class="card-title">Chat with @prof - your chat bot professor!</h4>
-                                        <h6 class="card-subtitle text-muted">@prof</h6>
+                                    <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Test</a>
+                          </div>
+                        </div>
+                        <div class="card chat-bot">
+                                <div class="">
+                                        <div class="card-header">
+                                                <div class="card-block">
+                                                        <h4 class="card-title">Chat with @prof - your chat bot professor!</h4>
+                                                        <h6 class="card-subtitle text-muted">@prof</h6>
+                                                        </div>
                                         </div>
+                                        <div id = "container" class="card-block chat-thread">
+                                            <p class="card-text">Hey! Type something or click on a question below:</p>
+                                            <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a></li>
+                                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>Which topics are covered?</a></li>
+                                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                                <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                                        </div>
+                                    </div>
                         </div>
-                        <div id = "container" class="card-block chat-thread">
-                            <p class="card-text">Hey! Type something or click on a question below:</p>
-                            <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a></li>
-                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>Which topics are covered?</a></li>
-                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a></li>
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                                <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
-                        </div>
-                    </div>
-                </div>
-                <!-- Chat Box Ends-->
-
-            </div>
+                      </div>
         </div>
     </main>
     <!-- Main Content Ends -->
