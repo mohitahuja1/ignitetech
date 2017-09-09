@@ -2,7 +2,7 @@
 Material Design Overwrite
 */
 .bmd-drawer-f-l>.bmd-layout-drawer {
-    background-color: #3889B8;
+    background-color: #308DED;
 }
 .bmd-layout-backdrop {
     background-color: rgba(255, 255, 255, 0.69);
@@ -35,7 +35,7 @@ Custom Classes and styling
     position: fixed;
 }
 .background-fixed .background-color {
-    background-color: #3889B8;
+    background-color: #308DED;
     width: 100%;
     height: 100px;
 }
@@ -66,7 +66,7 @@ Custom Classes and styling
 }
 .nav-menu a:hover {
     text-decoration: none;
-    background: #3279a2;
+    background: #308DED;
     transition: background 0.5s ease;
 }
 .user_name {
