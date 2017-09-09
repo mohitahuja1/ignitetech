@@ -52,12 +52,26 @@ Custom Classes and styling
 }
 .nav-menu a{
     color: #fff;
-    justify-content: center;
+}
+.nav-menu a img {
+    width: 1rem;
+}
+.nav-menu a img.custom_width_tests {
+    width: 0.7rem;
+    margin-right: 2.3rem;
+}
+.nav-menu a img.custom_width_questions {
+    width: 0.7rem;
+    margin-right: 2.3rem;
 }
 .nav-menu a:hover {
     text-decoration: none;
     background: #3279a2;
     transition: background 0.5s ease;
+}
+.user_name {
+    font-size: 12px;
+    font-weight: 300;
 }
 
 /* Settings Dropdown */
