@@ -32,6 +32,20 @@
         </div>
 
     </header>
+    <div class="settings pull-xs-right">
+            <div class="nav-item">
+              <div class="dropdown">
+                <button class="btn bmd-btn-icon btn-secondary dropdown-toggle" type="button" id="more-menu-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                <div class="ripple-container"></div></button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="more-menu-1">
+                  <button class="dropdown-item" type="button">My Profile</button>
+                  <button class="dropdown-item" type="button">Settings</button>
+                  <button class="dropdown-item" type="button">Logout</button>
+                </div>
+              </div>
+            </div>
+    </div>
 
     <div id="dw-s2" class="bmd-layout-drawer bg-faded">
 
@@ -39,26 +53,25 @@
             <img src="/static/images/logo.png" class="img-responsive" alt="logo">
         </a>
 
-        <ul class="list-group">
+        <ul class="list-group nav-menu">
             <a href="{% url 'index'%}" class="list-group-item">HOME</a>
-            <a class="list-group-item">TESTS</a>
-            <a class="list-group-item">QUESTIONS</a>
-            <a class="list-group-item">FORUM</a>
-        </ul>
-        <ul class="list-group">
-            <a class="list-group-item">My Profile</a>
-            <a class="list-group-item">Settings</a>
-            <a class="list-group-item">Logout</a>
+            <a href="#" class="list-group-item">TESTS</a>
+            <a href="#" class="list-group-item">QUESTIONS</a>
+            <a href="#" class="list-group-item">FORUM</a>
         </ul>
 
     </div>
     <!-- Navigation Ends -->
-
+<div class="background-fixed">
+    <div class="background-color"></div>
+    <div class="arrow"> 
+        <img src="/static/images/triangle.svg" alt="">
+    </div>
+</div>
     <!-- Main Content -->
     <main class="bmd-layout-content">
         <div class="container">
             <div class="row">
-
                 <!-- Content Text On Left Side -->
                 <div class="col-sm-6">
                     <div class="card card-block">
