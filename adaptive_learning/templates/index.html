@@ -14,6 +14,7 @@
     <!-- Bootstrap Material Design -->
     <link rel="stylesheet" href="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/output.css">
 
 </head>
 
@@ -62,57 +63,80 @@
         </ul>
 
     </div>
+    
     <!-- Navigation Ends -->
-<div class="background-fixed">
-    <div class="background-color"></div>
-    <div class="arrow"> 
-        <img src="/static/images/triangle.svg" alt="">
+    <div class="background-fixed">
+        <div class="background-color"></div>
+        <div class="arrow"> 
+            <img src="/static/images/triangle.svg" alt="">
+        </div>
     </div>
-</div>
+
     <!-- Main Content -->
     <main class="bmd-layout-content">
         <div class="container">
-                <div class="card-group">
-                        <div class="card">
-                          <div class="card-block">
-                                <h3 class="card-title">IGNITE'S ADAPTIVE TEST</h3>
-                                <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Topic: Probability</li>
-                                        <li class="list-group-item">Subject: Mathematics - Standard Level</li>
-                                        <li class="list-group-item">Board: International Baccalaureate</li>
-                                        <li class="list-group-item">Time: 30 minutes</li>
-                                        <li class="list-group-item">Additional features:
-                                                <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">- Hints and solutions through chat bot</li>
-                                                        <li class="list-group-item">- Complete analysis of test results</li>
-                                                </ul>
-                                        </li>
-                                    </ul>
-                                    <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Test</a>
-                          </div>
+            <div class="card-group">
+                    <div class="card">
+                        <div class="card-block">
+                            <h1 class="card-title hi">Hi Elnora,</h1>
+                            <p class="card-text">You will be able to practice taking tests here.</p>
+                            <p class="card-text">We cover the subjects of probability for the international Baccalauraete(IB) Board</p>
+                            <p class="card-text">In case you are stuck on a question, feel free to ask the bot for "HINTS"</p>
+                            <p class="card-text">At the end of test, you will be provided with a detailed analysis of your performance.</p>
+                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
+                                <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Adaptive Test</a>
                         </div>
-                        <div class="card chat-bot">
-                                <div class="">
-                                        <div class="card-header">
-                                                <div class="card-block">
-                                                        <h4 class="card-title">Chat with @prof - your chat bot professor!</h4>
-                                                        <h6 class="card-subtitle text-muted">@prof</h6>
-                                                        </div>
-                                        </div>
-                                        <div id = "container" class="card-block chat-thread">
-                                            <p class="card-text">Hey! Type something or click on a question below:</p>
-                                            <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a></li>
-                                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>Which topics are covered?</a></li>
-                                                    <li class="list-group-item"><a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-footer">
-                                                <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                    </div>
+                    <div class="card chat-bot">
+                        <div class="">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="row">
+                                                    <span class="circle_prof"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 prof_status">
+                                                <h4 class="card-title">Prof</h4>
+                                                <h6 class="card-subtitle online">Online</h6>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div id = "container" class="fixed_scrollable_area card-block">
+                                <p class="card-text">
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                </p>
+                                <p class="card-text">
+                                    <span class="prof_chat">Here are a few options:</span>
+                                </p>
+                                <ul class="list-group list-group-flush select_options">
+                                        <li class="list-group-item">
+                                            <span class="select_answer">
+                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="select_answer">
+                                                <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="select_answer">
+                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
+                                            </span>
+                                        </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                    <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                            </div>
                         </div>
-                      </div>
+                    </div>
+                    </div>
         </div>
     </main>
     <!-- Main Content Ends -->
@@ -144,8 +168,7 @@
 
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="message-box self">' +
-        '<p class="timestamp text-muted">@user</p>' +
-        '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+        '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
         if (question_id == "") {
             question_id = -1;

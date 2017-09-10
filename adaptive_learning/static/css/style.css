@@ -1,6 +1,12 @@
+/* Font Family */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+
 /*
 Material Design Overwrite
 */
+body{
+    font-family: 'Quicksand', sans-serif;
+}
 .bmd-drawer-f-l>.bmd-layout-drawer {
     background-color: #308DED;
 }
@@ -27,6 +33,28 @@ Material Design Overwrite
 .navbar-toggler {
     color: #fff;
 }
+
+.btn-primary.custom-file-control:before, .btn.btn-primary {
+    color: #ffffff;
+    background-color: inherit;
+    border-color: #ccc;
+    background-color: #000;
+    border-radius: 0px;
+    padding: 10px 20px;
+    font-weight: 400;
+    background: linear-gradient(256deg, #69bedd, #0272a7 49%, #3889b8);
+    -webkit-transition: background 0.2s ease;
+    -moz-transition: background 0.2s ease;
+    -o-transition: background 0.2s ease;
+    transition: background 0.2s ease;
+}
+.btn-primary.active.custom-file-control:before, .btn-primary.custom-file-control:active:before, .btn-primary.custom-file-control:focus:before, .btn-primary.custom-file-control:hover:before, .btn-primary.focus.custom-file-control:before, .btn.btn-primary.active, .btn.btn-primary.focus, .btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:hover, .open>.btn-primary.dropdown-toggle.custom-file-control:before, .open>.btn.btn-primary.dropdown-toggle {
+    color: #ffffff;
+    background-color: hsl(0, 0%, 0%);
+    border-color: transparent;
+    background: linear-gradient(256deg, #69bedd, #0272a7 49%, #3889b8);
+    background-position: 11.25rem 0rem;
+}
 /*
 Custom Classes and styling
 */
@@ -37,7 +65,7 @@ Custom Classes and styling
 .background-fixed .background-color {
     background-color: #308DED;
     width: 100%;
-    height: 100px;
+    height: 200px;
 }
 .background-fixed img{
     max-width: 100%;
@@ -66,7 +94,7 @@ Custom Classes and styling
 }
 .nav-menu a:hover {
     text-decoration: none;
-    background: #308DED;
+    background: #287bd2;
     transition: background 0.5s ease;
 }
 .user_name {
@@ -88,6 +116,11 @@ Custom Classes and styling
 }
 .dropdown-menu .dropdown-item {
     font-size: 12px;
+}
+
+.hi, .thanks_note {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 .chat-bot {
 }

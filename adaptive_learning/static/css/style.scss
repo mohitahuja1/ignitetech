@@ -1,0 +1,102 @@
+$font-stack: 'Quicksand', sans-serif;
+$material-blue: #308ded;
+$grey-color: #616161;
+$light-blue: #D8EBFA;
+$green : #2eb946;
+$white : #fff;
+$standard-font-size : 0.75rem;
+body {
+    font: $font-stack;
+  }
+/* Customization of Material Design */
+.card-footer .custom-file-control, .card-footer .form-control, .card-footer .is-focused .custom-file-control, .card-footer .is-focused .form-control {
+    background-image: none;
+}
+
+/* Customization of chat bot */
+.card{
+    .card-header {
+        background-color: $light-blue;
+        border-bottom: 0px;
+        h4.card-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: $grey-color;
+        }
+        .prof_status {
+            padding-left: 0px;
+            padding-top: 4px;
+        }
+        .online {
+            color: $green;
+            font-size: 0.7rem;
+            font-weight: 400;
+        }
+        
+        .circle_prof {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            display: flex;
+            border-radius: 50%;
+        }
+    }
+    .card-footer{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+} 
+
+.chat-bot {
+    .card-header {
+        .card-block {
+            padding: 0;
+        }
+    }
+    .fixed_scrollable_area {
+        height: 500px;
+        overflow-y: auto;
+        margin-bottom: 28px;
+    }
+}
+.prof_chat {
+    padding: 10px 20px;
+    background-color: $material-blue;
+    color: $white ;
+    border-radius: 25px;
+    font-size: $standard-font-size;
+    border-top-left-radius: 0px;
+    display: inline-block;
+}
+.message-box {
+    p {
+        text-align: right;
+    }
+    .user_chat {
+        padding: 10px 20px;
+        background-color: #5bb3d5;
+        color: #ffffff;
+        border-radius: 25px;
+        font-size: 0.75rem;
+        border-top-right-radius: 0px;
+        text-align: left;
+        display: inline-block;
+    }
+}
+.list-group-flush {
+    .list-group-item {
+        .select_answer {
+            color: #000;
+            display: inline-block;
+            border: 1px solid #308ded;
+            border-radius: 25px;
+            padding: 0.5em 0.7rem;
+            a {
+                color: #308ded;
+                font-size: 0.75rem;
+                text-decoration: none;
+            }
+        }
+    }
+}
