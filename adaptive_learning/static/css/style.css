@@ -1,0 +1,270 @@
+/* Font Family */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+
+/*
+Material Design Overwrite
+*/
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+.bmd-drawer-f-l>.bmd-layout-drawer {
+    background-color: #308DED;
+}
+.bmd-layout-backdrop {
+    background-color: rgba(255, 255, 255, 0.69);
+}
+:not(.bmd-drawer-out).bmd-drawer-overlay.bmd-drawer-overlay.bmd-drawer-f-l>.bmd-layout-header {
+    width: 6%;
+    position: fixed;
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+        margin-top: 100px;
+    }
+}
+.container {
+    margin-top: 100px;
+}
+.navbar {
+    background-color: transparent;
+    box-shadow: none;
+}
+.navbar-toggler {
+    color: #fff;
+}
+
+.btn-primary.custom-file-control:before, .btn.btn-primary {
+    color: #ffffff;
+    background-color: inherit;
+    border-color: #ccc;
+    background-color: #000;
+    border-radius: 0px;
+    padding: 10px 20px;
+    font-weight: 400;
+    background: linear-gradient(256deg, #69bedd, #0272a7 49%, #3889b8);
+    -webkit-transition: background 0.2s ease;
+    -moz-transition: background 0.2s ease;
+    -o-transition: background 0.2s ease;
+    transition: background 0.2s ease;
+}
+.btn-primary.active.custom-file-control:before, .btn-primary.custom-file-control:active:before, .btn-primary.custom-file-control:focus:before, .btn-primary.custom-file-control:hover:before, .btn-primary.focus.custom-file-control:before, .btn.btn-primary.active, .btn.btn-primary.focus, .btn.btn-primary:active, .btn.btn-primary:focus, .btn.btn-primary:hover, .open>.btn-primary.dropdown-toggle.custom-file-control:before, .open>.btn.btn-primary.dropdown-toggle {
+    color: #ffffff;
+    background-color: hsl(0, 0%, 0%);
+    border-color: transparent;
+    background: linear-gradient(256deg, #69bedd, #0272a7 49%, #3889b8);
+    background-position: 11.25rem 0rem;
+}
+/*
+Custom Classes and styling
+*/
+.background-fixed {
+    z-index: 0;
+    position: fixed;
+}
+.background-fixed .background-color {
+    background-color: #308DED;
+    width: 100%;
+    height: 200px;
+}
+.background-fixed img{
+    max-width: 100%;
+    margin-top: -1px;
+}
+.brand-logo img{
+    max-width: 100%;
+    padding: 30px 60px;
+}
+.nav-menu {
+    text-align: center;
+}
+.nav-menu a{
+    color: #fff;
+}
+.nav-menu a img {
+    width: 1rem;
+}
+.nav-menu a img.custom_width_tests {
+    width: 0.7rem;
+    margin-right: 2.3rem;
+}
+.nav-menu a img.custom_width_questions {
+    width: 0.7rem;
+    margin-right: 2.3rem;
+}
+.nav-menu a:hover {
+    text-decoration: none;
+    background: #287bd2;
+    transition: background 0.5s ease;
+}
+.user_name {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+/* Settings Dropdown */
+.settings {
+    z-index: 2;
+    padding: .25rem .5rem;
+    position: fixed;
+    display: flex;
+    align-self: flex-end;
+}
+.settings .dropdown {
+    padding: .5rem .75rem;
+    color: #fff;
+}
+.dropdown-menu .dropdown-item {
+    font-size: 12px;
+}
+
+.hi, .thanks_note {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.chat-bot {
+}
+
+.chat-bot .head {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    background-color: #FAFAFA;
+    font-size: 12px;
+    -ms-flex: 1 1 5%;
+    flex: 1 1 5%;
+    min-height: 4em;
+    max-height: 4em;
+}
+
+.chat-bot .head .mid-head {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.chat-bot .head .mid-head a {
+    margin: 0 5px;
+}
+
+.chat-bot .head .end-chat-thread {
+    width: 90px;
+    height: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.24);
+    position: absolute;
+    right: 16px;
+    top: 21px;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 4px;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.chat-bot .body {
+    list-style: none;
+    padding: 0px;
+}
+
+.chat-bot .body li {
+    padding: 12px 0px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #FAFAFA;
+    cursor: pointer;
+}
+
+.chat-bot .body li .content-bar p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.chat-bot .body li:hover {
+    background: #FAFAFA;
+}
+
+.chat-bot .chat-thread {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 85%;
+    flex: 1 1 85%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    overflow: auto;
+}
+
+.chat-bot .chat-thread .message-box {
+    width: 100%;
+    margin: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.chat-bot .chat-thread .message-box .text {
+    background: #FAFAFA;
+    min-width: 30%;
+    max-width: 80%;
+    display: -ms-inline-flexbox;
+    display: inline;
+    padding: 10px;
+    margin: 0;
+    border-radius: 3px;
+}
+
+.chat-bot .chat-thread .message-box .timestamp {
+    margin: 0;
+    font-size: 10px;
+}
+
+.chat-bot .chat-thread .self {
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+.chat-box .footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1 1 10%;
+    flex: 1 1 10%;
+    min-height: 3em;
+    max-height: 3em;
+    background: #FAFAFA;
+    padding: 0px 11px;
+    border-top: 3px solid #fff;
+}
+
+.chat-box .footer input {
+    background: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+/* scroll results */
+.ui-autocomplete {
+    max-height: 80px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding for vertical scrollbar */
+    padding-right: 5px;
+}

@@ -1,103 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <title>IgniteTech</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/output.css">
+
+</head>
 
 <body>
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{%url 'index'%}">IgniteTech</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
+<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+
+    <!-- Navigation Starts -->
+    <header class="bmd-layout-header">
+
+        <div class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-s2">
+            <span class="sr-only">Toggle drawer</span>
+            <i class="material-icons">menu</i>
+        </button>
         </div>
-    </nav>
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-2 sidenav">
-                <div class="sidebar-section">
-                    <img alt="140x140" data-src="holder.js/140x140" class="img-circle" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ2MDVlNTNkMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDYwNWU1M2QzIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ0LjA1NDY4NzUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4="
-                        data-holder-rendered="true" style="width: 110px; height: 110px;">
-                    <p class="username">Mohit Ahuja</p>
+    </header>
+    <div class="settings pull-xs-right">
+            <div class="nav-item">
+              <div class="dropdown">
+                    <span class="user_name">Kaustav Das</span>
+                <button class="btn bmd-btn-icon btn-secondary dropdown-toggle" type="button" id="more-menu-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                <div class="ripple-container"></div></button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="more-menu-1">
+                  <button class="dropdown-item" type="button">My Profile</button>
+                  <button class="dropdown-item" type="button">Settings</button>
+                  <button class="dropdown-item" type="button">Logout</button>
                 </div>
-                <div class="sidebar-section">
-                    <a href="{% url 'index'%}">HOME</a>
-                    <a href="#">TESTS</a>
-                    <a href="#">QUESTIONS</a>
-                    <a href="#">FORUM</a>
-                </div>
-                <div class="sidebar-section">
-                    <a href="#">My Profile</a>
-                    <a href="#">Settings</a>
-                    <a href="#">Logout</a>
-                </div>
+              </div>
             </div>
-            <div class="col-sm-4 qa-parent text-left">
-                    <br><h3>IGNITE'S ADAPTIVE TEST</h3><br>
-                    <h4>
-                    Topic: Probability<br><br>
-                    Subject: Mathematics - Standard Level<br><br>
-                    Board: International Baccalaureate <br><br>
-                    Time: 30 minutes<br><br>
-                    Additional features:<br><br>
-                        <ul>- Hints and solutions through chat bot<br><br>
-                            - Complete analysis of test results<br><br>
-                        </ul>
-                    </h4>
-                    <h3><a href ="{% url 'details' questionid %}">Take Test</a></h3>
+    </div>
 
-            </div>
-            <div class="col-sm-6 chat-bot">
-                <div class="chat-box">
-                    <div class="head thread-on">
-                        <div class="mid-head">
-                            <span class="text-primary">Chat with @prof - your chat bot professor!</span>
-                        </div>
-                    </div>
-                    <div id = "container" class="chat-thread">
-                        <div class="message-box">
-                            <p class="timestamp text-left text-muted">@prof</p>
-                            <p class="text text-left text-muted">Hey! Type something or click on a question below:
-                            <br><br>
-                             <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
-                            <br><br>
-                            <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
-                            <br><br>
-                            <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <input type="text" id = "textbox" placeholder="Type something...">
-                    </div>
-                </div>
-            </div>
+    <div id="dw-s2" class="bmd-layout-drawer bg-faded">
+
+        <a href="#" class="brand-logo">
+            <img src="/static/images/logo.png" class="img-responsive" alt="logo">
+        </a>
+
+        <ul class="list-group nav-menu">
+            <a href="{% url 'index'%}" class="list-group-item"><img src="/static/images/home.svg" class="img-responsive" alt="logo">HOME</a>
+            <a href="#" class="list-group-item"><img class="custom_width_tests" src="/static/images/tests.svg" class="img-responsive" alt="logo">TESTS</a>
+            <a href="#" class="list-group-item"><img class="custom_width_questions" src="/static/images/questions.svg" class="img-responsive" alt="logo">QUESTIONS</a>
+            <a href="#" class="list-group-item"><img src="/static/images/forum.svg" class="img-responsive" alt="logo">FORUM</a>
+        </ul>
+
+    </div>
+    
+    <!-- Navigation Ends -->
+    <div class="background-fixed">
+        <div class="background-color"></div>
+        <div class="arrow"> 
+            <img src="/static/images/triangle.svg" alt="">
         </div>
     </div>
 
-    <footer class="container-fluid text-center">
-        <p>Copyright @2017 IgniteTech. All rights reserved.</p>
-    </footer>
+    <!-- Main Content -->
+    <main class="bmd-layout-content">
+        <div class="container">
+            <div class="card-group">
+                    <div class="card">
+                        <div class="card-block">
+                            <h1 class="card-title hi">Hi Elnora,</h1>
+                            <p class="card-text">You will be able to practice taking tests here.</p>
+                            <p class="card-text">We cover the subjects of probability for the international Baccalauraete(IB) Board</p>
+                            <p class="card-text">In case you are stuck on a question, feel free to ask the bot for "HINTS"</p>
+                            <p class="card-text">At the end of test, you will be provided with a detailed analysis of your performance.</p>
+                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
+                                <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Adaptive Test</a>
+                        </div>
+                    </div>
+                    <div class="card chat-bot">
+                        <div class="">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="row">
+                                                    <span class="circle_prof"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 prof_status">
+                                                <h4 class="card-title">Prof</h4>
+                                                <h6 class="card-subtitle online">Online</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id = "container" class="fixed_scrollable_area card-block">
+                                <p class="card-text">
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                </p>
+                                <p class="card-text">
+                                    <span class="prof_chat">Here are a few options:</span>
+                                </p>
+                                <ul class="list-group list-group-flush select_options">
+                                        <li class="list-group-item">
+                                            <span class="select_answer">
+                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="select_answer">
+                                                <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="select_answer">
+                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
+                                            </span>
+                                        </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                    <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+        </div>
+    </main>
+    <!-- Main Content Ends -->
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
+<script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+<script>
+    $('body').bootstrapMaterialDesign();
+</script>
 
 <script type="text/javascript">
     var path = ""+window.location.pathname;
@@ -115,8 +168,7 @@
 
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="message-box self">' +
-        '<p class="timestamp text-muted">@user</p>' +
-        '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+        '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
         if (question_id == "") {
             question_id = -1;
