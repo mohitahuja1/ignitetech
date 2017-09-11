@@ -13,8 +13,9 @@ logger = logging.basicConfig(level=logging.DEBUG,
 def chat_index(request):
     users_question = request.GET.get("question", None)
     questionid = request.GET.get('question_id', None)
+    user = request.user
     chatbot1 = ChatBot()
-    bot_response = chatbot1.main_bot(questionid, users_question)
+    bot_response = chatbot1.main_bot(questionid, users_question, user)
     chat_log = UserChatLog()
     chat_log.text_sent = users_question
     chat_log.text_recieved = bot_response

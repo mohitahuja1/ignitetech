@@ -31,11 +31,12 @@ treating the models as a class. We can also use django specific commands to edit
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import QuestionBank
 from .models import UserConceptScore
-from django.contrib.auth.models import User
+from .models import UserQuestionScore
 from .models import Concept
-from .al import Learning
+from .models import Test
+from .al import LearningNew
 from chatbot import chat_bot
-import time
+from django.utils import timezone
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm
 
@@ -56,73 +57,94 @@ def signup(request):
 
 
 def index(request):
-    user_name = request.user
-    user = User.objects.get(username=user_name)
-    if UserConceptScore.objects.filter(user=user).count() == 0:
+
+    if UserConceptScore.objects.filter(user=request.user).count() == 0:
         con = Concept.objects.all()
         for c in con:
             ucs = UserConceptScore()
-            ucs.user = user
+            ucs.user = request.user
             ucs.concept = c
             ucs.save()
 
-    global learning1
-    learning1 = Learning(levels = 4)
-    questionid,_,_,_ = learning1.learn(-1,0,[],[],0)
+    test = Test()
+    test.user = request.user
+    test.save()
+    request.session['test_id'] = test.id
+
+    learner = LearningNew()
+    questionid, _ = learner.learn(-1, request, 0, 0)
+
     chatbot1 = chat_bot.ChatBot()
+
     qlist = chatbot1.get_dic(-1).keys()
     qlist9 = [str(i) for i in qlist]
     qlist9.sort()
+
     return render(request, 'index.html', {'questionid': questionid, 'qlist': qlist9})
 
-def details(request , questionid):
 
-    global learning1
-    questionid = int(questionid)
-    questionid += 1
-    questionid = str(questionid)
-    this_question = get_object_or_404(QuestionBank, pk=questionid)
-    questionid = int(questionid)
-    questionid -= 1
+def details(request, questionid):
+
+    test = Test.objects.get(id=request.session['test_id'])
+
+    if UserQuestionScore.objects.filter(user=request.user, test=test).count() == 0:
+
+        que = QuestionBank.objects.all()
+        for q in que:
+            uqs = UserQuestionScore()
+            uqs.user = request.user
+            uqs.test = test
+            uqs.question = q
+            uqs.save()
+
     is_correct = 2
     next_id = None
-    learning1.tm[questionid][0] = time.time()
+
+    question = QuestionBank.objects.get(id=questionid)
+
+    uqs = UserQuestionScore.objects.get(user=request.user, question=question, test=test)
+    uqs.start_time = timezone.now()
+    uqs.save()
+
     chatbot1 = chat_bot.ChatBot()
+
     qlist = chatbot1.get_dic(questionid).keys()
     qlist9 = [str(i) for i in qlist]
     qlist9.sort()
-    return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id, 'qlist':qlist9})
+
+    return render(request, "details.html", {'this_question': question, 'questionid': questionid, 'is_correct':is_correct, 'next_id':next_id, 'qlist':qlist9})
+
 
 def check(request, questionid):
 
-    global learning1
-    questionid = int(questionid)
-    questionid += 1
-    questionid = str(questionid)
-    this_question = get_object_or_404(QuestionBank, pk=questionid)
-    questionid = int(questionid)
-    questionid -= 1
-    learning1.tm[questionid][1] = time.time()
+    question = get_object_or_404(QuestionBank, pk=questionid)
     users_answer = str(request.GET['Answer'])
-    user_metric = [this_question.pct_users, this_question.total_users]
-    time_metric = [this_question.correct_time, this_question.correct_users]
-
-    if (this_question.answer == users_answer):
+    if question.answer == users_answer:
         is_correct = 1
     else:
         is_correct = 0
-    t = learning1.tm[questionid][1] - learning1.tm[questionid][0]
-    t = round(t,2)
 
-    next_id, result, user_metric, time_metric = learning1.learn(questionid, t, user_metric, time_metric, is_correct)
+    test = Test.objects.get(id=request.session['test_id'])
 
-    this_question.pct_users = user_metric[0]
-    this_question.total_users = user_metric[1]
-    this_question.correct_time = time_metric[1]
-    this_question.correct_users = time_metric[1]
-    this_question.save()
+    uqs = UserQuestionScore.objects.get(user=request.user, question=question, test=test)
+    uqs.end_time = timezone.now()
+    uqs.attempted = 1
+    if is_correct == 1:
+        uqs.correct = 1
+    uqs.time_taken = (uqs.end_time - uqs.start_time).total_seconds()
+    uqs.save()
+    t = round(uqs.time_taken, 2)
 
-    q_level = learning1.q_level[questionid]
+    learner = LearningNew()
+    next_id, result = learner.learn(questionid, request, t, is_correct)
+
+    # this_question.pct_users = user_metric[0]
+    # this_question.total_users = user_metric[1]
+    # this_question.correct_time = time_metric[1]
+    # this_question.correct_users = time_metric[1]
+    # this_question.save()
+
+    q_level = question.level
     chatbot1 = chat_bot.ChatBot()
     qlist = chatbot1.get_dic(questionid).keys()
     qlist9 = [str(i) for i in qlist]
@@ -131,5 +153,8 @@ def check(request, questionid):
     if next_id == -2:
         return render(request, "analysis.html", {'result': result})
     else:
-        return render(request, "details.html", {'this_question':this_question, 'questionid':questionid, 'is_correct':is_correct, 'next_id':next_id,'t':t, 'q_level': q_level, 'qlist':qlist})
+        return render(request, "details.html", {'this_question':question, 'questionid':questionid,
+                                                'is_correct': is_correct, 'next_id':next_id, 't': t,
+                                                'q_level': q_level,
+                                                'qlist': qlist9})
 

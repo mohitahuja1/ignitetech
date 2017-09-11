@@ -112,8 +112,6 @@
                             <a href='#' onclick='clickfunc(this)'>What is the main trick in the question?</a>
                             <br><br>
                             <a href='#' onclick='clickfunc(this)'>I am stuck. Help!</a>
-
-
                             </p>
                         </div>
                     </div>
@@ -131,7 +129,7 @@
 
 <script type="text/javascript">
     var path = ""+window.location.pathname;
-    var question_id = path.slice(6, 7);
+    var question_id = path.slice(6, -1);
 
     function write_bot_msg(message){
 

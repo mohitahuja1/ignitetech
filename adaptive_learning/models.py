@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from datetime import datetime
+from django.utils import timezone
+
 
 # Create your models here.
 
@@ -14,13 +17,17 @@ class Profile(models.Model):
     user_level = models.IntegerField(default=0)
     user_all = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.user)
+
 
 class Test(models.Model):
 
-    test = models.IntegerField(default=0)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
+    result = models.CharField(max_length=2000, default="None")
 
     def __str__(self):
-        return str(self.test)
+        return str(self.id)
 
 
 class Concept(models.Model):
@@ -50,13 +57,12 @@ class UserConceptScore(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
     concept = models.ForeignKey(Concept, on_delete=models.CASCADE)
-    marked_known = models.IntegerField(default=0)
     asked = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
     incorrect = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.concept)
 
 
 class UserQuestionScore(models.Model):
@@ -66,7 +72,10 @@ class UserQuestionScore(models.Model):
     question = models.ForeignKey(QuestionBank, on_delete=models.CASCADE)
     correct = models.IntegerField(default=0)
     attempt = models.IntegerField(default=0)
+    start_time = models.DateTimeField(default=timezone.now)
+    end_time = models.DateTimeField(default=timezone.now)
+    time_taken = models.FloatField(default=0.0)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.question)
 
