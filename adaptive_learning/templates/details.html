@@ -68,21 +68,24 @@
                         <font color="green"><b>Correct Answer!</b></font>
                         <br><br> Difficulty level: {{q_level}}
                         <br><br>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right
-                        <br><br>Time taken by you: {{t}} seconds
-                        <br><br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
+                        <br><br>Time taken by you: {{t|floatformat}} seconds
+                        <br><br>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds
                     {%endif%}
 
                     {% if is_correct == 0%}
                         <font color="red"><b>Wrong Answer!</b></font>
                         <br><br> Difficulty level: {{q_level}}
                         <br><br>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right
-                        <br><br>Time taken by you: {{t}} seconds
-                        <br><br>Average time taken by users who got this right: {{this_question.correct_time}} seconds
+                        <br><br>Time taken by you: {{t|floatformat}} seconds
+                        <br><br>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds
                     {%endif%}
 
                     <br><br>
-                    {%if  next_id is not None %}
-                    <a href="{% url 'details' next_id %}" class="next">Next &raquo;</a>
+                    {%if  next_id == -2 %}
+                        <h4>Your test is complete</h4>
+                        <a href="{% url 'result' %}" class="next">Results &raquo;</a>
+                    {%elif  next_id is not None %}
+                        <a href="{% url 'details' next_id %}" class="next">Next &raquo;</a>
                     {%endif%}
 
                     </h5>

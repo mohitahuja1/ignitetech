@@ -133,16 +133,9 @@ def check(request, questionid):
         uqs.correct = 1
     uqs.time_taken = (uqs.end_time - uqs.start_time).total_seconds()
     uqs.save()
-    t = round(uqs.time_taken, 2)
 
     learner = LearningNew()
-    next_id, result = learner.learn(questionid, request, t, is_correct)
-
-    # this_question.pct_users = user_metric[0]
-    # this_question.total_users = user_metric[1]
-    # this_question.correct_time = time_metric[1]
-    # this_question.correct_users = time_metric[1]
-    # this_question.save()
+    next_id, result = learner.learn(questionid, request, uqs.time_taken, is_correct)
 
     q_level = question.level
     chatbot1 = chat_bot.ChatBot()
@@ -150,11 +143,20 @@ def check(request, questionid):
     qlist9 = [str(i) for i in qlist]
     qlist9.sort()
 
+    t = round(uqs.time_taken, 2)
+
     if next_id == -2:
-        return render(request, "analysis.html", {'result': result})
-    else:
-        return render(request, "details.html", {'this_question':question, 'questionid':questionid,
-                                                'is_correct': is_correct, 'next_id':next_id, 't': t,
-                                                'q_level': q_level,
-                                                'qlist': qlist9})
+        request.session['result'] = result
+
+    return render(request, "details.html", {'this_question':question, 'questionid':questionid,
+                                            'is_correct': is_correct, 'next_id':next_id, 't': t,
+                                            'q_level': q_level,
+                                            'qlist': qlist9})
+
+
+def result(request):
+
+    return render(request, "analysis.html", {'result': request.session['result']})
+
+
 
