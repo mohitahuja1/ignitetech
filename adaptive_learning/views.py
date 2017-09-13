@@ -112,7 +112,11 @@ def details(request, questionid):
     qlist9 = [str(i) for i in qlist]
     qlist9.sort()
 
-    return render(request, "details.html", {'this_question': question, 'questionid': questionid, 'is_correct':is_correct, 'next_id':next_id, 'qlist':qlist9})
+    im = chatbot1.main_bot(questionid, "InitialMessage", request)
+
+    return render(request, "details.html", {'this_question': question, 'questionid': questionid,
+                                            'is_correct': is_correct, 'next_id': next_id, 'qlist': qlist9,
+                                            'im': im})
 
 
 def check(request, questionid):
@@ -149,7 +153,7 @@ def check(request, questionid):
         request.session['result'] = result
 
     return render(request, "details.html", {'this_question':question, 'questionid':questionid,
-                                            'is_correct': is_correct, 'next_id':next_id, 't': t,
+                                            'is_correct': is_correct, 'next_id': next_id, 't': t,
                                             'q_level': q_level,
                                             'qlist': qlist9})
 

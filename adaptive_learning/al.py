@@ -61,9 +61,13 @@ class LearningNew:
 
         test = Test.objects.get(id=request.session['test_id'])
 
+        # join data sets
+
         query_set = UserQuestionScore.objects.select_related('question').\
             values('user', 'test', 'attempt', 'correct', 'time_taken', 'question',
                    'question__level','question__correct_time').filter(user=request.user, test=test)
+
+        # roll up data sets
 
         temp1 = query_set.values('question__level').annotate(other_time=Sum('question__correct_time')).\
             order_by('question__level')
@@ -234,8 +238,7 @@ class LearningNew:
             question.correct_time = time_metric[0]
             question.correct_users = time_metric[1]
             question.save()
-
-            print "attempts", request.session['attempts']
+            question.save()
 
             # update level cleared variable
 

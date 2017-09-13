@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+{% endblock %}
+
+<body>
+
+<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+
+    <!-- Navigation Starts -->
+    <header class="bmd-layout-header">
+
+        <div class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-s2">
+            <span class="sr-only">Toggle drawer</span>
+            <i class="material-icons">menu</i>
+        </button>
+        </div>
+
+    </header>
+    <div class="settings pull-xs-right">
+            <div class="nav-item">
+              <div class="dropdown">
+                    <span class="user_name">Kaustav Das</span>
+                <button class="btn bmd-btn-icon btn-secondary dropdown-toggle" type="button" id="more-menu-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">more_vert</i>
+                <div class="ripple-container"></div></button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="more-menu-1">
+                  <button class="dropdown-item" type="button">My Profile</button>
+                  <button class="dropdown-item" type="button">Settings</button>
+                  <button class="dropdown-item" type="button">Logout</button>
+                </div>
+              </div>
+            </div>
+    </div>
+
+    <div id="dw-s2" class="bmd-layout-drawer bg-faded">
+
+        <a href="#" class="brand-logo">
+            <img src="/static/images/logo.png" class="img-responsive" alt="logo">
+        </a>
+
+        <ul class="list-group nav-menu">
+            <a href="{% url 'index'%}" class="list-group-item"><img src="/static/images/home.svg" class="img-responsive" alt="logo">TESTS</a>
+            <a href="#" class="list-group-item"><img class="custom_width_tests" src="/static/images/tests.svg" class="img-responsive" alt="logo">RESULTS</a>
+            <a href="#" class="list-group-item"><img class="custom_width_questions" src="/static/images/questions.svg" class="img-responsive" alt="logo">PAST PAPERS</a>
+            <a href="#" class="list-group-item"><img src="/static/images/forum.svg" class="img-responsive" alt="logo">ASK IGNITE</a>
+        </ul>
+
+    </div>
+
+    <!-- Navigation Ends -->
+
+    {% block body %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -5,26 +5,32 @@ import numpy.linalg as LA  # importing the linear algebra module
 from .models import QnaRepository
 from .models import QuestionBank
 from adaptive_learning.models import UserConceptScore
+from adaptive_learning.models import Concept
+from django.db.models import Min
+from django.db.models import Max
 
 
 class ChatBot:
 
     def __init__(self):
 
-        self.id_list = QnaRepository.objects.values_list('id', flat=True)
-        self.question_list = QnaRepository.objects.values_list('question', flat=True)
-        self.concept_list = QnaRepository.objects.values_list('concept', flat=True)
-        self.doubt_list = QnaRepository.objects.values_list('doubt', flat=True)
-        self.answer_list = QnaRepository.objects.values_list('answer', flat=True)
+        pass
 
     def get_dic(self, q_id):
 
         dic = dict()
 
-        for i in range(len(self.id_list)):
-            if (QuestionBank.objects.get(pk=self.question_list[i]).question == "None") or \
-                    (self.question_list[i] == int(q_id)):
-                dic[self.doubt_list[i]] = self.answer_list[i]
+        if int(q_id) >= 0:
+
+            qna_set = QnaRepository.objects.filter(question__in=[QuestionBank.objects.get(id=q_id),
+                                                                 QuestionBank.objects.get(question="None")])
+
+        else:
+
+            qna_set = QnaRepository.objects.filter(question=QuestionBank.objects.get(question="None"))
+
+        for i in range(len(qna_set)):
+            dic[str(qna_set[i].doubt)] = str(qna_set[i].answer)
 
         return dic
 
@@ -49,7 +55,7 @@ class ChatBot:
                     ans = train_dataset[a]
 
             if ans == '':
-                return ('Sorry! I couldn\'t understand that. Please be more specific.')
+                return "Sorry! I couldn't understand. Please be more specific."
             else:
                 return ans
 
@@ -57,21 +63,81 @@ class ChatBot:
     def train_func(train):
 
         stopwords = ['the', 'is', 'are', 'were', 'a', 'an', 'was', 'has', 'had', 'have', 'to', 'do', 'of', 'on',
-                     'my', 'any', 'be', 'by']  # the words that should be ignored by countvectoriser
-        vectorizer = CountVectorizer(stop_words=stopwords)  # adding the words list to countvectoriser
-        train_set = train # creating the training set
+                     'my', 'any', 'be', 'by']
+        vectorizer = CountVectorizer(stop_words=stopwords)
+        train_set = train
         trainvectorizerarray = vectorizer.fit_transform(train_set).toarray()
-        # creating tokens from the training set. This is a 2D array
         return vectorizer,trainvectorizerarray
 
-    def main_bot(self, question_id, user_query, user):  # question_id - string, user_query
+    def main_bot(self, question_id, user_query, request):
 
-        question_dict = self.get_dic(question_id)
-        answer = self.model(question_dict, user_query)
-        concept = QnaRepository.objects.filter(answer=answer)[0].concept
-        userconcept = UserConceptScore.objects.get(user=user, concept=concept)
-        userconcept.asked += 1
-        userconcept.save()
+        if user_query == "InitialMessage":
+
+            qna = QnaRepository.objects.select_related('concept').\
+                values('question', 'concept', 'doubt', 'concept__concept_level').\
+                filter(question=QuestionBank.objects.get(id=question_id))
+
+            con = Concept.objects.prefetch_related('userconceptscore_set').\
+                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=5)
+
+            qna_ucs = qna.filter(concept__in=con, concept__concept_level__gte=0)
+
+            conlevelmin = qna_ucs.aggregate(Min('concept__concept_level'))['concept__concept_level__min']
+            qna_min = qna_ucs.get(concept__concept_level=conlevelmin)
+
+            answer = qna_min['doubt']
+
+        else:
+
+            question_dict = self.get_dic(question_id)
+            answer = self.model(question_dict, user_query)
+
+            if answer == "Sorry! I couldn't understand. Please be more specific.":
+                return answer
+
+            if int(question_id) < 0:
+                return answer
+
+            concept = QnaRepository.objects.filter(answer=answer)[0].concept
+            userconcept = UserConceptScore.objects.get(user=request.user, concept=concept)
+            userconcept.asked += 1
+            userconcept.save()
+
+            conlevel = Concept.objects.get(concept = concept).concept_level
+
+            qna = QnaRepository.objects.select_related('concept'). \
+                values('question', 'concept', 'doubt', 'concept__concept_level'). \
+                filter(question=QuestionBank.objects.get(id=question_id))
+
+            con = Concept.objects.prefetch_related('userconceptscore_set'). \
+                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=5)
+
+            qna_ucs = qna.filter(concept__in=con)
+
+            conlevelmax = qna_ucs.aggregate(Max('concept__concept_level'))['concept__concept_level__max']
+
+            print "conlevel, conlevelmax", conlevel, conlevelmax
+
+            if conlevelmax is None:
+                return answer
+
+            for i in range(conlevel+1, conlevelmax+1):
+
+                for j in range(len(qna_ucs)):
+
+                    if i == qna_ucs[j]['concept__concept_level']:
+
+                        bot_suggestion = "<br><br>You can also ask:<br><br><a href='#' onclick='clickfunc(this)'>" +\
+                                         qna_ucs[j]['doubt'] + "</a>"
+
+                        answer += bot_suggestion
+
+                        return answer
+
+            bot_suggestion = "<br><br>You can also ask:<br><br>" + \
+                             "Please tell me the <a href='#' onclick='clickfunc(this)'>solution</a>."
+
+            answer += bot_suggestion
 
         return answer
 
