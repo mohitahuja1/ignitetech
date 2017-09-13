@@ -37,13 +37,9 @@
             <div class="card-group">
                     <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Hi Elnora,</h1>
-                            <p class="card-text">You will be able to practice taking tests here.</p>
-                            <p class="card-text">We cover the subjects of probability for the international Baccalauraete(IB) Board</p>
-                            <p class="card-text">In case you are stuck on a question, feel free to ask the bot for "HINTS"</p>
-                            <p class="card-text">At the end of test, you will be provided with a detailed analysis of your performance.</p>
-                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
-                                <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Adaptive Test</a>
+                            <h1 class="card-title hi">Please upload a new question that you would like answered.</h1>
+                            <h1 class="card-title hi">You can also write or paste the question in the chat window.</h1>
+                            <h1 class="card-title hi">Our bot @prof will come back with an answer in the next one hour.</h1>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -67,33 +63,8 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me a new question!</span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Here are a few options:</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Where can I find past exam papers?</a>
-                                            </span>
-                                        </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">

@@ -56,6 +56,15 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+def past(request):
+
+    return render(request, 'past.html')
+
+def ask(request):
+
+    return render(request, 'ask.html')
+
+
 def index(request):
 
     if UserConceptScore.objects.filter(user=request.user).count() == 0:
