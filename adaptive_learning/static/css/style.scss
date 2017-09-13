@@ -55,9 +55,9 @@ body {
         }
     }
     .fixed_scrollable_area {
-        height: 500px;
+        height: 490px;
         overflow-y: auto;
-        margin-bottom: 28px;
+        margin-bottom: 51px;
     }
 }
 .prof_chat {
@@ -70,6 +70,7 @@ body {
     display: inline-block;
 }
 .message-box {
+    margin-top: 10px;
     p {
         text-align: right;
     }
