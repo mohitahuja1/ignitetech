@@ -34,7 +34,7 @@ body {
 .chat-bot .card-header .card-block {
   padding: 0; }
 .chat-bot .fixed_scrollable_area {
-  height: 490px;
+  height: 460px;
   overflow-y: auto;
   margin-bottom: 51px; }
 
@@ -46,6 +46,18 @@ body {
   font-size: 0.75rem;
   border-top-left-radius: 0px;
   display: inline-block; }
+  .prof_chat a {
+    border-bottom: 1px dotted;
+    color: #2bfff8;
+    font-weight: 500;
+    display: inline-block;
+    margin: 0.2rem 0;
+    transition: all 0.2s ease; }
+    .prof_chat a:hover {
+      text-decoration: none;
+      border-bottom: 1px solid;
+      transition: all 0.2s ease;
+      color: #ffffff; }
 
 .message-box {
   margin-top: 10px; }
@@ -71,5 +83,9 @@ body {
     color: #308ded;
     font-size: 0.75rem;
     text-decoration: none; }
+
+.bmd-form-group {
+  padding: 0;
+  display: flex; }
 
 /*# sourceMappingURL=output.css.map */
