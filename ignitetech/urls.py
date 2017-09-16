@@ -28,7 +28,6 @@ urlpatterns = [
     url(r'^test/', include('adaptive_learning.urls')),
     url(r'^chat/', include('chatbot.urls')),
     url(r'^past/$', core_views.past, name='past'),
-    url(r'^past/(?P<questionid>[0-9]+)/$', core_views.details, name='details'),
     url(r'^ask/$', core_views.ask, name='ask')
 ]
 
