@@ -9,6 +9,12 @@ body {
     font: $font-stack;
   }
 /* Customization of Material Design */
+.custom-file-control, .form-control, .is-focused .custom-file-control, .is-focused .form-control {
+    background-image: -webkit-linear-gradient(bottom,#318ded 2px,rgba(0,150,136,0) 0),-webkit-linear-gradient(bottom,rgba(0,0,0,.26) 1px,transparent 0);
+    background-image: linear-gradient(0deg,#318ded 2px,rgba(0,150,136,0) 0),linear-gradient(0deg,rgba(0,0,0,.26) 1px,transparent 0);
+}
+
+
 .card-footer .custom-file-control, .card-footer .form-control, .card-footer .is-focused .custom-file-control, .card-footer .is-focused .form-control {
     background-image: none;
 }
