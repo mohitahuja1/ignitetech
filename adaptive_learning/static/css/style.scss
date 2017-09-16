@@ -60,6 +60,10 @@ a {
     }
 }
 
+.scroll_div {
+    max-height: 584px;
+    overflow-y: auto; 
+}
 /* Customization of chat bot */
 .card{
     .card-header {
@@ -170,4 +174,10 @@ a {
 .bmd-form-group {
     padding: 0;
     display: flex;
+}
+
+.left_card {
+    li {
+        line-height: 2;
+    }
 }

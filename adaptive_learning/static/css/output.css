@@ -38,6 +38,10 @@ a {
   background-color: #2371c3;
   border-color: #2371c3; }
 
+.scroll_div {
+  max-height: 584px;
+  overflow-y: auto; }
+
 /* Customization of chat bot */
 .card .card-header {
   background-color: #D8EBFA;
@@ -125,5 +129,8 @@ a {
 .bmd-form-group {
   padding: 0;
   display: flex; }
+
+.left_card li {
+  line-height: 2; }
 
 /*# sourceMappingURL=output.css.map */
