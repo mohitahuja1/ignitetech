@@ -56,13 +56,9 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
-def past(request):
+def home(request):
 
-    return render(request, 'past.html')
-
-def ask(request):
-
-    return render(request, 'ask.html')
+    return render(request, 'home.html')
 
 
 def index(request):
@@ -172,4 +168,17 @@ def result(request):
     return render(request, "analysis.html", {'result': request.session['result']})
 
 
+def past(request):
+
+    return render(request, 'past.html')
+
+
+def ask(request):
+
+    return render(request, 'ask.html')
+
+
+def admit(request):
+
+    return render(request, 'admit.html')
 

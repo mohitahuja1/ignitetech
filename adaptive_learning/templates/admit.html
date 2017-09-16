@@ -1,0 +1,162 @@
+
+
+{% extends 'base.html' %}
+
+{% block head %}
+<head>
+    <title>IgniteTech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/output.css">
+
+</head>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="background-fixed">
+        <div class="background-color"></div>
+        <div class="arrow"> 
+            <img src="/static/images/triangle.svg" alt="">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="bmd-layout-content">
+        <div class="container">
+            <div class="card-group">
+                    <div class="card">
+                        <div class="card-block">
+                            <h1 class="card-title hi">Please upload a new question that you would like answered.</h1>
+                            <h1 class="card-title hi">You can also write or paste the question in the chat window.</h1>
+                            <h1 class="card-title hi">Our bot @prof will come back with the solution in the next one hour.</h1>
+                            <h1 class="card-title hi">You can also choose to speak to a live instructor by clicking on the call icon.</h1>
+
+                        </div>
+                    </div>
+                    <div class="card chat-bot">
+                        <div class="">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <div class="row">
+                                                    <span class="circle_prof"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 prof_status">
+                                                <h4 class="card-title">Prof</h4>
+                                                <h6 class="card-subtitle online">Online</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id = "container" class="fixed_scrollable_area card-block">
+                                <p class="card-text">
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me a new question!</span>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                    <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+        </div>
+    </main>
+    <!-- Main Content Ends -->
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
+<script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+<script>
+    $('body').bootstrapMaterialDesign();
+</script>
+
+<script type="text/javascript">
+    var path = ""+window.location.pathname;
+    var question_id = path.slice(6, -1);
+
+    function write_bot_msg(message){
+
+        var prevState = $("#container").html();
+        $("#container").html(prevState + '<div class="message-box">' +
+        '<p class="timestamp text-left text-muted">@prof</p>' +
+        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+    }
+
+    function write_user_msg(newMessage){
+
+        var prevState = $("#container").html();
+        $("#container").html(prevState + '<div class="message-box self">' +
+        '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
+        if (question_id == "") {
+            question_id = -1;
+        }
+        ajaxCall(newMessage,question_id);
+    }
+
+    function clickfunc(obj) {
+
+        var t = $(obj).text();
+        write_user_msg(t);
+
+    }
+
+    $(function(){
+
+        $("#textbox").keypress(function(event){
+            if (event.which == 13){
+                write_user_msg($("#textbox").val())
+                $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
+            }
+
+        });
+
+    });
+
+    $( function() {
+        var localList = {{ qlist|safe }};
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
+    });
+
+    function ajaxCall(user_question,question_id) {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/chat/response/",
+            data: {"question": user_question, "question_id": question_id},
+            success: callbackFunc
+        });
+    }
+
+    function callbackFunc(response) {
+        write_bot_msg(response);
+        $("#container").scrollTop($("#container").prop("scrollHeight"));
+    }
+
+</script>
+
+{% endblock %}

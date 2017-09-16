@@ -25,10 +25,12 @@ urlpatterns = [
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'login.html'}, name='logout'),
+    url(r'^home/$', core_views.home, name='home'),
     url(r'^test/', include('adaptive_learning.urls')),
     url(r'^chat/', include('chatbot.urls')),
     url(r'^past/$', core_views.past, name='past'),
-    url(r'^ask/$', core_views.ask, name='ask')
+    url(r'^ask/$', core_views.ask, name='ask'),
+    url(r'^admit/$', core_views.admit, name='admit'),
 ]
 
 if settings.DEBUG:
