@@ -61,6 +61,11 @@ def home(request):
     return render(request, 'home.html')
 
 
+def revise(request):
+
+    return render(request, 'revise.html')
+
+
 def index(request):
 
     if UserConceptScore.objects.filter(user=request.user).count() == 0:
@@ -165,7 +170,7 @@ def check(request, questionid):
 
 def result(request):
 
-    return render(request, "analysis.html", {'result': request.session['result']})
+    return render(request, "result.html", {'result': request.session['result']})
 
 
 def past(request):
