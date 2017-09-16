@@ -37,13 +37,19 @@
             <div class="card-group">
                     <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Hi Mohit,</h1>
-                            <p class="card-text">You will be able to practice taking tests here.</p>
-                            <p class="card-text">We cover the subjects of probability for the international Baccalauraete(IB) Board</p>
-                            <p class="card-text">In case you are stuck on a question, feel free to ask the bot for "HINTS"</p>
-                            <p class="card-text">At the end of test, you will be provided with a detailed analysis of your performance.</p>
-                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
-                                <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Adaptive Test</a>
+                            <h1 class="card-title hi">Probability - Math SL</h1>
+                                <ul>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Experimental Probability </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sample Space </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Theoretical Probability </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tables of Outcome </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Compound Events </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tree Diagrams </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sampling with and without replacement </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sets and Venn Diagrams </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Laws of Probability </a></p></li>
+                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Independent Events </a></p></li>
+                                </ul>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -67,33 +73,8 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                   <span class="prof_chat">Hi, please select one of the concepts on the left to revise!</span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Here are a few options:</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Where can I find past exam papers?</a>
-                                            </span>
-                                        </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
@@ -124,8 +105,9 @@
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="prof_chat">' +
-        '<p>' + message + '</p>' + '</div>');
+        $("#container").html(prevState + '<div class="message-box">' +
+        '<p class="timestamp text-left text-muted">@prof</p>' +
+        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
     }
 
     function write_user_msg(newMessage){
@@ -134,9 +116,7 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-        if (question_id == "") {
-            question_id = -1;
-        }
+        question_id = -1;
         ajaxCall(newMessage,question_id);
     }
 
@@ -153,21 +133,10 @@
             if (event.which == 13){
                 write_user_msg($("#textbox").val())
                 $("#textbox").val("");
-                $("#textbox").autocomplete( "close" );
             }
 
         });
 
-    });
-
-    $( function() {
-        var localList = {{ qlist|safe }};
-
-        $( "#textbox" ).autocomplete({
-            minLength: 1,
-            delay: 0,
-            source: localList
-        });
     });
 
     function ajaxCall(user_question,question_id) {

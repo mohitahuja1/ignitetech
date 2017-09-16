@@ -78,7 +78,7 @@ class ChatBot:
                 filter(question=QuestionBank.objects.get(id=question_id))
 
             con = Concept.objects.prefetch_related('userconceptscore_set').\
-                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=5)
+                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=50)
 
             qna_ucs = qna.filter(concept__in=con, concept__concept_level__gte=0)
 
@@ -110,7 +110,7 @@ class ChatBot:
                 filter(question=QuestionBank.objects.get(id=question_id))
 
             con = Concept.objects.prefetch_related('userconceptscore_set'). \
-                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=5)
+                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=50)
 
             qna_ucs = qna.filter(concept__in=con)
 

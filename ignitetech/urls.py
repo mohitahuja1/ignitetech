@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'login.html'}, name='logout'),
     url(r'^home/$', core_views.home, name='home'),
+    url(r'^revise/$', core_views.revise, name='revise'),
     url(r'^test/', include('adaptive_learning.urls')),
     url(r'^chat/', include('chatbot.urls')),
     url(r'^past/$', core_views.past, name='past'),
