@@ -123,9 +123,8 @@
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box">' +
-        '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+        $("#container").html(prevState + '<div class="prof_chat">' +
+        '<p>' + message + '</p>' + '</div>');
     }
 
     function write_user_msg(newMessage){

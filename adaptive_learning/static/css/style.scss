@@ -55,9 +55,9 @@ body {
         }
     }
     .fixed_scrollable_area {
-        height: 500px;
+        height: 460px;
         overflow-y: auto;
-        margin-bottom: 28px;
+        margin-bottom: 51px;
     }
 }
 .prof_chat {
@@ -68,8 +68,23 @@ body {
     font-size: $standard-font-size;
     border-top-left-radius: 0px;
     display: inline-block;
+    a {
+        border-bottom: 1px dotted;
+        color: #2bfff8;
+        font-weight: 500;
+        display: inline-block;
+        margin: 0.2rem 0;
+        transition: all 0.2s ease;
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px solid;
+            transition: all 0.2s ease;
+            color: #ffffff;
+        }
+    }
 }
 .message-box {
+    margin-top: 10px;
     p {
         text-align: right;
     }
@@ -99,4 +114,8 @@ body {
             }
         }
     }
+}
+.bmd-form-group {
+    padding: 0;
+    display: flex;
 }

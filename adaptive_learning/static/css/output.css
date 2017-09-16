@@ -34,9 +34,9 @@ body {
 .chat-bot .card-header .card-block {
   padding: 0; }
 .chat-bot .fixed_scrollable_area {
-  height: 500px;
+  height: 460px;
   overflow-y: auto;
-  margin-bottom: 28px; }
+  margin-bottom: 51px; }
 
 .prof_chat {
   padding: 10px 20px;
@@ -46,18 +46,32 @@ body {
   font-size: 0.75rem;
   border-top-left-radius: 0px;
   display: inline-block; }
+  .prof_chat a {
+    border-bottom: 1px dotted;
+    color: #2bfff8;
+    font-weight: 500;
+    display: inline-block;
+    margin: 0.2rem 0;
+    transition: all 0.2s ease; }
+    .prof_chat a:hover {
+      text-decoration: none;
+      border-bottom: 1px solid;
+      transition: all 0.2s ease;
+      color: #ffffff; }
 
-.message-box p {
-  text-align: right; }
-.message-box .user_chat {
-  padding: 10px 20px;
-  background-color: #5bb3d5;
-  color: #ffffff;
-  border-radius: 25px;
-  font-size: 0.75rem;
-  border-top-right-radius: 0px;
-  text-align: left;
-  display: inline-block; }
+.message-box {
+  margin-top: 10px; }
+  .message-box p {
+    text-align: right; }
+  .message-box .user_chat {
+    padding: 10px 20px;
+    background-color: #5bb3d5;
+    color: #ffffff;
+    border-radius: 25px;
+    font-size: 0.75rem;
+    border-top-right-radius: 0px;
+    text-align: left;
+    display: inline-block; }
 
 .list-group-flush .list-group-item .select_answer {
   color: #000;
@@ -69,5 +83,9 @@ body {
     color: #308ded;
     font-size: 0.75rem;
     text-decoration: none; }
+
+.bmd-form-group {
+  padding: 0;
+  display: flex; }
 
 /*# sourceMappingURL=output.css.map */
