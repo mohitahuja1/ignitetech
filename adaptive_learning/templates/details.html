@@ -139,18 +139,19 @@
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box">' +
-        '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+        $("#container").html(prevState + '<div class="prof_chat">' +
+        '<p>' + message + '</p>' + '</div>');
     }
 
     function write_user_msg(newMessage){
 
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="message-box self">' +
-        '<p class="timestamp text-muted">@user</p>' +
-        '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+        '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
+        if (question_id == "") {
+            question_id = -1;
+        }
         ajaxCall(newMessage,question_id);
     }
 
@@ -184,7 +185,7 @@
         });
     });
 
-    function ajaxCall(user_question, question_id) {
+    function ajaxCall(user_question,question_id) {
         $.ajax({
             type: "GET",
             url: "http://127.0.0.1:8000/chat/response/",

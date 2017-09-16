@@ -13,6 +13,23 @@ body {
     background-image: none;
 }
 
+.btn-primary {
+    margin : 1rem 0;
+}
+a {
+    color: #318ded;
+    border-bottom: 1px dotted;
+    transition: border-bottom 0.2s ease;
+    font-weight: 500;
+
+    &:hover {
+        color: #318ded;
+        border-bottom: 1px solid;
+        text-decoration: none;
+        font-weight: 500;
+        transition: border-bottom 0.2s ease;
+    }
+}
 /* Customization of chat bot */
 .card{
     .card-header {
@@ -104,13 +121,18 @@ body {
         .select_answer {
             color: #000;
             display: inline-block;
-            border: 1px solid #308ded;
+            border: 1px solid #add5ff;
             border-radius: 25px;
-            padding: 0.5em 0.7rem;
+            margin-right: 0;
             a {
                 color: #308ded;
                 font-size: 0.75rem;
                 text-decoration: none;
+                border-bottom: none;
+                display: block;
+                padding: 0.6em 1rem;
+                margin-right: 0;
+                font-weight: 500;
             }
         }
     }
