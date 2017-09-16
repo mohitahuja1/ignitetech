@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f37c2f-8cc0-46a9-8017-48ed9b4a56ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/base.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/admit.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/admit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/ask.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/ask.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/details.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/details.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/home.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/index.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/past.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/past.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,21 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="169" column="7" lean-forward="true" selection-start-line="169" selection-start-column="7" selection-end-line="169" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="168" column="18" lean-forward="true" selection-start-line="168" selection-start-column="18" selection-end-line="168" selection-end-column="18" />
+            <state relative-caret-position="228">
+              <caret line="167" column="36" lean-forward="false" selection-start-line="167" selection-start-column="36" selection-end-line="167" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -61,8 +55,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>image</find>
-      <find>other_time</find>
       <find>correct_time</find>
       <find>{this_</find>
       <find>for</find>
@@ -90,7 +82,9 @@
       <find>clickfunc</find>
       <find>clickfu</find>
       <find>write_user_msg</find>
+      <find>local</find>
       <find>jquery</find>
+      <find>.js</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,16 +112,17 @@
         <option value="$PROJECT_DIR$/adaptive_learning/urls.py" />
         <option value="$PROJECT_DIR$/chatbot/views.py" />
         <option value="$PROJECT_DIR$/adaptive_learning/al.py" />
-        <option value="$PROJECT_DIR$/adaptive_learning/templates/details.html" />
         <option value="$PROJECT_DIR$/chatbot/chat_bot.py" />
-        <option value="$PROJECT_DIR$/adaptive_learning/templates/index.html" />
-        <option value="$PROJECT_DIR$/adaptive_learning/templates/past.html" />
         <option value="$PROJECT_DIR$/adaptive_learning/templates/temp.html" />
-        <option value="$PROJECT_DIR$/adaptive_learning/templates/ask.html" />
         <option value="$PROJECT_DIR$/ignitetech/urls.py" />
         <option value="$PROJECT_DIR$/adaptive_learning/views.py" />
         <option value="$PROJECT_DIR$/adaptive_learning/templates/base.html" />
         <option value="$PROJECT_DIR$/adaptive_learning/templates/home.html" />
+        <option value="$PROJECT_DIR$/adaptive_learning/templates/index.html" />
+        <option value="$PROJECT_DIR$/adaptive_learning/templates/details.html" />
+        <option value="$PROJECT_DIR$/adaptive_learning/templates/ask.html" />
+        <option value="$PROJECT_DIR$/adaptive_learning/templates/admit.html" />
+        <option value="$PROJECT_DIR$/adaptive_learning/templates/past.html" />
       </list>
     </option>
   </component>
@@ -450,13 +445,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/util.py" />
-    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="40" column="30" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../previous code/util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
@@ -673,22 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="85" column="64" lean-forward="false" selection-start-line="85" selection-start-column="60" selection-end-line="85" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/admit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ignitetech/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -696,22 +668,6 @@
           <folding>
             <element signature="e#644#685#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/ask.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/past.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="85" column="45" lean-forward="true" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -735,24 +691,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="31" column="77" lean-forward="true" selection-start-line="31" selection-start-column="77" selection-end-line="31" selection-end-column="77" />
+        <state relative-caret-position="345">
+          <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="125" column="70" lean-forward="false" selection-start-line="125" selection-start-column="70" selection-end-line="125" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="169" column="7" lean-forward="true" selection-start-line="169" selection-start-column="7" selection-end-line="169" selection-end-column="7" />
+        <state relative-caret-position="222">
+          <caret line="111" column="78" lean-forward="false" selection-start-line="111" selection-start-column="78" selection-end-line="111" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/ask.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="83" column="70" lean-forward="false" selection-start-line="83" selection-start-column="70" selection-end-line="83" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="50" column="18" lean-forward="true" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/admit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="83" column="70" lean-forward="false" selection-start-line="83" selection-start-column="70" selection-end-line="83" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/past.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="111" column="70" lean-forward="false" selection-start-line="111" selection-start-column="70" selection-end-line="111" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="168" column="18" lean-forward="true" selection-start-line="168" selection-start-column="18" selection-end-line="168" selection-end-column="18" />
+        <state relative-caret-position="228">
+          <caret line="167" column="36" lean-forward="false" selection-start-line="167" selection-start-column="36" selection-end-line="167" selection-end-column="36" />
           <folding />
         </state>
       </provider>
