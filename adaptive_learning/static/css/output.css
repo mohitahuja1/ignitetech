@@ -67,6 +67,18 @@ a {
   position: absolute;
   width: 100%;
   bottom: 0; }
+.card .correct_answer {
+  padding: 1rem;
+  background-color: #e6f9db;
+  font-size: 0.75rem; }
+.card .success_text {
+  color: #3aab3a; }
+.card .wrong_answer {
+  font-size: 0.75rem;
+  padding: 1rem;
+  background-color: #ffebeb; }
+.card .error_text {
+  color: #f12828; }
 
 .chat-bot .card-header .card-block {
   padding: 0; }
@@ -132,5 +144,22 @@ a {
 
 .left_card li {
   line-height: 2; }
+
+.result_table table {
+  width: 100%; }
+  .result_table table thead {
+    text-transform: capitalize; }
+    .result_table table thead tr {
+      text-align: right;
+      background-color: #318ded;
+      color: #fff; }
+  .result_table table th {
+    padding: 10px;
+    border: 0;
+    text-align: center; }
+  .result_table table tbody {
+    text-align: center; }
+    .result_table table tbody td {
+      border: 0; }
 
 /*# sourceMappingURL=output.css.map */

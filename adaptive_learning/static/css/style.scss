@@ -5,6 +5,9 @@ $light-blue: #D8EBFA;
 $green : #2eb946;
 $white : #fff;
 $standard-font-size : 0.75rem;
+$error_bg_color : #ffebeb;
+$error_text_color : #f12828;
+$success_text_color: #3aab3a;
 body {
     font: $font-stack;
   }
@@ -97,6 +100,25 @@ a {
         width: 100%;
         bottom: 0;
     }
+
+    .correct_answer {
+        padding: 1rem;
+        background-color: #e6f9db;
+        font-size: $standard-font-size;
+    }
+    .success_text {
+        color: $success_text_color;
+    }
+
+    .wrong_answer {
+        font-size: $standard-font-size;
+        padding: 1rem;
+        background-color: $error_bg_color;
+    }
+    .error_text {
+        color: $error_text_color;
+    }
+
 } 
 
 .chat-bot {
@@ -181,3 +203,34 @@ a {
         line-height: 2;
     }
 }
+.result_table {
+    table {
+        width: 100%;
+        thead {
+            text-transform: capitalize;
+            tr {
+                text-align: right;
+                background-color: #318ded;
+                color: #fff;
+            }
+        }
+        th {
+            padding: 10px;
+            border: 0;
+            text-align: center;
+        }
+        tbody {
+            text-align: center;
+            td {
+                border:0;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
