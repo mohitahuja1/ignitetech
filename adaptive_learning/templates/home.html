@@ -37,12 +37,20 @@
             <div class="card-group">
                     <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Hi Elnora,</h1>
-                            <p class="card-text">You will be able to practice taking tests here.</p>
-                            <p class="card-text">We cover the subjects of probability for the international Baccalauraete(IB) Board</p>
-                            <p class="card-text">In case you are stuck on a question, feel free to ask the bot for "HINTS"</p>
-                            <p class="card-text">At the end of test, you will be provided with a detailed analysis of your performance.</p>
+                            <h1 class="card-title hi">Hi Mohit,</h1>
+                            <p class="card-text"><b>Welcome to Ignite Tech!</b></p>
+                            <p class="card-text">Our chat bot <b>Prof</b> will help you to:</p>
+                                <ul>
+                                    <li><p class="card-text">Revise key concepts</p></li>
+                                    <li><p class="card-text">Take practice tests</p></li>
+                                    <li><p class="card-text">Analyze your results</p></li>
+                                    <li><p class="card-text">Solve past paper questions</p></li>
+                                    <li><p class="card-text">Connect with our live team</p></li>
+                                    <li><p class="card-text">Help with your university admissions</p></li>
+                                </ul>
+                            <p class="card-text">Start your chat with <b>Prof</b> now!</p>
                             <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
+
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -66,30 +74,25 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. I'd like to know a few things about you.</span>
                                 </p>
                                 <p class="card-text">
-                                    <span class="prof_chat">Here are a few options:</span>
+                                    <span class="prof_chat">Which board are you studying in?</span>
                                 </p>
                                 <ul class="list-group list-group-flush select_options">
+                                        </li>
                                         <li class="list-group-item">
                                             <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
+                                                <a href='#' onclick='clickfunc(this)'>IGCSE</a>
                                             </span>
                                         </li>
                                         <li class="list-group-item">
                                             <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
+                                                <a href='#' onclick='clickfunc(this)'>A-Levels</a>
                                             </span>
-                                        </li>
                                         <li class="list-group-item">
                                             <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Where can I find past exam papers?</a>
+                                                <a href='#' onclick='clickfunc(this)'>Internatiional Baccaulerate (IB)</a>
                                             </span>
                                         </li>
                                 </ul>
@@ -135,7 +138,8 @@
         $("#container").scrollTop($("#container").prop("scrollHeight"));
         if (question_id == "") {
             question_id = -1;
-        }
+        }ƒclick
+
         ajaxCall(newMessage,question_id);
     }
 
