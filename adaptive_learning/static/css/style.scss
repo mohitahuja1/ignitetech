@@ -10,8 +10,8 @@ body {
   }
 /* Customization of Material Design */
 .custom-file-control, .form-control, .is-focused .custom-file-control, .is-focused .form-control {
-    background-image: -webkit-linear-gradient(bottom,#318ded 2px,rgba(0,150,136,0) 0),-webkit-linear-gradient(bottom,rgba(0,0,0,.26) 1px,transparent 0);
-    background-image: linear-gradient(0deg,#318ded 2px,rgba(0,150,136,0) 0),linear-gradient(0deg,rgba(0,0,0,.26) 1px,transparent 0);
+    background-image: -webkit-linear-gradient(bottom,$material-blue 2px,rgba(0,150,136,0) 0),-webkit-linear-gradient(bottom,rgba(0,0,0,.26) 1px,transparent 0);
+    background-image: linear-gradient(0deg,$material-blue 2px,rgba(0,150,136,0) 0),linear-gradient(0deg,rgba(0,0,0,.26) 1px,transparent 0);
 }
 
 
@@ -23,13 +23,13 @@ body {
     margin : 1rem 0;
 }
 a {
-    color: #318ded;
+    color: $material-blue;
     border-bottom: 1px dotted;
     transition: border-bottom 0.2s ease;
     font-weight: 500;
 
     &:hover {
-        color: #318ded;
+        color: $material-blue;
         border-bottom: 1px solid;
         text-decoration: none;
         font-weight: 500;
@@ -52,7 +52,14 @@ a {
             color: #fff;
         }
     }
+    .list-group-item {
+        &.active {
+           background-color: #2371c3;
+            border-color: #2371c3; 
+        }
+    }
 }
+
 /* Customization of chat bot */
 .card{
     .card-header {

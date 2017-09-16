@@ -42,13 +42,13 @@
         </a>
 
         <ul class="list-group nav-menu">
-            <a href="{% url 'home'%}" class="list-group-item"><img src="/static/images/home.svg" class="img-responsive" alt="logo">ignite home</a>
-            <a href="{% url 'revise'%}" class="list-group-item"><img src="/static/images/home.svg" class="img-responsive" alt="logo">revise concepts</a>
-            <a href="{% url 'index'%}" class="list-group-item"><img src="/static/images/home.svg" class="img-responsive" alt="logo">practice tests</a>
-            <a href="#" class="list-group-item"><img class="custom_width_tests" src="/static/images/tests.svg" class="img-responsive" alt="logo">analyze results</a>
-            <a href="{% url 'past'%}" class="list-group-item"><img class="custom_width_questions" src="/static/images/questions.svg" class="img-responsive" alt="logo">past papers</a>
-            <a href="{% url 'ask'%}" class="list-group-item"><img src="/static/images/forum.svg" class="img-responsive" alt="logo">ask ignite</a>
-            <a href="{% url 'admit'%}" class="list-group-item"><img src="/static/images/forum.svg" class="img-responsive" alt="logo">uni admissions</a>
+            <a href="{% url 'home'%}" class="list-group-item"><img src="/static/images/home.svg" class="img-responsive" alt="logo">Home</a>
+            <a href="{% url 'revise'%}" class="list-group-item"><img src="/static/images/revise.svg" class="img-responsive" alt="logo">Revise Concepts</a>
+            <a href="{% url 'index'%}" class="list-group-item"><img src="/static/images/practice.svg" class="img-responsive" alt="logo">Practice Tests</a>
+            <a href="#" class="list-group-item"><img class="custom_width_tests" src="/static/images/analyze.svg" class="img-responsive" alt="logo">Analyze Results</a>
+            <a href="{% url 'past'%}" class="list-group-item"><img class="custom_width_questions" src="/static/images/past_papers.svg" class="img-responsive" alt="logo">Past Papers</a>
+            <a href="{% url 'ask'%}" class="list-group-item"><img src="/static/images/ask.svg" class="img-responsive" alt="logo">Ask Ignite</a>
+            <a href="{% url 'admit'%}" class="list-group-item"><img src="/static/images/admission.svg" class="img-responsive" alt="logo">Uni Admissions</a>
         </ul>
 
     </div>
@@ -58,6 +58,34 @@
     {% block body %}
     {% endblock %}
 
+<script>
+    $(document).ready(function(){
+
+        $('.nav-menu a.list-group-item').click(function(){
+           $(this).addClass('active');
+        });
+        /*menu handler*/
+          function stripTrailingSlash(str) {
+            if(str.substr(-1) == '/') {
+              return str.substr(0, str.length - 1);
+            }
+            return str;
+          }
+
+          var url = window.location.pathname;  
+          var activePage = stripTrailingSlash(url);
+
+          $('.nav-menu a.list-group-item').each(function(){  
+            var currentPage = stripTrailingSlash($(this).attr('href'));
+
+            if (activePage == currentPage) {
+              $(this).addClass('active'); 
+            } 
+          });
+    });
+</script>
+
 </body>
 
 </html>
+

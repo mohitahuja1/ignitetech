@@ -3,8 +3,8 @@ body {
 
 /* Customization of Material Design */
 .custom-file-control, .form-control, .is-focused .custom-file-control, .is-focused .form-control {
-  background-image: -webkit-linear-gradient(bottom, #318ded 2px, rgba(0, 150, 136, 0) 0), -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.26) 1px, transparent 0);
-  background-image: linear-gradient(0deg, #318ded 2px, rgba(0, 150, 136, 0) 0), linear-gradient(0deg, rgba(0, 0, 0, 0.26) 1px, transparent 0); }
+  background-image: -webkit-linear-gradient(bottom, #308ded 2px, rgba(0, 150, 136, 0) 0), -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.26) 1px, transparent 0);
+  background-image: linear-gradient(0deg, #308ded 2px, rgba(0, 150, 136, 0) 0), linear-gradient(0deg, rgba(0, 0, 0, 0.26) 1px, transparent 0); }
 
 .card-footer .custom-file-control, .card-footer .form-control, .card-footer .is-focused .custom-file-control, .card-footer .is-focused .form-control {
   background-image: none; }
@@ -13,12 +13,12 @@ body {
   margin: 1rem 0; }
 
 a {
-  color: #318ded;
+  color: #308ded;
   border-bottom: 1px dotted;
   transition: border-bottom 0.2s ease;
   font-weight: 500; }
   a:hover {
-    color: #318ded;
+    color: #308ded;
     border-bottom: 1px solid;
     text-decoration: none;
     font-weight: 500;
@@ -34,6 +34,9 @@ a {
   font-weight: 400; }
   .nav-menu a:hover {
     color: #fff; }
+.nav-menu .list-group-item.active {
+  background-color: #2371c3;
+  border-color: #2371c3; }
 
 /* Customization of chat bot */
 .card .card-header {
