@@ -37,7 +37,18 @@
             <div class="card-group">
                     <div class="card left_card scroll_div">
                         <div class="card-block">
-                            <h1 class="card-title hi">Test Complete!</h1>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                            <h1 class="card-title hi">Test Complete!</h1>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 back_button">
+                                        <a href="{% url 'index'%}" class="btn btn-info">Go Back To Practice Tests</a>
+                                    </div>
+                                </div>
+                            </div>
                             <p class="card-text">Consolidated results:</p>
                             <div class="result_table">
                                 {{result| safe}}

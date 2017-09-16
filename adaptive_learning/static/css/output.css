@@ -162,4 +162,18 @@ a {
     .result_table table tbody td {
       border: 0; }
 
+.back_button {
+  text-align: right; }
+  .back_button .btn-info {
+    color: white;
+    background-color: #383838;
+    margin-top: 2rem;
+    margin-bottom: 2rem; }
+    .back_button .btn-info:hover {
+      color: white;
+      background-color: #383838;
+      border-bottom: none;
+      box-shadow: 5px 6px 10px #d0d0d0;
+      transition: box-shadow 0.3s ease; }
+
 /*# sourceMappingURL=output.css.map */

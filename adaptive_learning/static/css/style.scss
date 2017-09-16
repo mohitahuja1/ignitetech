@@ -228,6 +228,24 @@ a {
     }
 }
 
+.back_button {
+    text-align: right;
+    .btn-info {
+        color: rgb(255, 255, 255);
+        background-color: rgb(56, 56, 56);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        &:hover {
+            color: white;
+            background-color: #383838;
+            border-bottom: none;
+            box-shadow: 5px 6px 10px #d0d0d0;
+            transition: box-shadow 0.3s ease;
+        }
+    }
+}
+
 
 
 
