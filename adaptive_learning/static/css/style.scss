@@ -36,6 +36,23 @@ a {
         transition: border-bottom 0.2s ease;
     }
 }
+
+.brand-logo {
+    border-bottom: none;
+    &:hover {
+        border-bottom: none;
+    }
+}
+
+.nav-menu {
+    a {
+        border-bottom: none;
+        font-weight: 400;
+        &:hover { 
+            color: #fff;
+        }
+    }
+}
 /* Customization of chat bot */
 .card{
     .card-header {

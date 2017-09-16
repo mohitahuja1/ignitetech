@@ -81,16 +81,9 @@ Custom Classes and styling
 .nav-menu a{
     color: #fff;
 }
-.nav-menu a img {
-    width: 1rem;
-}
-.nav-menu a img.custom_width_tests {
-    width: 0.7rem;
-    margin-right: 2.3rem;
-}
-.nav-menu a img.custom_width_questions {
-    width: 0.7rem;
-    margin-right: 2.3rem;
+.nav-menu a.list-group-item img {
+    width: 1.7rem;
+    margin-right: 1rem;
 }
 .nav-menu a:hover {
     text-decoration: none;
