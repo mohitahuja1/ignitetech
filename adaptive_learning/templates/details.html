@@ -45,26 +45,26 @@
                                 <div class="actions">
                                     <button class="btn btn-primary" >DONE</button>
                                 </div>
-                                <br>
-                                <p class="card-text">
-            
                                 {% if is_correct == 1%}
-                                    <font color="green"><b>Correct Answer!</b></font>
-                                    <br><br> Difficulty level: {{q_level}}
-                                    <br><br>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right
-                                    <br><br>Time taken by you: {{t|floatformat}} seconds
-                                    <br><br>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds
+                                <div class="card-text correct_answer">
+                                    <p class="success_text"><b>Correct Answer!</b></p>
+                                    <p>Difficulty level: {{q_level}}</p>
+                                    <p>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right</p>
+                                    <p>Time taken by you: {{t|floatformat}} seconds</p>
+                                    <p>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds</p>
+                                </div>
                                 {%endif%}
             
                                 {% if is_correct == 0%}
-                                    <font color="red"><b>Wrong Answer!</b></font>
-                                    <br><br> Difficulty level: {{q_level}}
-                                    <br><br>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right
-                                    <br><br>Time taken by you: {{t|floatformat}} seconds
-                                    <br><br>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds
+                                <div class="card-text wrong_answer">
+                                    <p class="error_text"><b>Wrong Answer!</b></p>
+                                    <p> Difficulty level: {{q_level}}</p>
+                                    <p>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right</p>
+                                    <p>Time taken by you: {{t|floatformat}} seconds</p>
+                                    <p>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds</p>
+                                </div>
                                 {%endif%}
-            
-                                <br><br>
+                                <br>
                                 {%if  next_id == -2 %}
                                     <h4>Your test is complete</h4>
                                     <a href="{% url 'result' %}" class="next">Results &raquo;</a>
@@ -139,18 +139,19 @@
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box">' +
-        '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+        $("#container").html(prevState + '<div class="prof_chat">' +
+        '<p>' + message + '</p>' + '</div>');
     }
 
     function write_user_msg(newMessage){
 
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="message-box self">' +
-        '<p class="timestamp text-muted">@user</p>' +
-        '<p class="text text-left text-muted">' + newMessage + '</p>' + '</div>');
+        '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
+        if (question_id == "") {
+            question_id = -1;
+        }
         ajaxCall(newMessage,question_id);
     }
 
@@ -184,7 +185,7 @@
         });
     });
 
-    function ajaxCall(user_question, question_id) {
+    function ajaxCall(user_question,question_id) {
         $.ajax({
             type: "GET",
             url: "http://127.0.0.1:8000/chat/response/",

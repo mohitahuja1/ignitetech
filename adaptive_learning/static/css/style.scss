@@ -5,14 +5,68 @@ $light-blue: #D8EBFA;
 $green : #2eb946;
 $white : #fff;
 $standard-font-size : 0.75rem;
+$error_bg_color : #ffebeb;
+$error_text_color : #f12828;
+$success_text_color: #3aab3a;
 body {
     font: $font-stack;
   }
 /* Customization of Material Design */
+.custom-file-control, .form-control, .is-focused .custom-file-control, .is-focused .form-control {
+    background-image: -webkit-linear-gradient(bottom,$material-blue 2px,rgba(0,150,136,0) 0),-webkit-linear-gradient(bottom,rgba(0,0,0,.26) 1px,transparent 0);
+    background-image: linear-gradient(0deg,$material-blue 2px,rgba(0,150,136,0) 0),linear-gradient(0deg,rgba(0,0,0,.26) 1px,transparent 0);
+}
+
+
 .card-footer .custom-file-control, .card-footer .form-control, .card-footer .is-focused .custom-file-control, .card-footer .is-focused .form-control {
     background-image: none;
 }
 
+.btn-primary {
+    margin : 1rem 0;
+}
+a {
+    color: $material-blue;
+    border-bottom: 1px dotted;
+    transition: border-bottom 0.2s ease;
+    font-weight: 500;
+
+    &:hover {
+        color: $material-blue;
+        border-bottom: 1px solid;
+        text-decoration: none;
+        font-weight: 500;
+        transition: border-bottom 0.2s ease;
+    }
+}
+
+.brand-logo {
+    border-bottom: none;
+    &:hover {
+        border-bottom: none;
+    }
+}
+
+.nav-menu {
+    a {
+        border-bottom: none;
+        font-weight: 400;
+        &:hover { 
+            color: #fff;
+        }
+    }
+    .list-group-item {
+        &.active {
+           background-color: #2371c3;
+            border-color: #2371c3; 
+        }
+    }
+}
+
+.scroll_div {
+    max-height: 584px;
+    overflow-y: auto; 
+}
 /* Customization of chat bot */
 .card{
     .card-header {
@@ -46,6 +100,25 @@ body {
         width: 100%;
         bottom: 0;
     }
+
+    .correct_answer {
+        padding: 1rem;
+        background-color: #e6f9db;
+        font-size: $standard-font-size;
+    }
+    .success_text {
+        color: $success_text_color;
+    }
+
+    .wrong_answer {
+        font-size: $standard-font-size;
+        padding: 1rem;
+        background-color: $error_bg_color;
+    }
+    .error_text {
+        color: $error_text_color;
+    }
+
 } 
 
 .chat-bot {
@@ -104,13 +177,18 @@ body {
         .select_answer {
             color: #000;
             display: inline-block;
-            border: 1px solid #308ded;
+            border: 1px solid #add5ff;
             border-radius: 25px;
-            padding: 0.5em 0.7rem;
+            margin-right: 0;
             a {
                 color: #308ded;
                 font-size: 0.75rem;
                 text-decoration: none;
+                border-bottom: none;
+                display: block;
+                padding: 0.6em 1rem;
+                margin-right: 0;
+                font-weight: 500;
             }
         }
     }
@@ -119,3 +197,58 @@ body {
     padding: 0;
     display: flex;
 }
+
+.left_card {
+    li {
+        line-height: 2;
+    }
+}
+.result_table {
+    table {
+        width: 100%;
+        thead {
+            text-transform: capitalize;
+            tr {
+                text-align: right;
+                background-color: #318ded;
+                color: #fff;
+            }
+        }
+        th {
+            padding: 10px;
+            border: 0;
+            text-align: center;
+        }
+        tbody {
+            text-align: center;
+            td {
+                border:0;
+            }
+        }
+    }
+}
+
+.back_button {
+    text-align: right;
+    .btn-info {
+        color: rgb(255, 255, 255);
+        background-color: rgb(56, 56, 56);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        &:hover {
+            color: white;
+            background-color: #383838;
+            border-bottom: none;
+            box-shadow: 5px 6px 10px #d0d0d0;
+            transition: box-shadow 0.3s ease;
+        }
+    }
+}
+
+
+
+
+
+
+
