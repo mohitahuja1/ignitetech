@@ -35,21 +35,25 @@
     <main class="bmd-layout-content">
         <div class="container">
             <div class="card-group">
-                    <div class="card left_card scroll_div">
+                    <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Probability - Math SL</h1>
-                                <ul>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sample Space </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Experimental Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Theoretical Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tables of Outcome </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Compound Events </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tree Diagrams </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sampling with and without replacement </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sets and Venn Diagrams </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Laws of Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Independent Events </a></p></li>
-                                </ul>
+                            <h5 class="card-text">Concept: </h5>
+                            <p class="card-text">Outcomes </p>
+                            <h5 class="card-text">Question:</h5>
+                            <p class="card-text">Find the number of <a href='#' onclick='clickfunc(this)'>outcomes</a> related to selecting a month ending in "y" in any given year</p>
+                            <h5 class="card-text">Your response:</h5>
+                            <p class="card-text">1 <font color = "red"> (Incorrect)</font> </p>
+                            <h5 class="card-text">Correct response: </h5>
+                            <p class="card-text">4 </p>
+                            <h5 class="card-text">Performance relative to others: </h5>
+                            <p class="card-text">8 out of 11 users got this right </p>
+                            <h5 class="card-text">Time taken by you: </h5>
+                            <p class="card-text">1.2 seconds </p>
+                            <h5 class="card-text">Time taken by users who got this right: </h5>
+                            <p class="card-text">3.5 seconds </p>
+                            <a href="#" class="btn btn-primary">&lt; Back to results</a>
+                            <a href="#" class="btn btn-primary">Next question &gt;</a>
+                            </form>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -73,8 +77,28 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, please select one of the concepts on the left to revise!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
                                 </p>
+                                <p class="card-text">
+                                    <span class="prof_chat">Here are a few options:</span>
+                                </p>
+                                <ul class="list-group list-group-flush select_options">
+                                    <li onclick='clickfunc(this)' class="list-group-item">
+                                        <span class="select_answer">
+                                                <a href='#'>Show me the solution.</a>
+                                        </span>
+                                    </li>
+                                    <li onclick='clickfunc(this)' class="list-group-item">
+                                        <span class="select_answer">
+                                                <a href='#'>Which concepts are involved in this problem?</a>
+                                        </span>
+                                    </li>
+                                    <li onclick='clickfunc(this)' class="list-group-item">
+                                        <span class="select_answer">
+                                                <a href='#'>Let me try a similar problem.</a>
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
@@ -132,10 +156,21 @@
             if (event.which == 13){
                 write_user_msg($("#textbox").val())
                 $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
             }
 
         });
 
+    });
+
+    $( function() {
+        var localList = None;
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
     });
 
     function ajaxCall(user_question,question_id) {
@@ -155,3 +190,8 @@
 </script>
 
 {% endblock %}
+
+
+</body>
+
+</html>

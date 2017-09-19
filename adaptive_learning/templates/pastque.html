@@ -35,21 +35,21 @@
     <main class="bmd-layout-content">
         <div class="container">
             <div class="card-group">
-                    <div class="card left_card scroll_div">
+                    <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Probability - Math SL</h1>
-                                <ul>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sample Space </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Experimental Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Theoretical Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tables of Outcome </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Compound Events </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tree Diagrams </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sampling with and without replacement </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sets and Venn Diagrams </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Laws of Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Independent Events </a></p></li>
-                                </ul>
+                            <h1 class="card-title hi">IB Math SL 2016<br><br>General Probability<br><br><br>Question 1</h1>
+                            <p class="card-text">Two students are
+                                <a href='#' onclick='clickfunc(this)'>selected at random</a>
+                                from a group of 3 boys and 5 girls. Find the probability that
+                                <a href='#' onclick='clickfunc(this)'>both students selected</a> are girls.</p>
+                            <br>
+                            <form action="#" >
+                                {% csrf_token %}
+                                <input type="text" name = "Answer" class="form-control" placeholder="Type your answer here">
+                                <div class="actions">
+                                    <button class="btn btn-primary" >DONE</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -73,8 +73,28 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, please select one of the concepts on the left to revise!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
                                 </p>
+                                <p class="card-text">
+                                    <span class="prof_chat">Here are a few options:</span>
+                                </p>
+                                <ul class="list-group list-group-flush select_options">
+                                    <li onclick='clickfunc(this)' class="list-group-item">
+                                        <span class="select_answer">
+                                                <a href='#'>What does selected at random mean?</a>
+                                        </span>
+                                    </li>
+                                    <li onclick='clickfunc(this)' class="list-group-item">
+                                        <span class="select_answer">
+                                                <a href='#'>Give me a hint</a>
+                                        </span>
+                                    </li>
+                                    <li onclick='clickfunc(this)' class="list-group-item">
+                                        <span class="select_answer">
+                                                <a href='#'>Show me the solution</a>
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
@@ -132,10 +152,21 @@
             if (event.which == 13){
                 write_user_msg($("#textbox").val())
                 $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
             }
 
         });
 
+    });
+
+    $( function() {
+        var localList = None;
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
     });
 
     function ajaxCall(user_question,question_id) {
@@ -155,3 +186,8 @@
 </script>
 
 {% endblock %}
+
+
+</body>
+
+</html>

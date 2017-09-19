@@ -173,9 +173,19 @@ def result(request):
     return render(request, "result.html", {'result': request.session['result']})
 
 
+def analysis(request):
+
+    return render(request, "analysis.html")
+
+
 def past(request):
 
     return render(request, 'past.html')
+
+
+def pastque(request):
+
+    return render(request, 'pastque.html')
 
 
 def ask(request):

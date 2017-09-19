@@ -46,7 +46,7 @@
                                     <li><p class="card-text"><a href="{% url 'result' %}"> Analyze your results </a></p></li>
                                     <li><p class="card-text"><a href="{% url 'past' %}"> Solve past paper questions </a></p></li>
                                     <li><p class="card-text"><a href="{% url 'ask' %}"> Connect with our live team </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'admit' %}"> Help with your university admissions </a></p></li>
+                                    <li><p class="card-text"><a href="{% url 'admit' %}"> Get help for university admissions </a></p></li>
                                 </ul>
                             <p class="card-text">Start your chat with <b>Prof</b> now!</p>
                             <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
@@ -92,7 +92,7 @@
                                             </span>
                                         <li class="list-group-item">
                                             <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Internatiional Baccaulerate (IB)</a>
+                                                <a href='#' onclick='clickfunc(this)'>International Baccaulerate (IB)</a>
                                             </span>
                                         </li>
                                 </ul>
@@ -126,9 +126,8 @@
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box">' +
-        '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+        $("#container").html(prevState + '<div class="prof_chat">' +
+        '<p>' + message + '</p>' + '</div>');
     }
 
     function write_user_msg(newMessage){
@@ -137,9 +136,7 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-        if (question_id == "") {
-            question_id = -1;
-        }
+        question_id = -1;
 
         ajaxCall(newMessage,question_id);
     }

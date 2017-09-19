@@ -93,9 +93,9 @@ class LearningNew:
 
         for e in range(request.session['distinct_levels']):
 
-            levels.append(e)
+            levels.append(e+1)
 
-        d1 = {'levels': levels, 'other_time': other_time, 'time_taken': time_taken}
+        d1 = {'level': levels, 'other_time': other_time, 'time_taken': time_taken}
 
         index = [i for i in range(request.session['distinct_levels'])]
 
@@ -122,9 +122,21 @@ class LearningNew:
         del df['time_taken']
         del df['other_time']
 
-        df['weak_concept'] = ['None']*request.session['distinct_levels']
+        df['primary_concept'] = ['Sample Space', 'Compound events', 'Outcomes', 'Theoretical probability',
+                                 'Sampling without replacement', 'Dependent events']
 
-        return df.to_html()
+        df2 = df[['level', 'primary_concept', 'attempts', 'corrects', 'accuracy', 'time_per_attempt',
+                  'other_time_per_attempt']]
+
+        with pd.option_context('display.max_colwidth', -1):
+            result = df2.to_html(escape=False, index=False, float_format=lambda x: '%10.2f' % x,
+                                 formatters=
+                                 {'primary_concept': '<a href = "http://127.0.0.1:8000/analysis">{:}</a>'.format,
+                                  'accuracy': '{:,.0%}'.format})
+
+        print result
+
+        return result
 
     #@staticmethod
     def create_session_vars(self, request):
@@ -144,8 +156,6 @@ class LearningNew:
 
         request.session['questions'] = temp2
 
-        print "test1"
-
         request.session['attempts'] = [0] * request.session['distinct_levels']
 
         request.session['corrects'] = [0] * request.session['distinct_levels']
@@ -156,6 +166,7 @@ class LearningNew:
         # 3 if questions completed with no correct answer
 
         request.session['level_cleared'] = [0] * request.session['distinct_levels']
+
 
     #@staticmethod
     def get_next_level(self, request, curr_level, is_correct):

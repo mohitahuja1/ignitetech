@@ -30,21 +30,59 @@
             <img src="/static/images/triangle.svg" alt="">
         </div>
     </div>
-
     <!-- Main Content -->
     <main class="bmd-layout-content">
         <div class="container">
             <div class="card-group">
                     <div class="card left_card scroll_div">
                         <div class="card-block">
-                            <h1 class="card-title hi">Please select a year</h1>
-                            <p class="card-text"><a href="#">2016</a></p>
-                            <p class="card-text"><a href="#">2015</a></p>
-                            <p class="card-text"><a href="#">2014</a></p>
-                            <p class="card-text"><a href="#">2013</a></p>
-                            <p class="card-text"><a href="#">2012</a></p>
-                            <p class="card-text"><a href="#">2011</a></p>
-                            <p class="card-text"><a href="#">2010</a></p>
+                            <h1 class="card-title hi">Please select your past paper questions below:</h1>
+                            <h5>
+                                Year:
+                                <select>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                </select><br><br><br>
+                                Board:
+                                <select>
+                                    <option value="IB">IB</option>
+                                    <option value="A-Level">A-Level</option>
+                                    <option value="IGCSE">IGCSE</option>
+                                    <option value="GCSE">GCSE</option>
+                                </select><br><br><br>
+                                Subject:
+                                <select>
+                                    <option value="Math SL">Math SL</option>
+                                    <option value="Math HL">Math HL</option>
+                                    <option value="Math Studies">Math Studies</option>
+                                </select><br><br><br>
+                                Topic:
+                                <select>
+                                    <option value="All">All</option>
+                                    <option value="Algebra">Algebra</option>
+                                    <option value="Functions and Equations">Functions and Equations</option>
+                                    <option value="Circular functions and trigonometry">Circular functions and trigonometry</option>
+                                    <option value="Vectors">Vectors</option>
+                                    <option value="Statistics">Statistics</option>
+                                    <option value="Probability">Probability</option>
+                                    <option value="Calculus">Calculus</option>
+                                </select><br><br><br>
+                                Sub-Topic:
+                                <select>
+                                    <option value="All">All</option>
+                                    <option value="General Probability">General Probability</option>
+                                    <option value="Probability Laws">Probability Laws</option>
+                                    <option value="Tree Diagrams">Tree Diagrams</option>
+                                    <option value="Venn Diagrams">Venn Diagrams</option>
+                                    <option value="Normal Distribution">Normal Distribution</option>
+                                    <option value="Binomial Distribution">Binomial Distribution</option>
+                                </select>
+                            </h5><br><br>
+                            <a href="{% url 'pastque' %}" class="btn btn-primary">Get past paper questions</a>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -76,22 +114,12 @@
                                 <ul class="list-group list-group-flush select_options">
                                         <li class="list-group-item">
                                             <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
+                                                <a href='#' onclick='clickfunc(this)'>How should I use the past papers section?</a>
                                             </span>
                                         </li>
                                         <li class="list-group-item">
                                             <span class="select_answer">
                                                 <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Where can I find past exam papers?</a>
                                             </span>
                                         </li>
                                 </ul>
