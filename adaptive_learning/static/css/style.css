@@ -254,7 +254,6 @@ Custom Classes and styling
 
 /* scroll results */
 .ui-autocomplete {
-    max-height: 80px;
     overflow-y: auto;
     /* prevent horizontal scrollbar */
     overflow-x: hidden;
