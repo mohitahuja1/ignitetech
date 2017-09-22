@@ -133,9 +133,6 @@ class LearningNew:
                                  formatters=
                                  {'primary_concept': '<a href = "http://127.0.0.1:8000/analysis">{:}</a>'.format,
                                   'accuracy': '{:,.0%}'.format})
-
-        print result
-
         return result
 
     #@staticmethod
