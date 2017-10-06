@@ -116,8 +116,6 @@ class ChatBot:
 
             conlevelmax = qna_ucs.aggregate(Max('concept__concept_level'))['concept__concept_level__max']
 
-            print "conlevel, conlevelmax", conlevel, conlevelmax
-
             if conlevelmax is None:
                 return answer
 
@@ -140,4 +138,3 @@ class ChatBot:
             answer += bot_suggestion
 
         return answer
-

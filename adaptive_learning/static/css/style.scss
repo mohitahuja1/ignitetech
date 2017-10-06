@@ -135,15 +135,16 @@ a {
 }
 .prof_chat {
     padding: 10px 20px;
-    background-color: $material-blue;
-    color: $white ;
+    background-color: #f2f2f2;
+    color: black ;
+    font-weight: 500;
     border-radius: 25px;
     font-size: $standard-font-size;
     border-top-left-radius: 0px;
     display: inline-block;
     a {
         border-bottom: 1px dotted;
-        color: #2bfff8;
+        color: blue;
         font-weight: 500;
         display: inline-block;
         margin: 0.2rem 0;
@@ -152,7 +153,7 @@ a {
             text-decoration: none;
             border-bottom: 1px solid;
             transition: all 0.2s ease;
-            color: #ffffff;
+            color: black;
         }
     }
 }
@@ -166,7 +167,7 @@ a {
         background-color: #5bb3d5;
         color: #ffffff;
         border-radius: 25px;
-        font-size: 0.75rem;
+        font-size: $standard-font-size;
         border-top-right-radius: 0px;
         text-align: left;
         display: inline-block;

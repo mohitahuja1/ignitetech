@@ -35,24 +35,6 @@
     <main class="bmd-layout-content">
         <div class="container">
             <div class="card-group">
-                    <div class="card">
-                        <div class="card-block">
-                            <h1 class="card-title hi">Hi Mohit,</h1>
-                            <p class="card-text"><b>Welcome to Ignite Tech!</b></p>
-                            <p class="card-text">Our chat bot <b>Prof</b> will help you to:</p>
-                                <ul>
-                                    <li><p class="card-text"><a href="{% url 'revise' %}"> Revise key concepts </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'index' %}"> Take practice tests </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'result' %}"> Analyze your results </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'past' %}"> Solve past paper questions </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'ask' %}"> Connect with our live team </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'admit' %}"> Get help for university admissions </a></p></li>
-                                </ul>
-                            <p class="card-text">Start your chat with <b>Prof</b> now!</p>
-                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
-
-                        </div>
-                    </div>
                     <div class="card chat-bot">
                         <div class="">
                             <div class="card-header">
@@ -74,28 +56,13 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. I'd like to know a few things about you.</span>
+                                   <span class="prof_chat">Hi, I'm Prof. Your chat bot professor! <br><br>
+                                       So tell me, which board are you studying in?<br><br>
+                                       <a href='#' onclick='clickfunc(this)'>IGCSE</a><br><br>
+                                       <a href='#' onclick='clickfunc(this)'>A-Levels</a><br><br>
+                                       <a href='#' onclick='clickfunc(this)'>International Baccalaureate (IB)</a><br><br>
+                                   </span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Which board are you studying in?</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>IGCSE</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>A-Levels</a>
-                                            </span>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>International Baccaulerate (IB)</a>
-                                            </span>
-                                        </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
@@ -120,8 +87,6 @@
 </script>
 
 <script type="text/javascript">
-    var path = ""+window.location.pathname;
-    var question_id = path.slice(6, -1);
 
     function write_bot_msg(message){
 
@@ -136,9 +101,8 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-        question_id = -1;
 
-        ajaxCall(newMessage,question_id);
+        ajaxCall(newMessage);
     }
 
     function clickfunc(obj) {
@@ -160,11 +124,11 @@
 
     });
 
-    function ajaxCall(user_question,question_id) {
+    function ajaxCall(user_question) {
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:8000/chat/response/",
-            data: {"question": user_question, "question_id": question_id},
+            url: "http://127.0.0.1:8000/chat/revision/",
+            data: {"question": user_question},
             success: callbackFunc
         });
     }

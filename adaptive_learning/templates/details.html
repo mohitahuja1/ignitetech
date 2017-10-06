@@ -97,18 +97,11 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!<br><br>
+                                       Here are a few options:<br><br>
+                                       <a href='#' onclick='clickfunc(this)'>{{ im }}</a>
+                                   </span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Here are a few options:</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                    <li onclick='clickfunc(this)' class="list-group-item">
-                                        <span class="select_answer">
-                                                <a href='#'>{{ im }}</a>
-                                        </span>
-                                    </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">

@@ -58,6 +58,8 @@ def signup(request):
 
 def home(request):
 
+    request.session['topic'] = "Home"
+
     return render(request, 'home.html')
 
 

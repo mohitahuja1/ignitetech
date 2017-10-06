@@ -52,9 +52,6 @@
                             <h6 class="card-text">Time taken by users who got this right: </h6>
                             <p class="card-text">3.5 seconds </p>
                             <a href="#" class="btn btn-primary">&lt; Back to results</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="#" class="btn btn-primary">Next question &gt;</a>
                             </form>
                         </div>
@@ -80,28 +77,12 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!<br><br>
+                                   Here are a few options:<br><br>
+                                   <a href='#' onclick='clickfunc(this)'>Show me the solution.</a><br><br>
+                                    <a href='#' onclick='clickfunc(this)'>Which concepts are involved in this problem?</a><br><br>
+                                    <a href='#' onclick='clickfunc(this)'>Let me try a similar problem.</a></span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Here are a few options:</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                    <li onclick='clickfunc(this)' class="list-group-item">
-                                        <span class="select_answer">
-                                                <a href='#'>Show me the solution.</a>
-                                        </span>
-                                    </li>
-                                    <li onclick='clickfunc(this)' class="list-group-item">
-                                        <span class="select_answer">
-                                                <a href='#'>Which concepts are involved in this problem?</a>
-                                        </span>
-                                    </li>
-                                    <li onclick='clickfunc(this)' class="list-group-item">
-                                        <span class="select_answer">
-                                                <a href='#'>Let me try a similar problem.</a>
-                                        </span>
-                                    </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                     <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
