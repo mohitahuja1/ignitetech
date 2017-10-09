@@ -35,6 +35,11 @@
     <main class="bmd-layout-content">
         <div class="container">
             <div class="card-group">
+                <div class="card">
+                        <div class="card-block">
+                            <h1 class="card-title hi">Whiteboard</h1>
+                        </div>
+                    </div>
                     <div class="card chat-bot">
                         <div class="">
                             <div class="card-header">
@@ -87,12 +92,13 @@
 </script>
 
 <script type="text/javascript">
+    var question_id = -1;
 
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
         $("#container").html(prevState + '<div class="prof_chat">' +
-        '<p>' + message + '</p>' + '</div>');
+        '<span>' + message + '</span>' + '</div>');
     }
 
     function write_user_msg(newMessage){
@@ -101,8 +107,7 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-
-        ajaxCall(newMessage);
+        ajaxCall(newMessage, question_id);
     }
 
     function clickfunc(obj) {
@@ -118,17 +123,28 @@
             if (event.which == 13){
                 write_user_msg($("#textbox").val())
                 $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
             }
 
         });
 
     });
 
-    function ajaxCall(user_question) {
+    $( function() {
+        var localList = {{ qlist|safe }};
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
+    });
+
+    function ajaxCall(user_question, question_id) {
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:8000/chat/revision/",
-            data: {"question": user_question},
+            url: "http://127.0.0.1:8000/chat/response/",
+            data: {"question": user_question, "question_id": question_id},
             success: callbackFunc
         });
     }

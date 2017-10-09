@@ -26,7 +26,7 @@ class QnaRepository(models.Model):
     answer = models.CharField(max_length=2000)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.doubt)
 
 
 class Topic(models.Model):

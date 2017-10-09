@@ -45,21 +45,23 @@ django.setup()
 #         que.save()
 #
 # # Load qna repository into database
-#
-# from chatbot.models import QnaRepository
-#
-# data = csv.reader(open('/Users/pallaviahuja/Dropbox/Ignite Tech/Tech/rawdata/qcd_raw.csv'), delimiter=",",
-#                   quotechar='"')
-#
-# for e in data:
-#     if e[0] != "question":
-#         qna = QnaRepository()
-#         qna.question = QuestionBank.objects.get(question=e[0])
-#         qna.concept = Concept.objects.get(concept=e[1])
-#         qna.doubt = e[2]
-#         qna.answer = e[3]
-#         qna.save()
-#
+
+from adaptive_learning.models import Concept
+from adaptive_learning.models import QuestionBank
+from chatbot.models import QnaRepository
+
+data = csv.reader(open('/Users/pallaviahuja/Dropbox/Ignite Tech/Tech/rawdata/qcd_raw.csv'), delimiter=",",
+                  quotechar='"')
+
+for e in data:
+    if e[0] != "question":
+        qna = QnaRepository()
+        qna.question = QuestionBank.objects.get(question=e[0])
+        qna.concept = Concept.objects.get(concept=e[1])
+        qna.doubt = e[2]
+        qna.answer = e[3]
+        qna.save()
+
 # from chatbot.models import Topic
 #
 # data = csv.reader(open('/Users/pallaviahuja/Dropbox/Ignite Tech/Tech/rawdata/topic_raw.csv'), delimiter=",",
@@ -70,20 +72,20 @@ django.setup()
 #         t = Topic()
 #         t.topic = e[0]
 #         t.save()
-
-from chatbot.models import TopicRepository
-from adaptive_learning.models import Concept
-from chatbot.models import Topic
-
-
-data = csv.reader(open('/Users/pallaviahuja/Dropbox/Ignite Tech/Tech/rawdata/tcd_raw.csv'), delimiter=",",
-                  quotechar='"')
-
-for e in data:
-    if e[0] != "topic":
-        tr = TopicRepository()
-        tr.topic = Topic.objects.get(topic=e[0])
-        tr.concept = Concept.objects.get(concept=e[1])
-        tr.doubt = e[2]
-        tr.answer = e[3]
-        tr.save()
+#
+# from chatbot.models import TopicRepository
+# from adaptive_learning.models import Concept
+# from chatbot.models import Topic
+#
+#
+# data = csv.reader(open('/Users/pallaviahuja/Dropbox/Ignite Tech/Tech/rawdata/tcd_raw.csv'), delimiter=",",
+#                   quotechar='"')
+#
+# for e in data:
+#     if e[0] != "topic":
+#         tr = TopicRepository()
+#         tr.topic = Topic.objects.get(topic=e[0])
+#         tr.concept = Concept.objects.get(concept=e[1])
+#         tr.doubt = e[2]
+#         tr.answer = e[3]
+#         tr.save()

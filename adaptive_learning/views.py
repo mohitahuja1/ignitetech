@@ -58,9 +58,9 @@ def signup(request):
 
 def home(request):
 
-    request.session['topic'] = "Home"
+    qlist = ["mohit"]
 
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'qlist': qlist})
 
 
 def revise(request):
