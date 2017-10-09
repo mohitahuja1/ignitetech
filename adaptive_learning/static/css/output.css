@@ -197,4 +197,15 @@ a {
     .ui-autocomplete .ui-menu-item:hover {
       background-color: #d7ebfb; }
 
+.attachment_dropdown {
+  top: 3.5rem; }
+
+.fa {
+  color: #616161; }
+
+.card-footer .btn-secondary {
+  background-color: #efefef; }
+.card-footer input {
+  padding-left: 10px; }
+
 /*# sourceMappingURL=output.css.map */
