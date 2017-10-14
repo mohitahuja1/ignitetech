@@ -67,6 +67,9 @@ a {
     max-height: 584px;
     overflow-y: auto; 
 }
+.hamburger_icon {
+    font-size: 36px;
+}
 /* Customization of chat bot */
 .card{
     .card-header {
@@ -210,7 +213,7 @@ a {
         thead {
             text-transform: capitalize;
             tr {
-                text-align: right;
+                text-align: left;
                 background-color: #318ded;
                 color: #fff;
             }
@@ -218,12 +221,16 @@ a {
         th {
             padding: 10px;
             border: 0;
-            text-align: center;
+            text-align: left;
         }
         tbody {
-            text-align: center;
+            text-align: left;
+            tr {
+                
+            }
             td {
                 border:0;
+                padding-left: 10px;
             }
         }
     }
@@ -259,16 +266,22 @@ a {
     width: 21rem;
     bottom: 54px;
     right: 13rem;
-    height: 9rem;
+    height: 7rem;
     font-size: 0.75rem;
     top: initial !important;
     border: 1px solid #d4d4d4;
 
     .ui-menu-item {
-        padding: 5px 20px;
+        .ui-menu-item-wrapper {
+            padding: 5px 20px;
 
-        &:hover {
-            background-color:#d7ebfb;
+            &:hover {
+                background-color:#d7ebfb;
+            }
+
+            &.ui-state-active {
+                background-color:#d7ebfb;
+            }
         }
     }
 }
@@ -287,5 +300,10 @@ a {
     }
     input {
         padding-left: 10px;
+    }
+}
+.btn.btn-secondary.header_dropdown {
+    &:hover, &:focus {
+        color: #fff;
     }
 }
