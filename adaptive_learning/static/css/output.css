@@ -42,6 +42,9 @@ a {
   max-height: 584px;
   overflow-y: auto; }
 
+.hamburger_icon {
+  font-size: 36px; }
+
 /* Customization of chat bot */
 .card .card-header {
   background-color: #D8EBFA;
@@ -150,17 +153,18 @@ a {
   .result_table table thead {
     text-transform: capitalize; }
     .result_table table thead tr {
-      text-align: right;
+      text-align: left;
       background-color: #318ded;
       color: #fff; }
   .result_table table th {
     padding: 10px;
     border: 0;
-    text-align: center; }
+    text-align: left; }
   .result_table table tbody {
-    text-align: center; }
+    text-align: left; }
     .result_table table tbody td {
-      border: 0; }
+      border: 0;
+      padding-left: 10px; }
 
 .back_button {
   text-align: right; }
@@ -208,5 +212,8 @@ a {
   background-color: #efefef; }
 .card-footer input {
   padding-left: 10px; }
+
+.btn.btn-secondary.header_dropdown:hover, .btn.btn-secondary.header_dropdown:focus {
+  color: #fff; }
 
 /*# sourceMappingURL=output.css.map */

@@ -67,6 +67,9 @@ a {
     max-height: 584px;
     overflow-y: auto; 
 }
+.hamburger_icon {
+    font-size: 36px;
+}
 /* Customization of chat bot */
 .card{
     .card-header {
@@ -209,7 +212,7 @@ a {
         thead {
             text-transform: capitalize;
             tr {
-                text-align: right;
+                text-align: left;
                 background-color: #318ded;
                 color: #fff;
             }
@@ -217,12 +220,16 @@ a {
         th {
             padding: 10px;
             border: 0;
-            text-align: center;
+            text-align: left;
         }
         tbody {
-            text-align: center;
+            text-align: left;
+            tr {
+                
+            }
             td {
                 border:0;
+                padding-left: 10px;
             }
         }
     }
@@ -292,5 +299,10 @@ a {
     }
     input {
         padding-left: 10px;
+    }
+}
+.btn.btn-secondary.header_dropdown {
+    &:hover, &:focus {
+        color: #fff;
     }
 }
