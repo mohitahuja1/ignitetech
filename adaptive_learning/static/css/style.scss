@@ -258,16 +258,22 @@ a {
     width: 21rem;
     bottom: 54px;
     right: 13rem;
-    height: 9rem;
+    height: 7rem;
     font-size: 0.75rem;
     top: initial !important;
     border: 1px solid #d4d4d4;
 
     .ui-menu-item {
-        padding: 5px 20px;
+        .ui-menu-item-wrapper {
+            padding: 5px 20px;
 
-        &:hover {
-            background-color:#d7ebfb;
+            &:hover {
+                background-color:#d7ebfb;
+            }
+
+            &.ui-state-active {
+                background-color:#d7ebfb;
+            }
         }
     }
 }

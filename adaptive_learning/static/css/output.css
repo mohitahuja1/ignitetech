@@ -187,13 +187,15 @@ a {
   width: 21rem;
   bottom: 54px;
   right: 13rem;
-  height: 9rem;
+  height: 7rem;
   font-size: 0.75rem;
   top: initial !important;
   border: 1px solid #d4d4d4; }
-  .ui-autocomplete .ui-menu-item {
+  .ui-autocomplete .ui-menu-item .ui-menu-item-wrapper {
     padding: 5px 20px; }
-    .ui-autocomplete .ui-menu-item:hover {
+    .ui-autocomplete .ui-menu-item .ui-menu-item-wrapper:hover {
+      background-color: #d7ebfb; }
+    .ui-autocomplete .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
       background-color: #d7ebfb; }
 
 .attachment_dropdown {
