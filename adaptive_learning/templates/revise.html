@@ -36,20 +36,12 @@
         <div class="container">
             <div class="card-group">
                     <div class="card left_card scroll_div">
-                        <div class="card-block">
-                            <h1 class="card-title hi">Probability - Math SL</h1>
-                                <ul>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sample Space </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Experimental Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Theoretical Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tables of Outcome </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Compound Events </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Tree Diagrams </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sampling with and without replacement </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Sets and Venn Diagrams </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Laws of Probability </a></p></li>
-                                    <li><p class="card-text"><a href='#' onclick='clickfunc(this)'> Independent Events </a></p></li>
-                                </ul>
+                        <div id = "name" class="card-block">
+                            <h1 class="card-title hi">Overview</h1>
+                        </div>
+                        <div id = "video" class="card-block">
+                            <iframe width="480" height="300" src="https://www.youtube.com/embed/uzkc-qNVoOk"
+                                       frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -60,7 +52,7 @@
                                         <div class="row">
                                             <div class="col-sm-2">
                                                 <div class="row">
-                                                    <span class="circle_prof"></span>
+                                                    <img class="img-responsive" src="/static/images/prof.png" style="max-width: 50px; max-height: 50px">
                                                 </div>
                                             </div>
                                             <div class="col-sm-10 prof_status">
@@ -73,7 +65,16 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, please select one of the concepts on the left to revise!</span>
+                                   <span class="prof_chat">Hi, please select one of the concepts below. <br>
+                                       Type <a href='#' onclick='clickfunc(this)'> revise </a> to see this list again.<br><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Overview </a><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/6zWPgvEMVlE" onclick='getvideo(this)'> Sample Space </a><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/4fBXIcO0It4" onclick='getvideo(this)'> Compound Events </a><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/3_otNr9kRuY" onclick='getvideo(this)'> Outcomes </a><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Theoretical Probability </a><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/VjLEoo3hIoM" onclick='getvideo(this)'> Sampling Without Replacement </a><br>
+                                       <a href='#' data-link= "https://www.youtube.com/embed/xSc4oLA9e8o" onclick='getvideo(this)'> Dependent Events </a><br>
+                                    </span>
                                 </p>
                             </div>
                             <div class="card-footer">
@@ -84,8 +85,8 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <!-- Dropdown menu links -->
-                                                <button class="dropdown-item" type="button">Upload photo of a question</button>
-                                                <button class="dropdown-item" type="button">Chat with a teacher</button>
+                                                <button class="dropdown-item" type="button">Share a picture</button>
+                                                <button class="dropdown-item" type="button">Chat with teacher</button>
                                                 <button class="dropdown-item" type="button">Share your screen</button>
                                                 <button class="dropdown-item" type="button">Call a teacher</button>
                                             </div>
@@ -115,8 +116,10 @@
 </script>
 
 <script type="text/javascript">
-    var path = ""+window.location.pathname;
-    var question_id = path.slice(6, -1);
+    $(window).load(function() {
+          alert($.cookie('test'));
+    });
+    var question_id = -1;
 
     function write_bot_msg(message){
 
@@ -131,7 +134,6 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-        question_id = -1;
         ajaxCall(newMessage,question_id);
     }
 
@@ -142,16 +144,37 @@
 
     }
 
+    function getvideo(obj) {
+
+        var t = $(obj).text();
+        var l = $(obj).attr('data-link');
+        $("#name").html("<h1 class='card-title hi'>" + t + "</h1>");
+        $("#video").html('<iframe width="480" height="300" src="'+ l + '" frameborder="0" allowfullscreen></iframe>');
+
+
+    }
+
     $(function(){
 
         $("#textbox").keypress(function(event){
             if (event.which == 13){
                 write_user_msg($("#textbox").val())
                 $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
             }
 
         });
 
+    });
+
+    $( function() {
+        var localList = {{ qlist|safe }};
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
     });
 
     function ajaxCall(user_question,question_id) {

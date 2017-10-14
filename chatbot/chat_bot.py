@@ -71,52 +71,70 @@ class ChatBot:
 
     def main_bot(self, question_id, user_query, request):
 
-        question_dict = self.get_dic(question_id)
-        answer = self.model(question_dict, user_query)
+        if user_query == "InitialMessage":
 
-        if answer == "Sorry! I couldn't understand. Try asking differently or chat with a teacher.":
-            return answer
+            qna = QnaRepository.objects.select_related('concept').\
+                values('question', 'concept', 'doubt', 'concept__concept_level').\
+                filter(question=QuestionBank.objects.get(id=question_id))
 
-        if int(question_id) < 0:
-            return answer
+            con = Concept.objects.prefetch_related('userconceptscore_set').\
+                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=50)
 
-        concept = QnaRepository.objects.filter(answer=answer)[0].concept
-        userconcept = UserConceptScore.objects.get(user=request.user, concept=concept)
-        userconcept.asked += 1
-        userconcept.save()
+            qna_ucs = qna.filter(concept__in=con, concept__concept_level__gte=0)
 
-        conlevel = Concept.objects.get(concept = concept).concept_level
+            conlevelmin = qna_ucs.aggregate(Min('concept__concept_level'))['concept__concept_level__min']
+            qna_min = qna_ucs.get(concept__concept_level=conlevelmin)
 
-        qna = QnaRepository.objects.select_related('concept'). \
-            values('question', 'concept', 'doubt', 'concept__concept_level'). \
-            filter(question=QuestionBank.objects.get(id=question_id))
+            answer = qna_min['doubt']
 
-        con = Concept.objects.prefetch_related('userconceptscore_set'). \
-            filter(userconceptscore__user=request.user, userconceptscore__asked__lt=50)
+        else:
 
-        qna_ucs = qna.filter(concept__in=con)
+            question_dict = self.get_dic(question_id)
+            answer = self.model(question_dict, user_query)
 
-        conlevelmax = qna_ucs.aggregate(Max('concept__concept_level'))['concept__concept_level__max']
+            if answer == "Sorry! I couldn't understand. Try asking differently or chat with a teacher.":
+                return answer
 
-        if conlevelmax is None:
-            return answer
+            if int(question_id) < 0:
+                return answer
 
-        for i in range(conlevel+1, conlevelmax+1):
+            concept = QnaRepository.objects.filter(answer=answer)[0].concept
+            userconcept = UserConceptScore.objects.get(user=request.user, concept=concept)
+            userconcept.asked += 1
+            userconcept.save()
 
-            for j in range(len(qna_ucs)):
+            conlevel = Concept.objects.get(concept = concept).concept_level
 
-                if i == qna_ucs[j]['concept__concept_level']:
+            qna = QnaRepository.objects.select_related('concept'). \
+                values('question', 'concept', 'doubt', 'concept__concept_level'). \
+                filter(question=QuestionBank.objects.get(id=question_id))
 
-                    bot_suggestion = "<br><br>You can also ask:<br><br><a href='#' onclick='clickfunc(this)'>" +\
-                                     qna_ucs[j]['doubt'] + "</a>"
+            con = Concept.objects.prefetch_related('userconceptscore_set'). \
+                filter(userconceptscore__user=request.user, userconceptscore__asked__lt=50)
 
-                    answer += bot_suggestion
+            qna_ucs = qna.filter(concept__in=con)
 
-                    return answer
+            conlevelmax = qna_ucs.aggregate(Max('concept__concept_level'))['concept__concept_level__max']
 
-        bot_suggestion = "<br><br>You can also ask:<br><br>" + \
-                         "Please tell me the <a href='#' onclick='clickfunc(this)'>solution</a>."
+            if conlevelmax is None:
+                return answer
 
-        answer += bot_suggestion
+            for i in range(conlevel+1, conlevelmax+1):
+
+                for j in range(len(qna_ucs)):
+
+                    if i == qna_ucs[j]['concept__concept_level']:
+
+                        bot_suggestion = "<br><br>You can also ask:<br><br><a href='#' onclick='clickfunc(this)'>" +\
+                                         qna_ucs[j]['doubt'] + "</a>"
+
+                        answer += bot_suggestion
+
+                        return answer
+
+            bot_suggestion = "<br><br>You can also ask:<br><br>" + \
+                             "Please give me a <a href='#' onclick='clickfunc(this)'>hint</a>."
+
+            answer += bot_suggestion
 
         return answer

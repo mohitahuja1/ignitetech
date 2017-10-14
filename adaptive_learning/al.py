@@ -121,18 +121,19 @@ class LearningNew:
 
         del df['time_taken']
         del df['other_time']
+        del df['other_time_per_attempt']
 
-        df['primary_concept'] = ['Sample Space', 'Compound events', 'Outcomes', 'Theoretical probability',
-                                 'Sampling without replacement', 'Dependent events']
+        df['concept'] = ['Sample Space', 'Compound Events', 'Outcomes', 'Theoretical Probability',
+                                 'Sampling Without Replacement', 'Dependent Events']
 
-        df2 = df[['level', 'primary_concept', 'attempts', 'corrects', 'accuracy', 'time_per_attempt',
-                  'other_time_per_attempt']]
+        df2 = df[['level', 'concept', 'attempts', 'corrects', 'accuracy', 'time_per_attempt']]
 
         with pd.option_context('display.max_colwidth', -1):
             result = df2.to_html(escape=False, index=False, float_format=lambda x: '%10.2f' % x,
                                  formatters=
-                                 {'primary_concept': '<a href = "http://127.0.0.1:8000/analysis">{:}</a>'.format,
-                                  'accuracy': '{:,.0%}'.format})
+                                 {'concept': '<a href = "javascript:void(0)" class="concept">{:}</a>'.format,
+                                  # 'concept': '<a href = "#" onclick = "rev(this)">{:}</a>'.format,
+                                  'accuracy': '{:,.0%}'.format, 'time_per_attempt': '{:,.3} sec'.format})
         return result
 
     #@staticmethod

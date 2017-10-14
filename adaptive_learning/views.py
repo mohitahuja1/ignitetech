@@ -57,15 +57,23 @@ def signup(request):
 
 
 def home(request):
+    chatbot1 = chat_bot.ChatBot()
 
-    qlist = ["mohit"]
+    qlist = chatbot1.get_dic(-1).keys()
+    qlist9 = [str(i) for i in qlist]
+    qlist9.sort()
 
-    return render(request, 'home.html', {'qlist': qlist})
+    return render(request, 'home.html', {'qlist': qlist9})
 
 
 def revise(request):
+    chatbot1 = chat_bot.ChatBot()
 
-    return render(request, 'revise.html')
+    qlist = chatbot1.get_dic(-1).keys()
+    qlist9 = [str(i) for i in qlist]
+    qlist9.sort()
+
+    return render(request, 'revise.html', {'qlist': qlist9})
 
 
 def index(request):
@@ -164,10 +172,12 @@ def check(request, questionid):
     if next_id == -2:
         request.session['result'] = result
 
+    im = "Show solution"
+
     return render(request, "details.html", {'this_question':question, 'questionid':questionid,
                                             'is_correct': is_correct, 'next_id': next_id, 't': t,
                                             'q_level': q_level,
-                                            'qlist': qlist9})
+                                            'qlist': qlist9, 'im': im})
 
 
 def result(request):
