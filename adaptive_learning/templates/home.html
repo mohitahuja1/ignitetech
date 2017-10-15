@@ -35,22 +35,9 @@
     <main class="bmd-layout-content">
         <div class="container">
             <div class="card-group">
-                    <div class="card">
+                <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Hi Mohit,</h1>
-                            <p class="card-text"><b>Welcome to Ignite Tech!</b></p>
-                            <p class="card-text">Our chat bot <b>Prof</b> will help you to:</p>
-                                <ul>
-                                    <li><p class="card-text"><a href="{% url 'revise' %}"> Revise key concepts </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'index' %}"> Take practice tests </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'result' %}"> Analyze your results </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'past' %}"> Solve past paper questions </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'ask' %}"> Connect with our live team </a></p></li>
-                                    <li><p class="card-text"><a href="{% url 'admit' %}"> Help with your university admissions </a></p></li>
-                                </ul>
-                            <p class="card-text">Start your chat with <b>Prof</b> now!</p>
-                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
-
+                            <h1 class="card-title hi">Whiteboard</h1>
                         </div>
                     </div>
                     <div class="card chat-bot">
@@ -61,7 +48,7 @@
                                         <div class="row">
                                             <div class="col-sm-2">
                                                 <div class="row">
-                                                    <span class="circle_prof"></span>
+                                                    <img class="img-responsive" src="/static/images/prof.png" style="max-width: 50px; max-height: 50px">
                                                 </div>
                                             </div>
                                             <div class="col-sm-10 prof_status">
@@ -74,28 +61,13 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. I'd like to know a few things about you.</span>
+                                   <span class="prof_chat">Hi, I'm Prof. Your chat bot professor! <br><br>
+                                       So tell me, which board are you studying in?<br><br>
+                                       <a href='#' onclick='clickfunc(this)'>IGCSE</a><br><br>
+                                       <a href='#' onclick='clickfunc(this)'>A-Levels</a><br><br>
+                                       <a href='#' onclick='clickfunc(this)'>International Baccalaureate (IB)</a><br><br>
+                                   </span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Which board are you studying in?</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>IGCSE</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>A-Levels</a>
-                                            </span>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Internatiional Baccaulerate (IB)</a>
-                                            </span>
-                                        </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                     <div class="row">
@@ -105,8 +77,8 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <!-- Dropdown menu links -->
-                                                <button class="dropdown-item" type="button">Upload photo of a question</button>
-                                                <button class="dropdown-item" type="button">Chat with a teacher</button>
+                                                <button class="dropdown-item" type="button">Share a picture</button>
+                                                <button class="dropdown-item" type="button">Chat with teacher</button>
                                                 <button class="dropdown-item" type="button">Share your screen</button>
                                                 <button class="dropdown-item" type="button">Call a teacher</button>
                                             </div>
@@ -136,15 +108,13 @@
 </script>
 
 <script type="text/javascript">
-    var path = ""+window.location.pathname;
-    var question_id = path.slice(6, -1);
+    var question_id = -1;
 
     function write_bot_msg(message){
 
         var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box">' +
-        '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
+        $("#container").html(prevState + '<div class="prof_chat">' +
+        '<span>' + message + '</span>' + '</div>');
     }
 
     function write_user_msg(newMessage){
@@ -153,11 +123,7 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-        if (question_id == "") {
-            question_id = -1;
-        }
-
-        ajaxCall(newMessage,question_id);
+        ajaxCall(newMessage, question_id);
     }
 
     function clickfunc(obj) {
@@ -173,13 +139,24 @@
             if (event.which == 13){
                 write_user_msg($("#textbox").val())
                 $("#textbox").val("");
+                $("#textbox").autocomplete( "close" );
             }
 
         });
 
     });
 
-    function ajaxCall(user_question,question_id) {
+    $( function() {
+        var localList = {{ qlist|safe }};
+
+        $( "#textbox" ).autocomplete({
+            minLength: 1,
+            delay: 0,
+            source: localList
+        });
+    });
+
+    function ajaxCall(user_question, question_id) {
         $.ajax({
             type: "GET",
             url: "http://127.0.0.1:8000/chat/response/",

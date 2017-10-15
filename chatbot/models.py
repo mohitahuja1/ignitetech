@@ -26,5 +26,23 @@ class QnaRepository(models.Model):
     answer = models.CharField(max_length=2000)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.doubt)
 
+
+class Topic(models.Model):
+
+    topic = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return str(self.topic)
+
+
+class TopicRepository(models.Model):
+
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, default=1)
+    concept = models.ForeignKey(Concept, on_delete=models.CASCADE, default=1)
+    doubt = models.CharField(max_length=2000)
+    answer = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return str(self.topic)

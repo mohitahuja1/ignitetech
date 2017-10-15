@@ -40,11 +40,17 @@
                     <div class="card">
                         <div class="card-block">
                             <h1 class="card-title hi">Hi Mohit,</h1>
-                            <p class="card-text">You will be able to practice taking tests here.</p>
-                            <p class="card-text">We cover the subjects of probability for the international Baccalauraete(IB) Board</p>
-                            <p class="card-text">In case you are stuck on a question, feel free to ask the bot for "HINTS"</p>
-                            <p class="card-text">At the end of test, you will be provided with a detailed analysis of your performance.</p>
-                            <p class="card-text thanks_note">Good Luck! <br>IgniteTech Team</p>
+                            <p class="card-text"><b>Questions will appear on the left side of the screen.</b></p>
+                            <p class="card-text"><b>Our bot on the right will help you solve the questions.</b></p>
+                            <br><br>
+                            <p class="card-text">Here are the details of the test:</p>
+                            <ul>
+                                <li>Subject: Mathematics SL</li>
+                                <li>Topic: Probability</li>
+                                <li>Board: International Baccalauraete</li>
+                                <li>Time: 30 mins</li>
+                            </ul>
+                            <br>
                                 <a href="{% url 'details' questionid %}" class="btn btn-primary">Take Adaptive Test</a>
                         </div>
                     </div>
@@ -56,7 +62,7 @@
                                         <div class="row">
                                             <div class="col-sm-2">
                                                 <div class="row">
-                                                    <span class="circle_prof"></span>
+                                                    <img class="img-responsive" src="/static/images/prof.png" style="max-width: 50px; max-height: 50px">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 prof_status">
@@ -69,33 +75,12 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!</span>
+                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!<br>
+                                   Here are a few options:<br><br>
+                                       <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a><br><br>
+                                       <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
+                                   </span>
                                 </p>
-                                <p class="card-text">
-                                    <span class="prof_chat">Here are a few options:</span>
-                                </p>
-                                <ul class="list-group list-group-flush select_options">
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I start taking the test?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Which topics are covered?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>How should I analyze my test performance?</a>
-                                            </span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="select_answer">
-                                                <a href='#' onclick='clickfunc(this)'>Where can I find past exam papers?</a>
-                                            </span>
-                                        </li>
-                                </ul>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -105,8 +90,8 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <!-- Dropdown menu links -->
-                                            <button class="dropdown-item" type="button">Upload photo of a question</button>
-                                            <button class="dropdown-item" type="button">Chat with a teacher</button>
+                                            <button class="dropdown-item" type="button">Share a picture</button>
+                                            <button class="dropdown-item" type="button">Chat with teacher</button>
                                             <button class="dropdown-item" type="button">Share your screen</button>
                                             <button class="dropdown-item" type="button">Call a teacher</button>
                                         </div>

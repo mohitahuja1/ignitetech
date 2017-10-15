@@ -37,42 +37,22 @@
             <div class="card-group">
                     <div class="card">
                         <div class="card-block">
-                            <h1 class="card-title hi">Question</h1>
-                            <p class="card-text">{{this_question.question|safe}}</p>
-                            <form action="{% url 'check' questionid%}" >
-                                {% csrf_token %}
-                                <input type="text" name = "Answer" class="form-control" placeholder="Type your answer here">
-                                <div class="actions">
-                                    <button class="btn btn-primary" >DONE</button>
-                                </div>
-                                {% if is_correct == 1%}
-                                <div class="card-text correct_answer">
-                                    <p class="success_text"><b>Correct Answer!</b></p>
-                                    <p>Difficulty level: {{q_level}}</p>
-                                    <p>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right</p>
-                                    <p>Time taken by you: {{t|floatformat}} seconds</p>
-                                    <p>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds</p>
-                                </div>
-                                {%endif%}
-            
-                                {% if is_correct == 0%}
-                                <div class="card-text wrong_answer">
-                                    <p class="error_text"><b>Wrong Answer!</b></p>
-                                    <p> Difficulty level: {{q_level}}</p>
-                                    <p>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right</p>
-                                    <p>Time taken by you: {{t|floatformat}} seconds</p>
-                                    <p>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds</p>
-                                </div>
-                                {%endif%}
-                                <br>
-                                {%if  next_id == -2 %}
-                                    <h4>Your test is complete</h4>
-                                    <a href="{% url 'result' %}" class="next">Results &raquo;</a>
-                                {%elif  next_id is not None %}
-                                    <a href="{% url 'details' next_id %}" class="next">Next &raquo;</a>
-                                {%endif%}
-            
-                                </p>
+                            <h6 class="card-text">Concept: </h6>
+                            <p class="card-text">Outcomes </p>
+                            <h6 class="card-text">Question:</h6>
+                            <p class="card-text">Find the number of <a href='#' onclick='clickfunc(this)'>outcomes</a> related to selecting a month <br>ending in "y" in any given year</p>
+                            <h6 class="card-text">Your response:</h6>
+                            <p class="card-text">1 <font color = "red"> (Incorrect)</font> </p>
+                            <h6 class="card-text">Correct response: </h6>
+                            <p class="card-text">4 </p>
+                            <h6 class="card-text">Performance relative to others: </h6>
+                            <p class="card-text">8 out of 11 users got this right </p>
+                            <h6 class="card-text">Time taken by you: </h6>
+                            <p class="card-text">1.2 seconds </p>
+                            <h6 class="card-text">Time taken by users who got this right: </h6>
+                            <p class="card-text">3.5 seconds </p>
+                            <a href="#" class="btn btn-primary">&lt; Back to results</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#" class="btn btn-primary">Next question &gt;</a>
                             </form>
                         </div>
                     </div>
@@ -84,7 +64,7 @@
                                         <div class="row">
                                             <div class="col-sm-2">
                                                 <div class="row">
-                                                    <img class="img-responsive" src="/static/images/prof.png" style="max-width: 50px; max-height: 50px">
+                                                    <span class="circle_prof"></span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-10 prof_status">
@@ -98,30 +78,15 @@
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
                                    <span class="prof_chat">Hi, my name is Prof. Ask me anything!<br><br>
-                                       Here are a few options:<br><br>
-                                       <a href='#' onclick='clickfunc(this)'>{{ im }}</a>
-                                   </span>
+                                   Here are a few options:<br><br>
+                                   <a href='#' onclick='clickfunc(this)'>Show me the solution.</a><br><br>
+                                    <a href='#' onclick='clickfunc(this)'>Which concepts are involved in this problem?</a><br><br>
+                                    <a href='#' onclick='clickfunc(this)'>Let me try a similar problem.</a></span>
                                 </p>
                             </div>
                             <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-sm-1 dropup">
-                                            <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fa fa-plus"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <!-- Dropdown menu links -->
-                                                <button class="dropdown-item" type="button">Share a picture</button>
-                                                <button class="dropdown-item" type="button">Chat with teacher</button>
-                                                <button class="dropdown-item" type="button">Share your screen</button>
-                                                <button class="dropdown-item" type="button">Call a teacher</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-11">
-                                            <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
-                                        </div>
-                                    </div>
-                                </div>
+                                    <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -143,7 +108,7 @@
 
 <script type="text/javascript">
     var path = ""+window.location.pathname;
-    var question_id = path.slice(6, 9);
+    var question_id = path.slice(6, -1);
 
     function write_bot_msg(message){
 
@@ -158,9 +123,7 @@
         $("#container").html(prevState + '<div class="message-box self">' +
         '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
         $("#container").scrollTop($("#container").prop("scrollHeight"));
-        if (question_id == "") {
-            question_id = -1;
-        }
+        question_id = -1;
         ajaxCall(newMessage,question_id);
     }
 
@@ -185,7 +148,7 @@
     });
 
     $( function() {
-        var localList = {{ qlist|safe }};
+        var localList = None;
 
         $( "#textbox" ).autocomplete({
             minLength: 1,

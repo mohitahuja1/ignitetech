@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-4 back_button">
-                                        <a href="{% url 'index'%}" class="btn btn-info">Go Back To Practice Tests</a>
+                                        <a href="{% url 'index'%}" class="btn btn-primary">Go Back To Practice Tests</a>
                                     </div>
                                 </div>
                             </div>
@@ -71,74 +71,21 @@
 <script>
     $('body').bootstrapMaterialDesign();
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
 
 <script type="text/javascript">
-    var path = ""+window.location.pathname;
-    var question_id = path.slice(6, -1);
 
-    function write_bot_msg(message){
-
-        var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box">' +
-        '<p class="timestamp text-left text-muted">@prof</p>' +
-        '<p class="text text-left text-muted">' + message + '</p>' + '</div>');
-    }
-
-    function write_user_msg(newMessage){
-
-        var prevState = $("#container").html();
-        $("#container").html(prevState + '<div class="message-box self">' +
-        '<p class="align-right"><span class="user_chat">' + newMessage + '</span></p>' + '</div>');
-        $("#container").scrollTop($("#container").prop("scrollHeight"));
-        if (question_id == "") {
-            question_id = -1;
-        }
-        ajaxCall(newMessage,question_id);
-    }
-
-    function clickfunc(obj) {
-
-        var t = $(obj).text();
-        write_user_msg(t);
-
-    }
-
-    $(function(){
-
-        $("#textbox").keypress(function(event){
-            if (event.which == 13){
-                write_user_msg($("#textbox").val())
-                $("#textbox").val("");
-                $("#textbox").autocomplete( "close" );
-            }
-
-        });
-
-    });
-
-    $( function() {
-        var localList = {{ qlist|safe }};
-
-        $( "#textbox" ).autocomplete({
-            minLength: 1,
-            delay: 0,
-            source: localList
+    jQuery( document ).ready(function($) {
+        $( ".concept" ).on( "click", function() {
+            var t = $(this).text();
+            var date = new Date();
+            date.setTime(date.getTime() + (5*1000));
+            $.cookie('rev', t, {expiry: date});
+            console.log($.cookie('rev'))
+            window.location = "/revise/"
         });
     });
-
-    function ajaxCall(user_question,question_id) {
-        $.ajax({
-            type: "GET",
-            url: "http://127.0.0.1:8000/chat/response/",
-            data: {"question": user_question, "question_id": question_id},
-            success: callbackFunc
-        });
-    }
-
-    function callbackFunc(response) {
-        write_bot_msg(response);
-        $("#container").scrollTop($("#container").prop("scrollHeight"));
-    }
 
 </script>
 

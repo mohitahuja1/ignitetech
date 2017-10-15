@@ -32,6 +32,9 @@ urlpatterns = [
     url(r'^past/$', core_views.past, name='past'),
     url(r'^ask/$', core_views.ask, name='ask'),
     url(r'^admit/$', core_views.admit, name='admit'),
+    url(r'^analysis/$', core_views.analysis, name='analysis'),
+    url(r'^pastque/$', core_views.pastque, name='pastque'),
+    url(r'^result/', core_views.result, name='result')
 ]
 
 if settings.DEBUG:

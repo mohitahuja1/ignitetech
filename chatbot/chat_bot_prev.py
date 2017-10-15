@@ -55,7 +55,7 @@ class ChatBot:
                     ans = train_dataset[a]
 
             if ans == '':
-                return "Sorry! I couldn't understand. Try asking differently or chat with a teacher."
+                return "Sorry! I couldn't understand. One of our teachers will get back to you on this."
             else:
                 return ans
 
@@ -92,7 +92,7 @@ class ChatBot:
             question_dict = self.get_dic(question_id)
             answer = self.model(question_dict, user_query)
 
-            if answer == "Sorry! I couldn't understand. Try asking differently or chat with a teacher.":
+            if answer == "Sorry! I couldn't understand. Please be more specific.":
                 return answer
 
             if int(question_id) < 0:
@@ -133,7 +133,7 @@ class ChatBot:
                         return answer
 
             bot_suggestion = "<br><br>You can also ask:<br><br>" + \
-                             "Please give me a <a href='#' onclick='clickfunc(this)'>hint</a>."
+                             "Please tell me the <a href='#' onclick='clickfunc(this)'>solution</a>."
 
             answer += bot_suggestion
 
