@@ -67,13 +67,13 @@
                                 <p class="card-text">
                                    <span class="prof_chat">Hi, please select one of the concepts below. <br>
                                        Type <a href='#' onclick='clickfunc(this)'> revise </a> to see this list again.<br><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Overview </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/6zWPgvEMVlE" onclick='getvideo(this)'> Sample Space </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/4fBXIcO0It4" onclick='getvideo(this)'> Compound Events </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/3_otNr9kRuY" onclick='getvideo(this)'> Outcomes </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Theoretical Probability </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/VjLEoo3hIoM" onclick='getvideo(this)'> Sampling Without Replacement </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/xSc4oLA9e8o" onclick='getvideo(this)'> Dependent Events </a><br>
+                                       <a href='#overview' class="overview" data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Overview </a><br>
+                                       <a href='#sample' class="sample" data-link= "https://www.youtube.com/embed/6zWPgvEMVlE" onclick='getvideo(this)'> Sample Space </a><br>
+                                       <a href='#compound' class="compound" data-link= "https://www.youtube.com/embed/4fBXIcO0It4" onclick='getvideo(this)'> Compound Events </a><br>
+                                       <a href='#outcomes' class="outcomes" data-link= "https://www.youtube.com/embed/3_otNr9kRuY" onclick='getvideo(this)'> Outcomes </a><br>
+                                       <a href='#theoretical' class="theoretical" data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Theoretical Probability </a><br>
+                                       <a href='#sampling' class="sampling" data-link= "https://www.youtube.com/embed/VjLEoo3hIoM" onclick='getvideo(this)'> Sampling Without Replacement </a><br>
+                                       <a href='#dependent' class="dependent" data-link= "https://www.youtube.com/embed/xSc4oLA9e8o" onclick='getvideo(this)'> Dependent Events </a><br>
                                     </span>
                                 </p>
                             </div>
@@ -116,6 +116,29 @@
 </script>
 
 <script type="text/javascript">
+jQuery(document).ready(function($){
+    if ( document.location.href.indexOf('#sample') > -1 ) {
+        $('.sample').trigger('click');
+    }
+    else if ( document.location.href.indexOf('#compound') > -1 ) {
+        $('.compound').trigger('click');
+    }
+    else if ( document.location.href.indexOf('#outcomes') > -1 ) {
+        $('.outcomes').trigger('click');
+    }
+    else if ( document.location.href.indexOf('#theoretical') > -1 ) {
+        $('.theoretical').trigger('click');
+    }
+    else if ( document.location.href.indexOf('#sampling') > -1 ) {
+        $('.sampling').trigger('click');
+    }
+    else if ( document.location.href.indexOf('#dependent') > -1 ) {
+        $('.dependent').trigger('click');
+    }
+    else {
+        $('.overview').trigger('click');
+    }
+});
     $(window).load(function() {
           alert($.cookie('test'));
     });
