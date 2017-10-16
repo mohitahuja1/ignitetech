@@ -68,7 +68,7 @@
                                    <span class="prof_chat">Hi, please select one of the concepts below. <br>
                                        Type <a href='#' onclick='clickfunc(this)'> revise </a> to see this list again.<br><br>
                                        <a href='#' data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Overview </a><br>
-                                       <a href='#' data-link= "https://www.youtube.com/embed/6zWPgvEMVlE" onclick='getvideo(this)'> Sample Space </a><br>
+                                       <a href='#sample_space' data-link= "https://www.youtube.com/embed/6zWPgvEMVlE" onclick='getvideo(this)'> Sample Space </a><br>
                                        <a href='#' data-link= "https://www.youtube.com/embed/4fBXIcO0It4" onclick='getvideo(this)'> Compound Events </a><br>
                                        <a href='#' data-link= "https://www.youtube.com/embed/3_otNr9kRuY" onclick='getvideo(this)'> Outcomes </a><br>
                                        <a href='#' data-link= "https://www.youtube.com/embed/uzkc-qNVoOk" onclick='getvideo(this)'> Theoretical Probability </a><br>
@@ -147,6 +147,7 @@
     function getvideo(obj) {
 
         var t = $(obj).text();
+        var h = $(obj).attr('href');
         var l = $(obj).attr('data-link');
         $("#name").html("<h1 class='card-title hi'>" + t + "</h1>");
         $("#video").html('<iframe width="480" height="300" src="'+ l + '" frameborder="0" allowfullscreen></iframe>');

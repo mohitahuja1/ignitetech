@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f37c2f-8cc0-46a9-8017-48ed9b4a56ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/al.py" afterPath="$PROJECT_DIR$/adaptive_learning/al.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/base.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/details.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/home.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/index.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/result.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/result.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/templates/revise.html" afterPath="$PROJECT_DIR$/adaptive_learning/templates/revise.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/urls.py" afterPath="$PROJECT_DIR$/adaptive_learning/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adaptive_learning/views.py" afterPath="$PROJECT_DIR$/adaptive_learning/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/chat_bot.py" afterPath="$PROJECT_DIR$/chatbot/chat_bot.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ignitetech/urls.py" afterPath="$PROJECT_DIR$/ignitetech/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,8 +32,8 @@
       <file leaf-file-name="result.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/result.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="85" column="40" lean-forward="true" selection-start-line="85" selection-start-column="40" selection-end-line="85" selection-end-column="40" />
+            <state relative-caret-position="215">
+              <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -52,8 +42,8 @@
       <file leaf-file-name="revise.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/revise.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-37">
-              <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+            <state relative-caret-position="342">
+              <caret line="68" column="74" lean-forward="false" selection-start-line="68" selection-start-column="74" selection-end-line="68" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -62,8 +52,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adaptive_learning/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="181" column="0" lean-forward="true" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+            <state relative-caret-position="2565">
+              <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,8 +62,8 @@
       <file leaf-file-name="al.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adaptive_learning/al.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="134" column="88" lean-forward="true" selection-start-line="134" selection-start-column="88" selection-end-line="134" selection-end-column="88" />
+            <state relative-caret-position="149">
+              <caret line="134" column="88" lean-forward="false" selection-start-line="134" selection-start-column="88" selection-end-line="134" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -163,9 +153,9 @@
         <option value="$PROJECT_DIR$/adaptive_learning/templates/details.html" />
         <option value="$PROJECT_DIR$/chatbot/chat_bot.py" />
         <option value="$PROJECT_DIR$/adaptive_learning/templates/base.html" />
-        <option value="$PROJECT_DIR$/adaptive_learning/templates/revise.html" />
         <option value="$PROJECT_DIR$/adaptive_learning/al.py" />
         <option value="$PROJECT_DIR$/adaptive_learning/views.py" />
+        <option value="$PROJECT_DIR$/adaptive_learning/templates/revise.html" />
         <option value="$PROJECT_DIR$/adaptive_learning/templates/result.html" />
       </list>
     </option>
@@ -226,7 +216,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -280,6 +269,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -456,25 +446,37 @@
     <frame x="20" y="43" width="1400" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17820324" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18041237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14623338" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997155" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14623338" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17820324" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32791728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997155" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32791728" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -721,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1515">
           <caret line="109" column="39" lean-forward="true" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -761,38 +762,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_learning/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/al.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="134" column="88" lean-forward="true" selection-start-line="134" selection-start-column="88" selection-end-line="134" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adaptive_learning/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="181" column="0" lean-forward="true" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        <state relative-caret-position="149">
+          <caret line="134" column="88" lean-forward="false" selection-start-line="134" selection-start-column="88" selection-end-line="134" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="85" column="40" lean-forward="true" selection-start-line="85" selection-start-column="40" selection-end-line="85" selection-end-column="40" />
+        <state relative-caret-position="215">
+          <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptive_learning/templates/revise.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-37">
-          <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        <state relative-caret-position="342">
+          <caret line="68" column="74" lean-forward="false" selection-start-line="68" selection-start-column="74" selection-end-line="68" selection-end-column="74" />
           <folding />
         </state>
       </provider>
