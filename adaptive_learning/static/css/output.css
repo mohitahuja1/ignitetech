@@ -165,7 +165,7 @@ a {
     text-align: left; }
     .result_table table tbody td {
       border: 0;
-      padding-left: 10px; }
+      padding: 10px; }
 
 .back_button {
   text-align: right; }
@@ -190,9 +190,9 @@ a {
   box-shadow: #ececec 0px -3px 3px;
   padding: 10px 0px;
   width: 21rem;
-  bottom: 54px;
+  bottom: 75px;
   right: 13rem;
-  height: 7rem;
+  max-height: 7rem;
   font-size: 0.75rem;
   top: initial !important;
   border: 1px solid #d4d4d4; }
