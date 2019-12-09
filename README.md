@@ -4,7 +4,7 @@
 
 This web application allows students to learn concepts in Mathematics, take a test, get results, and receive insights into their performance. At each point of the process, the student can use the virtual assistant (chat-bot) for assistance.
 
-This version covers the topic of probability for the International Baccaulerate Board.
+This version covers the topic of probability for the International Baccalaureate Board.
 
 <p align="center">
   <img width="500" alt="ignite_ss" src="https://user-images.githubusercontent.com/30051089/70415916-36244b00-1a77-11ea-83e3-f3c78eab896d.png" border="2">
