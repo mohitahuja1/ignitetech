@@ -172,7 +172,7 @@ def check(request, questionid):
     if next_id == -2:
         request.session['result'] = result
 
-    im = "Show solution"
+    im = "Solution"
 
     return render(request, "details.html", {'this_question':question, 'questionid':questionid,
                                             'is_correct': is_correct, 'next_id': next_id, 't': t,
@@ -186,8 +186,13 @@ def result(request):
 
 
 def analysis(request):
+    chatbot1 = chat_bot.ChatBot()
 
-    return render(request, "analysis.html")
+    qlist = chatbot1.get_dic(-1).keys()
+    qlist9 = [str(i) for i in qlist]
+    qlist9.sort()
+
+    return render(request, 'analysis.html', {'qlist': qlist9})
 
 
 def past(request):

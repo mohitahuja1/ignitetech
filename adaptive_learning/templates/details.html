@@ -48,7 +48,7 @@
                                 {% if is_correct == 1%}
                                 <div class="card-text correct_answer">
                                     <p class="success_text"><b>Correct Answer!</b></p>
-                                    <p>Difficulty level: {{q_level}}</p>
+                                    <p>Difficulty level: {{q_level}} of 6</p>
                                     <p>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right</p>
                                     <p>Time taken by you: {{t|floatformat}} seconds</p>
                                     <p>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds</p>
@@ -58,7 +58,7 @@
                                 {% if is_correct == 0%}
                                 <div class="card-text wrong_answer">
                                     <p class="error_text"><b>Wrong Answer!</b></p>
-                                    <p> Difficulty level: {{q_level}}</p>
+                                    <p> Difficulty level: {{q_level}} of 6</p>
                                     <p>{{this_question.correct_users}} out of {{this_question.total_users}} users got this right</p>
                                     <p>Time taken by you: {{t|floatformat}} seconds</p>
                                     <p>Time taken by users who got this right: {{this_question.correct_time|floatformat}} seconds</p>
@@ -106,8 +106,8 @@
                             <div class="card-footer">
                                     <div class="row">
                                         <div class="col-sm-1 dropup">
-                                            <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fa fa-plus"></i>
+                                            <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-plus fa-lg  "></i>
                                             </button>
                                             <div class="dropdown-menu">
                                                 <!-- Dropdown menu links -->
@@ -117,9 +117,14 @@
                                                 <button class="dropdown-item" type="button">Call a teacher</button>
                                             </div>
                                         </div>
-                                        <div class="col-sm-11">
+                                        <div class="col-sm-10">
                                             <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
                                         </div>
+                                        <div class="col-sm-1 dropup">
+                                            <button type="button" class="btn" style = "margin-left: -36px;">
+                                                    <i class="fa fa-microphone fa-lg"></i>
+                                            </button>
+                                         </div>
                                     </div>
                                 </div>
                         </div>
@@ -134,7 +139,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
-<script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.iife.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
 <script>

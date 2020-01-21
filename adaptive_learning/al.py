@@ -230,23 +230,22 @@ class LearningNew:
             user_metric = [question.pct_users, question.total_users]
             time_metric = [question.correct_time, question.correct_users]
 
-            if is_correct == 1:
+            if is_correct == 0:
 
                 self.c_average(user_metric, 0)
                 request.session['attempts'][curr_level] += 1
-                request.session['corrects'][curr_level] += 1
 
-            elif is_correct == 0:
+            elif is_correct == 1:
 
                 self.c_average(time_metric, t)
                 self.c_average(user_metric, 1)
                 request.session['attempts'][curr_level] += 1
+                request.session['corrects'][curr_level] += 1
 
             question.pct_users = user_metric[0]
             question.total_users = user_metric[1]
             question.correct_time = time_metric[0]
             question.correct_users = time_metric[1]
-            question.save()
             question.save()
 
             # update level cleared variable

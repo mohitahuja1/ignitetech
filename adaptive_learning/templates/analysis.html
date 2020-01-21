@@ -37,26 +37,23 @@
             <div class="card-group">
                     <div class="card">
                         <div class="card-block">
-                            <h6 class="card-text">Concept: </h6>
-                            <p class="card-text">Outcomes </p>
-                            <h6 class="card-text">Question:</h6>
-                            <p class="card-text">Find the number of <a href='#' onclick='clickfunc(this)'>outcomes</a> related to selecting a month <br>ending in "y" in any given year</p>
-                            <h6 class="card-text">Your response:</h6>
-                            <p class="card-text">1 <font color = "red"> (Incorrect)</font> </p>
-                            <h6 class="card-text">Correct response: </h6>
-                            <p class="card-text">4 </p>
-                            <h6 class="card-text">Performance relative to others: </h6>
-                            <p class="card-text">8 out of 11 users got this right </p>
-                            <h6 class="card-text">Time taken by you: </h6>
-                            <p class="card-text">1.2 seconds </p>
-                            <h6 class="card-text">Time taken by users who got this right: </h6>
-                            <p class="card-text">3.5 seconds </p>
-                            <a href="#" class="btn btn-primary">&lt; Back to results</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>
+                            <p class="card-text"><b>Question 1:</b> <br>A box contains 4 red and 2 yellow balls. A ball is selected at random. <br>What is the probability that the ball selected is red?</p>
+                            <p class="card-text"><b>Key concept:</b> <br>Theoretical probability </p>
+                            <p class="card-text"><b>Your response:</b> <br> 0.67 </p>
+                            <p class="card-text"><b>Correct response::</b> <br>0.67 </p>
+                            <p class="card-text"><b>Performance relative to others:</b> <br>65 out of 82 users got this right </p>
+                            <p class="card-text"><b>Time taken by you:</b> <br>51.2 seconds </p>
+                            <p class="card-text"><b>Time taken by students who got this right:</b> <br>9.8 seconds </p>
+                            <br>
+                            <a href="{% url 'result'%}" class="btn btn-primary">&lt; Back to results</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="#" class="btn btn-primary">Next question &gt;</a>
-                            </form>
                         </div>
                     </div>
-                    <div class="card chat-bot">
+                <div class="card chat-bot">
                         <div class="">
                             <div class="card-header">
                                 <div class="card-block">
@@ -64,7 +61,7 @@
                                         <div class="row">
                                             <div class="col-sm-2">
                                                 <div class="row">
-                                                    <span class="circle_prof"></span>
+                                                    <img class="img-responsive" src="/static/images/prof.png" style="max-width: 50px; max-height: 50px">
                                                 </div>
                                             </div>
                                             <div class="col-sm-10 prof_status">
@@ -77,29 +74,53 @@
                             </div>
                             <div id = "container" class="fixed_scrollable_area card-block">
                                 <p class="card-text">
-                                   <span class="prof_chat">Hi, my name is Prof. Ask me anything!<br><br>
-                                   Here are a few options:<br><br>
-                                   <a href='#' onclick='clickfunc(this)'>Show me the solution.</a><br><br>
-                                    <a href='#' onclick='clickfunc(this)'>Which concepts are involved in this problem?</a><br><br>
-                                    <a href='#' onclick='clickfunc(this)'>Let me try a similar problem.</a></span>
+                                   <span class="prof_chat">Hi, how can I help?<br><br>
+                                        <a href='#' onclick='clickfunc(this)'>Show me the solution.</a><br><br>
+                                       <a href='#' onclick='clickfunc(this)'>Let's try a similar problem.</a>
+                                   </span>
                                 </p>
                             </div>
                             <div class="card-footer">
-                                    <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
-                            </div>
+                                    <div class="row">
+                                        <div class="col-sm-1 dropup">
+                                            <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-plus fa-lg  "></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <!-- Dropdown menu links -->
+                                                <button class="dropdown-item" type="button">Share a picture</button>
+                                                <button class="dropdown-item" type="button">Chat with teacher</button>
+                                                <button class="dropdown-item" type="button">Share your screen</button>
+                                                <button class="dropdown-item" type="button">Call a teacher</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id = "textbox" placeholder="Type something...">
+                                        </div>
+                                        <div class="col-sm-1 dropup">
+                                            <button type="button" class="btn" style = "margin-left: -36px;">
+                                                    <i class="fa fa-microphone fa-lg"></i>
+                                            </button>
+                                         </div>
+                                    </div>
+                                </div>
                         </div>
-                    </div>
-                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- Main Content Ends -->
 
 </div>
 
+
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
-<script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.iife.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
 <script>
@@ -148,7 +169,7 @@
     });
 
     $( function() {
-        var localList = None;
+        var localList = {{ qlist|safe }};
 
         $( "#textbox" ).autocomplete({
             minLength: 1,
